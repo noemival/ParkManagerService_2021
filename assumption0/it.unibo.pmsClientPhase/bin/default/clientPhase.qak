@@ -1,0 +1,227 @@
+/*Primo modello analisi.
+ Sequenza operazioni:
+ 1)Il Client richiede di entrare 
+ 2)Il ParkManagerService accetta la richiesta e invia al client lo SLOTNUM
+ 3)Successivamente  il client preme carEnter
+ 4)Dopo un tempo T la macchina arriva all'ingresso e viene rilevata dal weightsensor, il quale invia l'informazione al ParkManagerService
+ 5)Il ParkManager invia i comandi al robot per spostare la macchina dal indoorArea allo SLOTNUM
+ 6)Il robot porta la macchina allo Slotnum indicato dal ParkManagerService
+ 7)Successivamente dopo un po' di tempo il client invia una richiesta di pickup
+ 8)Il ParkManagerService riceve la richiesta e invia al robot i comandi per trasportare la macchina al Outdoor-area.
+ 9)Il transport trolley transporta la macchina all'outdoor-Area
+ 10)L'outsonar rileva la macchina
+ * 
+ *  
+ Assunzioni:
+1)un solo cliente
+2)no map contraints ;
+3)outDoor-Area libera;
+4)Indoor-Area libera;
+5)trasport trolley stati: idle o working. In questo modello il transport-trolley riceve semplicemente i messaggi dal ParkManagerService senza fare realmente le mosse.
+ */
+System clientphase
+
+
+Dispatch trolleycmd :trolleycmd (CMD) // CMD moveToIN, moveToSlotIn, moveToSlotOut, moveToOut, moveToHome \
+
+Dispatch outsonarocc: outsonarocc(V)
+
+Event outsonar : outsonar (V)
+
+Event weightsensor : weightsensor(V)
+
+Request carenter : carenter(C)
+Reply receipt : receipt(I)
+
+Request notifyIn : notifyIn(N)
+Reply informIn : informIn(S)
+
+Request pickup : pickup(TOKENID)
+Reply ok : ok(O)
+
+Context ctxcp ip [host= "localhost" port=8050]
+
+QActor weightsensor context ctxcp{
+	State s0 initial {
+		println("Weightsensor in s0")
+	
+	}Goto work
+	
+	State work{
+		delay 1000
+		[# var  W=1000#]
+			if[#W>0#]{	
+				println ("Weightsensor [work]: ho rilevato una macchina il cui peso � $W")
+				emit weightsensor : weightsensor ($W)
+				delay 3000
+			}
+	}
+}
+
+	
+QActor outsonar context ctxcp{
+	State s0 initial {
+			println("OutSonar in s0")
+	
+	} Transition t0 whenMsg outsonarocc -> work
+
+	State work{
+				println ("OutSonar [work]: ho rilevato una macchina ")
+				
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+				emit outsonar : outsonar (O)
+			
+	}Transition t0 whenTime 5000->s0
+}
+
+QActor parkmanagerservice context ctxcp {
+	[# var FREEAREA = 1#]
+			State s0 initial {println("ParkManagerService: starts")
+				
+	} Goto wait
+	State wait{
+		[# var FREEAREA = 1#]
+			// in attesa di ricevere una nuovo messaggio/evento 	
+	}
+	Transition t0 whenRequest notifyIn -> acceptIn
+				  whenRequest pickup -> acceptOut
+				  whenEvent outsonar -> outdoor
+				  whenEvent weightsensor -> receipt   
+				  
+
+	State acceptIn{
+	 	[# var SLOTNUM = Slotnum.getSlotnum() #]
+			
+	
+		if  [# SLOTNUM!= 0 #]{ 
+			println("ParkManagerService [acceptIn]: invio al client lo SLOTNUM = $SLOTNUM")
+		replyTo notifyIn with informIn : informIn($SLOTNUM)
+		}
+	
+	} Transition t0 whenRequest carenter -> wait
+	
+	State acceptOut{
+	
+		if[#FREEAREA == 1#]{ //simulazione outdoor libera\
+			onMsg(pickup : pickup(TOKENID)){ 
+		[# var TOKENID= payloadArg(0) #]//acquisisco il tokenid dal cliente -> dal TOKENID allo SLOTNUM si presuppone che qualora non fosse libera riformuler\uc0\u8730 \'86 una richiesta il client \
+					println("ParkManagerService [acceptOut]: invio i comandi di acceptOut al trolley")
+					replyTo pickup with ok : ok($FREEAREA)
+					forward trolley -m trolleycmd :trolleycmd(moveToSlotOut)
+					forward trolley -m trolleycmd :trolleycmd(moveToOut)
+		}
+		}else{
+			replyTo pickup with ok : ok($FREEAREA)
+			println("ParkManagerService [acceptOut]: outdoor area occupata, impossibile elaborare la richiesta")
+		}
+		}Goto wait
+		//TODO: invio e gestione tokenID
+	State receipt
+	{
+		onMsg (weightsensor : weightsensor(W)){
+			
+			[# var weight = payloadArg(0).toInt() #]
+			println("ParkManagerService [receipt]: ho ricevuto dal weight: $weight")
+			println("ParkManagerService [receipt]: invio i comandi al transport-trolley")
+			forward trolley -m trolleycmd :trolleycmd(moveToIn)
+			forward trolley -m trolleycmd :trolleycmd(moveToSlotIn)
+			//replyTo carenter with receipt : receipt(I)
+		}
+	}Goto wait
+	
+	State outdoor{
+		[# FREEAREA = 0
+			println("ParkManagerService: outdoor occupata") #]
+		//replyTo pickup with ok : ok($FREEAREA)
+	}Goto wait
+	
+	
+}
+	
+	
+QActor trolley context ctxcp{  
+	State s0 initial{
+		println("Transport Trolley: at home")
+		//Ipotesi trolley inizialmente a casa\
+	} Transition t0 whenMsg trolleycmd ->working
+		
+	State working
+	{
+		onMsg(trolleycmd : trolleycmd(moveToIn)){
+		println("Transport Trolley [working]: ho ricevuto il comando moveToIn ")
+		delay 1000
+		println("Transport Trolley [working]: sono nell'INDOOR ")
+			//updateResource[# #]\
+			
+		}
+		onMsg(trolleycmd : trolleycmd(moveToSlotIn)){
+		println("Transport Trolley [working]: ho ricevuto il comando moveToSlotIn ")
+		delay 1000
+		println("Transport Trolley [working]: sono davanti lo SLOTNUM assegnato alla macchina ")
+			//updateResource[# #]\
+		}
+		onMsg(trolleycmd : trolleycmd(moveToSlotOut)){
+		println("Transport Trolley [working]: ho ricevuto il comando moveToSlotOut ")
+		delay 1000
+		println("Transport Trolley [working]: sono nello Slot num ")
+			//updateResource[# #]\
+		}
+		onMsg(trolleycmd : trolleycmd(moveToOut)){
+		println("Transport Trolley [working]: ho ricevuto il comando moveToOut ")
+		delay 1000
+		println("Transport Trolley [working]: sono nell'OUTDOOR ")
+		/*Stiamo simulando l'arrivo del robot nei pressi dell'outsonar, 
+		 * nella realt� non verr� inviato nessun messaggio dal transport trolley 
+		   ma verr� rilevato in automatico dal outsonar
+		*/
+		forward outsonar -m outsonarocc :outsonarocc(V)
+		}
+		}Transition t0 whenMsg trolleycmd ->working
+	}
+	
+QActor client context ctxcp{
+	[# var SLOTNUM = 0  
+	//var RequestAccepted = 0
+	#]
+	State s0 initial {
+		println("parkingservicegui (client mock)  STARTS")
+	
+	} 
+	Goto requestToEnter
+	State requestToEnter{
+		println("Client [requesttoenter]: richiedo di entrare ")
+		request parkmanagerservice -m notifyIn : notifyIn(A)
+	}Transition t0 whenReply informIn -> carEnter
+	
+	State carEnter{
+		onMsg(informIn : informIn (S)){
+		[# var SLOTNUM= payloadArg(0).toInt() #]
+		println("Client [carEnter: ho ricevuto lo SLOUTNUM = $SLOTNUM ")
+		if[#SLOTNUM >0#]{
+			println("Client [carEnter]: premo CARENTER ")
+			request parkmanagerservice -m carenter : carenter ($SLOTNUM)
+			} 
+		}
+	}  Transition t0  whenTime 5000 -> requestPickup   
+	
+	//TODO: numeroClienti > 0  e outdoor-area occupata.
+	State requestPickup{
+		request parkmanagerservice -m pickup : pickup(TOKENID)
+		println("Client [requestPickup]: invio la richiesta di pickup")	
+	} Transition t0 whenReply ok -> handlerResponsePickup  
+	
+	State handlerResponsePickup{
+		onMsg (ok: ok(1)){
+			println("Client [requestPickup]: la mia richiesta di pickup � stata accettata ed elaborata")
+			//[#RequestAccepted = 1#]
+		}onMsg (ok: ok(0)){
+			println("Client [requestPickup]: attendo che l'outdoor d'area si liberi ")
+			}
+		
+		}//Goto pickup  if [# RequestAccepted == 0#] else s0
+}
