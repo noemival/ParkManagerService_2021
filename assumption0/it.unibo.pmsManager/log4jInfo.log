@@ -1,0 +1,414 @@
+2021-07-11 17:58:09 INFO  NetworkConfig:422 - writing properties to file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 17:58:09 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 17:58:09 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 17:58:09 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 17:58:09 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 17:58:09 INFO  CoapServer:207 - Starting server
+2021-07-11 17:58:10 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 17:58:10 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 17:58:10 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-11 18:26:03 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:26:03 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:26:03 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:26:03 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:26:03 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:26:03 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:26:03 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:26:03 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:65293, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:26:03 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:65293
+2021-07-11 18:26:03 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:65293 for coap
+2021-07-11 18:34:07 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:34:07 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:34:07 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:34:07 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:34:07 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:34:07 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:34:07 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:34:07 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:50289, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:34:07 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:50289
+2021-07-11 18:34:07 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:50289 for coap
+2021-07-11 18:34:23 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:34:23 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:34:23 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:34:23 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:34:23 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:34:23 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:34:23 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:34:23 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:50290, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:34:23 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:50290
+2021-07-11 18:34:23 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:50290 for coap
+2021-07-11 18:35:30 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:35:30 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:35:30 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:35:30 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:35:30 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:35:30 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:35:30 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:35:30 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:50291, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:35:30 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:50291
+2021-07-11 18:35:30 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:50291 for coap
+2021-07-11 18:35:30 INFO  CoapResource:722 - successfully established observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (Exchange[R5], size 1)
+2021-07-11 18:35:44 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:35:44 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:35:44 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:35:44 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:35:44 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:35:44 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:35:44 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:35:44 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:50292, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:35:44 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:50292
+2021-07-11 18:35:44 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:50292 for coap
+2021-07-11 18:36:32 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R8], size 1)
+2021-07-11 18:37:34 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R9], size 1)
+2021-07-11 18:38:36 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R10], size 1)
+2021-07-11 18:39:38 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R11], size 1)
+2021-07-11 18:40:40 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R12], size 1)
+2021-07-11 18:41:42 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R13], size 1)
+2021-07-11 18:42:44 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R14], size 1)
+2021-07-11 18:43:46 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R15], size 1)
+2021-07-11 18:44:48 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R16], size 1)
+2021-07-11 18:45:50 INFO  CoapResource:719 - replacing observe relation between /127.0.0.1:50291#[45de61e31b6cbd27] and resource /ctxpm/fan (new Exchange[R17], size 1)
+2021-07-11 18:47:49 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:47:49 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:47:49 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:47:49 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:47:49 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:47:49 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:47:49 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:47:49 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:58397, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:47:49 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:58397
+2021-07-11 18:47:49 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:58397 for coap
+2021-07-11 18:57:25 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:57:25 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:57:25 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:57:25 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:57:25 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:57:25 INFO  CoapServer:207 - Starting server
+2021-07-11 18:57:25 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:57:25 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:57:25 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-11 18:57:48 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:57:48 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:57:48 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:57:48 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:57:48 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:57:48 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:57:49 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:57:49 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:65098, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:57:49 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:65098
+2021-07-11 18:57:49 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:65098 for coap
+2021-07-11 18:59:04 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:59:04 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:59:04 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:59:04 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:59:04 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:59:04 INFO  CoapServer:207 - Starting server
+2021-07-11 18:59:04 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:59:04 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:59:04 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-11 18:59:13 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:59:13 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:59:13 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:59:13 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:59:13 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:59:13 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:59:13 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:59:13 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:58221, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:59:13 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:58221
+2021-07-11 18:59:13 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:58221 for coap
+2021-07-11 18:59:36 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 18:59:36 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 18:59:36 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 18:59:36 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 18:59:36 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 18:59:36 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 18:59:36 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 18:59:36 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:58222, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 18:59:36 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:58222
+2021-07-11 18:59:36 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:58222 for coap
+2021-07-11 19:01:00 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:01:00 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:01:00 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:01:00 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:01:00 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:01:00 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:01:00 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:01:00 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64124, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:01:00 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64124
+2021-07-11 19:01:00 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64124 for coap
+2021-07-11 19:01:41 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:01:41 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:01:41 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:01:41 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:01:41 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:01:41 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:01:41 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:01:41 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:62886, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:01:41 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:62886
+2021-07-11 19:01:41 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:62886 for coap
+2021-07-11 19:02:33 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:02:33 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:02:33 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:02:33 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:02:33 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:02:33 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:02:33 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:02:33 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61111, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:02:33 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61111
+2021-07-11 19:02:33 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61111 for coap
+2021-07-11 19:02:42 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:02:42 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:02:42 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:02:42 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:02:42 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:02:42 INFO  CoapServer:207 - Starting server
+2021-07-11 19:02:42 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:02:42 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:02:42 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-11 19:02:50 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:02:50 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:02:50 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:02:50 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:02:50 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:02:50 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:02:50 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:02:50 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61112, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:02:50 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61112
+2021-07-11 19:02:50 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61112 for coap
+2021-07-11 19:02:59 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:02:59 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:02:59 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:02:59 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:02:59 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:02:59 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:02:59 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:02:59 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61113, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:02:59 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61113
+2021-07-11 19:02:59 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61113 for coap
+2021-07-11 19:03:19 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:03:19 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:03:19 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:03:19 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:03:19 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:03:19 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:03:19 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:03:19 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61114, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:03:19 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61114
+2021-07-11 19:03:19 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61114 for coap
+2021-07-11 19:03:38 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:03:38 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:03:39 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:03:39 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:03:39 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:03:39 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:03:39 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:03:39 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61115, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:03:39 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61115
+2021-07-11 19:03:39 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61115 for coap
+2021-07-11 19:06:40 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:06:40 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:06:40 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:06:40 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:06:40 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:06:40 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:06:40 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:06:40 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64943, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:06:40 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64943
+2021-07-11 19:06:40 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64943 for coap
+2021-07-11 19:06:55 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:06:55 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:06:55 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:06:55 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:06:55 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:06:55 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:06:55 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:06:55 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64944, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:06:55 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64944
+2021-07-11 19:06:55 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64944 for coap
+2021-07-11 19:07:08 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:07:08 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:07:08 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:07:08 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:07:08 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:07:08 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:07:08 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:07:08 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64945, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:07:08 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64945
+2021-07-11 19:07:08 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64945 for coap
+2021-07-11 19:17:06 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:17:06 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:17:06 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:17:06 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:17:06 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:17:06 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:17:06 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:17:06 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:63945, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:17:06 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:63945
+2021-07-11 19:17:06 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:63945 for coap
+2021-07-11 19:17:57 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-11 19:17:57 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-11 19:17:57 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-11 19:17:57 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-11 19:17:57 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-11 19:17:57 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-11 19:17:57 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-11 19:17:57 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:58135, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-11 19:17:57 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:58135
+2021-07-11 19:17:57 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:58135 for coap
+2021-07-12 15:16:24 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:16:24 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:16:24 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:16:24 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:16:24 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:16:24 INFO  CoapServer:207 - Starting server
+2021-07-12 15:16:24 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:16:24 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:16:24 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-12 15:16:37 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:16:37 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:16:37 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:16:37 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:16:37 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:16:37 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:16:37 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:16:37 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:63971, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:16:37 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:63971
+2021-07-12 15:16:37 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:63971 for coap
+2021-07-12 15:19:19 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:19:19 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:19:19 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:19:19 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:19:19 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:19:19 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:19:19 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:19:19 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:60221, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:19:19 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:60221
+2021-07-12 15:19:19 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:60221 for coap
+2021-07-12 15:23:16 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:23:16 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:23:16 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:23:17 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:23:17 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:23:17 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:23:17 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:23:17 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:51852, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:23:17 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:51852
+2021-07-12 15:23:17 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:51852 for coap
+2021-07-12 15:28:41 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:28:41 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:28:41 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:28:41 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:28:41 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:28:41 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:28:41 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:28:41 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:58507, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:28:41 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:58507
+2021-07-12 15:28:41 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:58507 for coap
+2021-07-12 15:41:56 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:41:56 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:41:57 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:41:57 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:41:57 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:41:57 INFO  CoapServer:207 - Starting server
+2021-07-12 15:41:57 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:41:57 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:41:57 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-12 15:42:03 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:42:03 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:42:03 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:42:03 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:42:03 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:42:03 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:42:03 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:42:03 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61731, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:42:03 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61731
+2021-07-12 15:42:03 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61731 for coap
+2021-07-12 15:44:13 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 15:44:13 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 15:44:13 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 15:44:13 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 15:44:13 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 15:44:13 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 15:44:13 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 15:44:13 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:50196, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 15:44:13 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:50196
+2021-07-12 15:44:13 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:50196 for coap
+2021-07-12 18:14:44 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:14:44 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:14:44 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:14:44 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:14:44 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:14:44 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:14:44 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:14:44 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64041, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:14:44 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64041
+2021-07-12 18:14:44 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64041 for coap
+2021-07-12 18:15:01 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:15:01 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:15:01 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:15:01 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:15:01 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:15:01 INFO  CoapServer:207 - Starting server
+2021-07-12 18:15:01 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:15:01 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:8050, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:15:01 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:8050
+2021-07-12 18:15:06 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:15:06 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:15:06 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:15:06 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:15:06 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:15:06 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:15:06 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:15:06 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:64042, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:15:06 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:64042
+2021-07-12 18:15:06 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:64042 for coap
+2021-07-12 18:16:34 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:16:34 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:16:34 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:16:34 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:16:34 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:16:34 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:16:34 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:16:34 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:53478, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:16:34 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:53478
+2021-07-12 18:16:34 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:53478 for coap
+2021-07-12 18:17:31 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:17:31 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:17:31 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:17:31 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:17:31 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:17:31 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:17:31 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:17:31 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:61115, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:17:31 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:61115
+2021-07-12 18:17:31 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:61115 for coap
+2021-07-12 18:18:56 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:18:56 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:18:56 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:18:56 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:18:56 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:18:56 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:18:56 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:18:56 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:52584, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:18:56 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:52584
+2021-07-12 18:18:56 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:52584 for coap
+2021-07-12 18:20:11 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:20:11 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:20:11 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:20:11 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:20:11 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:20:11 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:20:11 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:20:11 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:54584, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:20:11 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:54584
+2021-07-12 18:20:11 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:54584 for coap
+2021-07-12 18:52:08 INFO  NetworkConfig:372 - loading properties from file /Users/noemivalentini/eclipse-issLab2021/it.unibo.pmsManager/Californium.properties
+2021-07-12 18:52:08 INFO  RandomTokenGenerator:55 - using tokens of 8 bytes in length
+2021-07-12 18:52:08 INFO  CoapEndpoint:423 - CoapEndpoint uses udp plain
+2021-07-12 18:52:08 INFO  BlockwiseLayer:207 - BlockwiseLayer uses MAX_MESSAGE_SIZE=1024, PREFERRED_BLOCK_SIZE=512, BLOCKWISE_STATUS_LIFETIME=300000 and MAX_RESOURCE_BODY_SIZE=8192
+2021-07-12 18:52:08 INFO  ReliabilityLayer:83 - ReliabilityLayer uses ACK_TIMEOUT=2000, ACK_RANDOM_FACTOR=1.5, and ACK_TIMEOUT_SCALE=2.0
+2021-07-12 18:52:08 INFO  CoapEndpoint:452 - Endpoint [coap://0.0.0.0:0] requires an executor to start, using default single-threaded daemon executor
+2021-07-12 18:52:08 INFO  UDPConnector:161 - UDPConnector starts up 1 sender threads and 1 receiver threads
+2021-07-12 18:52:08 INFO  UDPConnector:187 - UDPConnector listening on 0.0.0.0/0.0.0.0:55984, recv buf = 65507, send buf = 65507, recv packet size = 2048
+2021-07-12 18:52:08 INFO  CoapEndpoint:485 - Started endpoint at coap://0.0.0.0:55984
+2021-07-12 18:52:08 INFO  EndpointManager:140 - created implicit endpoint coap://0.0.0.0:55984 for coap
