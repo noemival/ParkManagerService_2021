@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<style type="text/css">
+body
+{
+    margin-left:  30px;
+    margin-right: 30px;
+};
+
+P
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+};
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+	font-size: 93%;
+}
+
+a:hover {
+    background-color: #cccccc;
+}
+
+
+hr {
+    clear: both;
+    height: 1px;
+    color: #242424;
+    background-color: transparent;
+}
+
+h1, h2, h3 {
+    color: #242424;
+    clear: left;
+    font: 100% Tahoma, Helvetica, Arial, sans-serif;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+top {
+	width: 100%;
+}
+
+
+#i {
+    color: #ff1010;
+}
+tt{
+	font-family: "Arial";
+    font-size: 90%;
+	color: #006600;
+}
+em{
+	font-family: "Arial";
+    font-size: 80%;
+	font-weight: bold;
+	border-style:solid;
+	border-color: #abe876;
+    color: #1632cc;
+}
+bc{
+	font-family: "Arial";
+	font-size: 90%;
+	font-weight: bold;
+    color: #990000;
+	background-color: #fcf8c7;
+}
+ks{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #0000CD	;
+	font-size: 90%;
+}
+kc{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #008000	;
+	font-size: 90%;
+}
+pre{
+	font-family: "Consolas";
+	font-size: 85%;
+	background-color: #f5f5f5;
+	border: 1.5px solid silver;
+	padding: 5px;
+}
+m{
+	font-family: "Helvetica";
+	line-height: 100%;
+ 	font-size: 75%;
+}
+div.body{
+	 
+    font-size: 18px;
+}
+k{
+	font-family: "Arial";
+    color: #990000;
+	font-weight: bold;
+	font-size: 90%;
+}
+kn{
+	font-family: "Arial";
+    color: #0000CD	;
+	font-size: 90%;
+}
+h1 {
+    font-size: 150%;
+    background-color: #b2c0ff;
+	padding: 10px;
+}
+
+h2 {
+    background-color: #9ed8ff;
+    font-size: 130%;
+}
+
+h3 {
+	background-color: #e6ccff;
+    font-size: 100%;
+}
+h4 {
+    background-color: #ccffcc;
+    font-size: 100%;
+	width: 95%;
+	border-radius: 5px;
+	padding: 2px;
+}
+h5 {
+    background-color: #d5ffb0;
+    font-size: 100%;
+
+}
+div.req{
+	background-color: #d9ffb3;
+    font-size: 18px;
+	width: 700px;
+    border: 3px solid green;
+    padding: 15px;
+    margin: 10px;
+}
+div.remark{
+	background-color: #E3F2FD;
+    border: 1.5px solid #d5f2ed;
+    padding: 15px;
+    margin: 10px;
+	border-radius: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+ol, ul, li {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+img {
+	border: 1.5px solid #d5f2ed
+
+}
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+}
+
+div.wrapdesc{
+	width: 90%;
+	margin: auto;
+}
+
+div.imagedesc{
+	width: 85%;
+	margin: auto;
+}
+</style>
+    
+<head>
+   
+<title>Sprint 1</title></head>
+    
+<body>
+<div id="top">
+<h1>Workplan Automated Car-Parking- Sprint 1: <font size="5"></font> </h1>
+</div>  
+
+<h2>Requirements</h2>
+
+<div class="remark">
+The requirements given by the costumers  <a href="https://github.com/anatali/issLab2021/blob/main/it.unibo.issLabStart/userDocs/TFBO21ISS.pdf" target="web">Automated Car-Parking</a> considered in the following SPRINT are:</li>
+</div> 
+
+<li>A <tt>DDR</tt> robot working as a <em>transport trolley</em>, that is intially situated in its <em>home</em> location. 
+The <tt>transport trolley</tt> has the form of a square of side length <em>RD</em>.
+</li>
+<li>A <em>parking-area</em> is an empty room that includes;
+	A <em>map</em> of the parking area, represented as a grid of squares of side length <em>RD</em>, 
+	is available in the file <a href="parkingMap.txt" target="code">parkingMap.txt</a>:
+	<pre>
+|r, 0, 0, 0, 0, 0, 0, X, 
+|0, 0, <bc>X, X,</bc>  0, 0, 0, X, 
+|0, 0, <bc>X, X,</bc>  0, 0, 0, X, 
+|0, 0, <bc>X, X,</bc>  0, 0, 0, X, 
+|0, 0, 0, 0, 0, 0, 0, X, 
+|X, X, X, X, X, X, X, X, </pre>
+	The map includes the positions of the  <tt>parking-slots</tt> (marked above with the symbol <k>X</k>) 
+	and of the <em>fixed obstacles</em> in the area (the walls marked with the symbol <b>X</b>).
+	<br/><br/>
+	The area marked with <k>X</k> is a sort of 'equipped area' upon which the <tt>transport trolley</tt> cannot walk.
+	Thus, to get the car in the <tt>parking-slot</tt> <ks>(2,2)</ks>, the <tt>transport trolley</tt> must
+	go in cell <ks>(1,2)</ks>.
+	<br/><br/>
+	The <tt>ParkManagerService</tt>  should perform the following tasks:
+<li><em>moveToIn</em>: move the <tt>transport trolley</tt> from its current localtion to the <tt>INDOOR</tt> ;</li>
+  <li><em>moveToSlotIn</em>: move the <tt>transport trolley</tt> from the <tt>INDOOR</tt> to the selected <tt>parking-slot</tt>;</li>
+  <!-- <li>accept another request (<tt>acceptIN</tt> or <tt>acceptOUT</tt>). -->
+ <li><em>moveToHome</em>: if not already at home, move the <tt>transport trolley</tt> to its <tt>home</tt> location.</li> 
+ <li><em>moveToSlotOut</em>: move the <tt>transport trolley</tt> from its current location to the <tt>CARSLOTNUM/parking-slot</tt> ;</li>
+	</ul>
+	<li><em>moveToOut</em>: move the <tt>transport trolley</tt> to the <tt>OUTDOOR</tt> ;</li>
+
+The following sprint will focus to <kn>realize basic movements of the transport trolley</kn>.
+
+<h2>Requirement analysis</h2>
+Our interaction with the customer has made it clear what he means for:																																			<!--Inserire il riferimento corretto  -->
+<li><kn>DDR robot</kn>: a device able to move thanks to the commands received via the network. It could be a VirtualRobot, Mbot or Nanobot  The seguent link contain the software and the relative documentation offered by the costumer: <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.qak21.basicrobot/userDocs/basicrobot2021.html" target="web"> basicrobot2021.html</a> </li>
+<li><kn>transport-trolley</kn>: a DDR robot capable of loading a car and transporting it within the parking-area. 
+<li><kn>parking-area</kn>: an empty room showed in the map, where:
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<ul>
+						<li> "O" is the OUTDOOR-area;</li>
+						<li> "I" is the INDOOR-area ;</li>
+						<li> "r" is the home ;</li>
+						<li> "X" are the walls; </li> 
+						<li> "s" are the slots. </li> 
+					</ul>
+				</td>
+				<td style="width: 50%">
+					
+					 <center><img src="./img/parkingArea.png" alt="mappa" width="70%" ></center> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<li><kn>home</kn>: an area where the robot is at in the beginning and where it goes when it hasn't any requests;</li>
+<li><kn>INDOOR-area</kn>: the area in front of the parking INDOOR where is the weightsensor, the trasport trolley loads the car and the client leaves the car;</li>
+<li><kn>OUTDOOR-area</kn>: the area in front of the parking OUTDOOR where is the OUTsonar, the trasport trolley leaves the car and the client takes his/her car;</li> 
+<li><kn>parking-slots</kn>: number of slots in the parking where the robot parks the car and the transport trolley couldn't pass on; </li>
+
+<li><kn>current state</kn>: state of the trasport trolley (idle, working or stopped);
+<li><kn> fixed obstacles </kn>: any fixed element in the parking-aerea which the robot could collide with (e.g. a wall); </li>
+
+</div>
+<h2>Problem analysis</h2>
+	
+	The list of requirements for this sprint is:
+			<li>the <tt>transport-trolley</tt> carries the car to the parking space assigned by the ParkerManagerService;</li>
+			<li>the <tt>transport-trolley</tt> carries the car to the the exit after having picked it up from the parking-slots;</li>
+			<li>the <tt>transport-trolley</tt> mustn't pass over the parking-slots;</li>
+			<li>the <tt>transport-trolley</tt> go back to its house if it hasn't requests;</li>
+
+	To realize basic movements of the <tt>trasport trolley</tt> (moveToIn, moveToSlotIn, moveToHome, moveToSlotOut, moveToOut), the application should be able to:
+			<li>generate a sequence of elementary actions in order to reach the assigned places; </li>
+			<li>provide a map of the environment to verified the <tt>transport-trolley's</tt> position;</li>
+			<li>handle the <tt>transport-trolley</tt> positioning constraints inside the parking area;</li>
+			<li>planning the <tt>transport-trolley's</tt> movements to move it in an organized way;</li>
+			<li>communicate with the <tt> transport-trolley</tt>.</li>
+		
+	<div class="remark"> To destroy the abstraction gap is possible to use QACTOR which is a modelling language and defines a work model of the system based on actors behavior.
+	</div>
+	<h3>Components</h3>
+
+	<h4>The ParkManagerService</h4>
+
+		The ParkManagerService should send to the transport trolley commands with the informations where it should move to. Therefore
+		the ParkManagerService will be an application server that interacts via network with the transport-trolley.
+
+
+	<h4>The basicrobot</h4>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						The basicrobot was given by the costumer: 	<a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.qak21.basicrobot/userDocs/basicrobot2021.html" target="web"> basicrobot2021.html</a>. It will use to commununicate between the DDR robot and the transport-trolley because it allows us to execute the robot movement commands in a 'technology-independent' way, with respect to the nature of the robot (virtual or real). <br>
+						The configuration file <a href="./img/basicrobotConfig.json" target="web">basicrobotConfig.json</a>, located in the repository <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1" target="web"> it.unibo.sprint1</a>, is used to respect the Virtualrobot nature by the basicrobot.
+					</td>
+					<td style="width: 50%">
+						<center><img src="./img/BasicRobotState.drawio.png" alt="mappa" width="70%" ></center> 
+					</td>
+				</tr>
+			</tbody>
+		</table> 
+	<h4>The transport-trolley</h4>
+		<div class="remark">
+		
+		In our analysis the transport-trolley should represent the buisness logic of the DDR Robot. The reason is that it should be able to generate a sequence of actions to reach the commands given by the ParkManagerService and exceute them sending the basic moves to the basicrobot. 
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						The trasport trolley should reach the goal place in a organizzed way: so the transport-trolley should planning (detection) the best sequence of actions and excecute them (actuation: e.g. sending messages to the basic robot).<br>
+						The <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.planner20/userDocs/LabPlanner.html" target="web"> LabPlanner.html</a> is able to planning the actions of a robot working in logical space using AI algorithms supporting. <br>
+					</td>
+					<td style="width: 50%">
+						<center><img src="./img/TrolleyState.drawio.png" alt="mappa" width="90%" ></center> 
+					</td>
+				</tr>
+			</tbody>
+		</table> 
+						
+		<br>
+		<k>Transport-trolley/Planner </k>
+		<br>
+
+			The <a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.planner20/resources/itunibo/planner/plannerUtil.kt" target="web"> plannerUtil.kt</a> is the support of the transport-rolley that is able to generate a plan of basic actions. 
+			<br>
+			The <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/parkingMap0.bin" target="web"> parkingMap0.bin</a> is the a binary file that represents the parking-area. It will be used by the planner to plan the path.
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								Because the transport-trolley shoud moves in a organizzed way the slots could be ordered in the following way so the first numbers will be near the INDOORarea and the transport troley will be faster to park the car. 
+								The plannerUtil.kt consider the following pair of number the respective places:
+								<ul>
+								<li>("6","0") -> INDOORarea</li>
+								<li>("6","4") -> OUTDOORarea</li>
+								<li>("0","0") -> Home</li>
+								</ul>
+							</td>
+					<td style="width: 50%">
+					
+					 <center><img src="./img/parkingArea2.png" alt="mappa" width="50%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+
+						<pre>
+	run itunibo.planner.plannerUtil.initAI()  
+	println("&&&  trolley loads the parking map from the given file ...") 
+	run itunibo.planner.plannerUtil.loadRoomMap("parkingMap0.bin")  
+	<kc>//Set the parking area ...</kc>
+	run itunibo.planner.plannerUtil.showMap()   
+    run itunibo.planner.plannerUtil.showCurrentRobotState()		  
+						</pre>
+
+					
+						After initializating the support the trasport trolley will generate the sequence of actions setting the cells goal with
+
+						<pre>
+	<kc>//for example</kc> run itunibo.planner.plannerUtil.planForGoal("6","0")
+
+						</pre>
+			
+	
+						<ks>MoveToHome </ks>
+				
+						<br>  
+						The transport trolley when recives the command moveToHome should be able to excecute the command but also it shouldn't complete it if there is another reqeust from the ParkManagerService.
+
+	
+	
+	<h3>Components comunication</h3>
+	<table>	
+		<td style="width:50%" >
+				<center><img src="img/comunications1.png" alt="mappa" width="50%" ></center> 
+		</td>
+	</table>
+	<br></br>
+
+	
+		<k>ParkManagerService/TransporTrolley </k>
+			<table>
+				<tbody>	
+					<tr>
+						<td style="width:50%" >
+						
+						<br> The ParkManagerService will send the command to the transport-trolley in a asynchronous way to reduce the quantity of messeges and prevent the application from waiting for a response.
+						</td>
+
+						<td>						
+							<pre>
+
+Dispatch cmd : cmd(MOVE) 
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkmnagerservice context ctxparkingarea{ 
+	...
+	forward transporttrolley -m cmd : cmd(w)  	
+	...
+}
+					    </pre>
+					
+
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		
+		
+		<k>Transport-trolley/Basicrobot </k>
+				
+		<table>
+			<tbody>
+				<tr>
+					<td style="width:50%" >
+						<br> The Transport-trolley will send the command to the basicrobot in a asynchronous way to reduce the quantity of messeges and prevent the application from waiting for a response.
+					</td>
+					<td>
+						<pre>
+
+Dispatch cmd : cmd(MOVE)   
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor transporttrolley context ctxparkingarea{ 
+	...
+	forward basicrobot -m cmd : cmd(w)  
+	...
+}
+					    </pre>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+
+<br>
+<div class="remark">
+The first excecutable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/src/sprint1.qak"target="web">sprint1.qak</a></p>						
+		
+</div>
+<h3>SPRINT REVIEW</h3>
+	This first analysis was produced some aspects that will be considerend in the next SPRINT. <br>
+	The ParkManagerService should manage the reqeustes from the client and forward the command to the transport trolley. For example:
+		<li> the pair of commands <kn>moveToIn/moveToSlotIn</kn> or <kn>moveToSlotOut/moveToOut</kn> should be excecuted together by the transport-trolley after the properly checking by the ParkManagerService;</li>
+
+		<li> if a slotnum is free it should be verified by the ParkManagerService. The slotnum will be use by the transport-trolley to set the slot where it should go.
+
+<h2>Testplans</h2>
+	<k>Testplan 1</k>: the testplan should check the correspondence of the movements between the transport-trolley and the basicrobot. 
+	<br> The test will be done by comparing two strings: 
+	<ul>
+		<li><kn>path</kn>: are the commands to reach the goal;</li>
+		<li><kn>result</kn>: are the real commands sendingo to the DDR robot from the basic robot.</li> 
+	</ul>
+	At the end of the execution the two strings should be equals.
+	<br><br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan1.kt"target="web">TestPlan1.kt</a></p>
+	<br><br>
+<k>Testplan 2</k>: the testplan should check that the robot stopping the movements MoveToHome when it recives another requste (e.g. MoveToSlotIn). 
+<br> The test will be done by comparing two strings: 
+	<ul>
+		<li><kn>path</kn>:  are the commands that the basicRobot will send to the DDR robot if the moviment MoveToHome isn't stopped.</li>
+		<li><kn>result</kn>: are the real commands sendingo to the DDR robot from the basic robot.</li> 
+	</ul>
+	At the end of the execution the two strings should be differents.
+
+	<br><br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan2.kt"target="web">TestPlan2.kt</a></p>
+<br> To realize an authomatized test we will use JUNIT. <br>
+
+<h2>Deployment</h2>
+	
+The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
+ 
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+	      	
+<br/><br/> 	
+</div>  
+
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By studentName email: antonio.iacobelli@studio.unibo.it  
+<img src="./img/antonioIacobelli.jpg" alt="mbot" width="15%" height="15%">
+</div> 
+<br>
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By studentName email: noemi.valentini5@studio.unibo.it  
+<img src="./img/noemiValentini.jpg" alt="mbot" width="15%" height="15%">
+</div> 
+</body>
+</html>
