@@ -213,11 +213,6 @@ The requirements given by the costumers  <a href="https://github.com/anatali/iss
 	<li>an <em>OUTDOOR</em> to exit from the <tt>parking-area</tt>. Just after the <tt>OUTDOOR</tt>, there is
 	<em>OUTDOOR-area</em> equipped with a <em>outsonar</em>, used to detect the presence of a car.
 	
-
-
-
-<li>I expect that the <tt>ParkManagerService</tt> sends to me an <em>alarm</em> if it detectes that the <tt>OUTDOOR-area</tt>
-has not been cleaned within the <tt>DTFREE</tt> interval of time.</li>
 </ul>
 
 
@@ -404,7 +399,7 @@ QActor outsonar context ctxparkingarea{
 					<td style="width:50%" >
 						
 						<br> The Outmanager will send dispatches to the
-						ParkManagerService to inform it if the OUTDOORAREA is vacated or not. When it is over the DTFREE the OutManager will send to the ParkManagerService an alarm which is an event.   
+						ParkManagerService to inform it if the OUTDOORAREA is vacated or not.
 					</td>
 					<td>
 						<pre>
@@ -416,7 +411,7 @@ QActor outmanager context ctxparkingarea{
 ...
 	State work{
 	...
-	forward parkmanagerservice -m outfree : outfree (occ)
+		forward parkmanagerservice -m outfree : outfree (occ)
 	...		
 	} 	
 	}
