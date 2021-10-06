@@ -27,14 +27,14 @@ class Parkservicestatusgui ( name: String, scope: CoroutineScope  ) : ActorBasic
 					action { //it:State
 						println("parkservicestatusgui | working")
 					}
-					 transition(edgeName="t029",targetState="handleAlarm",cond=whenDispatch("warning"))
+					 transition(edgeName="t030",targetState="handleAlarm",cond=whenDispatch("warning"))
 				}	 
 				state("handleAlarm") { //this:State
 					action { //it:State
 						if( checkMsgContent( Term.createTerm("warning(V)"), Term.createTerm("warning(V)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 var warning= payloadArg(0) 
-								if(   warning == "SVEGLIA"   
+								if(   warning == "TempOverMax"   
 								 ){emit("stateChangetrolley", "stateChangetrolley(stop)" ) 
 								println("parkservicestatusgui  [handleAlarm]: send start command to fan and stop trolley ")
 								}

@@ -4,7 +4,7 @@
 Event outsonar : outsonar (O)
 Event stateChangetrolley :  stateChangetrolley (V)
 Event stateChangefan :  stateChangefan (V)
-Dispatch warning : warning (V)
+Dispatch warning : warning (V) 
 Event trolleyEvent : trolleyEvent(V)
 Dispatch outfree : outfree(free)
 Event alarm : alarm(W)
@@ -42,7 +42,7 @@ Event  endall	   : endall( ARG )
 Event   info       : info( ARG ) 	    	//for external components, not coap-observed
 Event  sonar       : sonar(DISTANCE,NAME)	//emitted by distancefilter
  
-Context ctxparkingarea ip [host="localhost" port=8023]  
+Context ctxparkingarea ip [host="localhost" port=8021]  
 
 CodedQActor datacleaner    context ctxparkingarea className "rx.dataCleaner"  //NOT used with the virtualrobot
 CodedQActor distancefilter context ctxparkingarea className "rx.distanceFilter"
@@ -202,7 +202,7 @@ QActor trolley context ctxparkingarea{
   	 		forward basicrobot -m cmd : cmd(w)
   		} 
   		println("trolley | doMove")
-  		run itunibo.planner.plannerUtil.updateMap(  "trolley [doMove] | CurrentPlannedMove = $CurrentPlannedMove" )
+  		run itunibo.planner.plannerUtil.updateMap("$CurrentPlannedMove")
   		run itunibo.planner.plannerUtil.showCurrentRobotState( )
  	}
 	
@@ -284,21 +284,16 @@ QActor parkingmanager context ctxparkingarea {
 					
 	State handleTemperature{
 		onMsg(temperature : temperature(T)){
-				[#  temp1= payloadArg(0).toInt()
-					stateTrolley = utility.HandleData().getState("trolley")
-					stateFan = utility.HandleData().getState("fan")
+			[#  temp1= payloadArg(0).toInt()
+				stateTrolley = utility.HandleData().getState("trolley")
+				stateFan = utility.HandleData().getState("fan")
 			#] 
 				println("parkingmanager [handleTemperature] | state trolley = $stateTrolley state fan = $stateFan ")
 				println("parkingmanager [handleTemperature] | temperature = $temp1 ")
-				
-				
-				   if[# temp1 > 35#]{
-				   		
-
-				   		forward parkservicestatusgui -m warning : warning (SVEGLIA)
-				   		
-				   }else{
-				   		forward parkservicestatusgui -m warning : warning (SPEGNI)
+				if[# temp1 > 35#]{
+					forward parkservicestatusgui -m warning : warning (TempOverMax)
+				 }else{
+				   		forward parkservicestatusgui -m warning : warning (TempUnderMax)
 				   }
 				}
 		
@@ -313,19 +308,19 @@ QActor parkingmanager context ctxparkingarea {
 		
 		onMsg(stateChangetrolley :stateChangetrolley(V) ){
 			[#var stateT= payloadArg(0)#]
-			if[# temp1 > 35 && !stateTrolley.equals("trolley(stopped)") && stateT.equals("stop")#
-			]{
+			if[# temp1 > 35 && !stateTrolley.equals("trolley(stopped)") && stateT.equals("stop")#]{
+				
 				println("parkingmanager [handleTrolley] | trolley stopped ")
 				forward trolley -m trolleystop: trolleystop(V)
 			}
-			if[# temp1 < 35  &&  stateTrolley.equals("trolley(stopped)") && stateT.equals("work")#
-			]{
+			if[# temp1 < 35  &&  stateTrolley.equals("trolley(stopped)") && stateT.equals("work")#]{
+				
 				println("parkingmanager [handleTrolley] | trolley working ")
 				forward trolley -m trolleyresume : trolleyresume(V)
 				
 			}      
 			
-			}
+		}
 			
 	}Transition t0 	whenTime 1000 -> autoFan
 					whenEvent temperature-> handleTemperature
@@ -337,36 +332,36 @@ QActor parkingmanager context ctxparkingarea {
 		
 		onMsg(stateChangefan :stateChangefan(V) ){
 			[#var stateF= payloadArg(0)#]
-			if[# temp1 > 35  && stateFan.equals("fan(stop)")#] 
-			{	println("parkingmanager [handleFan] | fan working ")
+			if[# temp1 > 35  && stateFan.equals("fan(stop)")#]{	
+				
+				println("parkingmanager [handleFan] | fan working ")
 				forward fan -m 	fanstart : fanstart(V)
 			}
-			if[# temp1 < 35  && stateFan.equals("fan(work)")  #]
-			{
+			if[# temp1 < 35  && stateFan.equals("fan(work)")#]{
+				
 				println("parkingmanager [handleFan] | fan stopped ")
 				forward fan -m fanstop: fanstop(off)
 				
 			}   
 			
-			}
+		}
 			              
 	}Transition t0  whenEvent temperature-> handleTemperature
 					whenEvent stateChangetrolley -> handleTrolley
+					whenEvent alarm-> handleAlarm
 					
 	State autoFan{
 		
 		if[# temp1 > 35  && stateFan.equals("fan(stop)")#] {	
 				
-				println("parkingmanager [autoFan] | fan working ")
-				
-				forward fan -m fanstart : fanstart(V)
+			println("parkingmanager [autoFan] | fan working ")
+			forward fan -m fanstart : fanstart(V)
 		}
 		if[# temp1 < 35  && stateFan.equals("fan(work)")  #] {
 				
-				println("parkingmanager [autoFan] | fan stopped ")
-				
-				forward fan -m fanstart : fanstart(V)
-				}   
+			println("parkingmanager [autoFan] | fan stopped ")
+			forward fan -m fanstop : fanstop(V)
+		}   
 		
 	
 	}Transition t0  whenEvent temperature-> handleTemperature
@@ -374,8 +369,8 @@ QActor parkingmanager context ctxparkingarea {
 					whenEvent alarm-> handleAlarm
 	
 	State handleAlarm {
-				println("parkingmanager [handleAlarm] |  OVER DTFREE TIME")
-						emit alarm : alarm(V)
+		println("parkingmanager [handleAlarm] |  OVER DTFREE TIME")
+		emit alarm : alarm(V)
 	}
 	Transition t0 	whenTime  1000 -> autoFan
 					whenEvent temperature-> handleTemperature
@@ -398,7 +393,7 @@ QActor parkservicestatusgui context ctxparkingarea {
 	State handleAlarm{
 		onMsg(warning: warning(V)){
 			[# var warning= payloadArg(0)#]  
-			if[#  warning == "SVEGLIA"  #]{
+			if[#  warning == "TempOverMax"  #]{
 				
 				emit stateChangetrolley : stateChangetrolley(stop)
 				//emit stateChangefan : stateChangefan(work)
@@ -518,7 +513,7 @@ QActor basicrobot context ctxparkingarea{
 		onMsg( cmd : cmd(MOVE) ){ 
   			//activate the motors  
 			[# CurrentMove =  "${payloadArg(0)}" #] 
-			println("MOSSA CORRENTE $CurrentMove")
+			println("CurrentMove = $CurrentMove")
 		 	if [# CurrentMove == "w" #] {
 				//delay 1000
 				run unibo.robot.robotSupport.move( "w" ) 

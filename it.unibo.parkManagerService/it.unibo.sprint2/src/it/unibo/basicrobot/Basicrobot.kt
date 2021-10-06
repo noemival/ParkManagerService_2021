@@ -83,7 +83,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 						if( checkMsgContent( Term.createTerm("cmd(M)"), Term.createTerm("cmd(MOVE)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 CurrentMove =  "${payloadArg(0)}"  
-								println("MOSSA CORRENTE $CurrentMove")
+								println("CurrentMove =  $CurrentMove")
 								if(  CurrentMove == "w"  
 								 ){unibo.robot.robotSupport.move( "w"  )
 								delay(400) 

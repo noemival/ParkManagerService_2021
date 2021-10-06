@@ -1,7 +1,7 @@
 %====================================================================================
 % parkingarea description   
 %====================================================================================
-context(ctxparkingarea, "localhost",  "TCP", "8023").
+context(ctxparkingarea, "localhost",  "TCP", "8021").
  qactor( datacleaner, ctxparkingarea, "rx.dataCleaner").
   qactor( distancefilter, ctxparkingarea, "rx.distanceFilter").
   qactor( parkmanagerservice, ctxparkingarea, "it.unibo.parkmanagerservice.Parkmanagerservice").

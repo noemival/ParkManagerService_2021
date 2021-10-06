@@ -30,7 +30,7 @@ class Fan ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, scope 
 						updateResourceRep("fan(stop)" 
 						)
 					}
-					 transition(edgeName="t030",targetState="working",cond=whenDispatch("fanstart"))
+					 transition(edgeName="t031",targetState="working",cond=whenDispatch("fanstart"))
 				}	 
 				state("working") { //this:State
 					action { //it:State
@@ -38,7 +38,7 @@ class Fan ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, scope 
 						updateResourceRep("fan(work)" 
 						)
 					}
-					 transition(edgeName="t031",targetState="stopped",cond=whenDispatch("fanstop"))
+					 transition(edgeName="t032",targetState="stopped",cond=whenDispatch("fanstop"))
 				}	 
 			}
 		}

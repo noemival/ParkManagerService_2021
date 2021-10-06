@@ -57,11 +57,11 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 								 var W = payloadArg(0).toInt()  
 								if( W>0 
 								 ){INFREE = 0  
-								println("parkManagerService [handlemsgIn] | INDOOR OCCUPATA")
+								println("parkManagerService [handlemsgIn] | INDOOR occupied")
 								}
 								else
 								 {INFREE = 1 
-								 println("parkManagerService [handlemsgIn] | INDOOR LIBERA")
+								 println("parkManagerService [handlemsgIn] | INDOOR free")
 								 }
 						}
 					}
@@ -74,11 +74,11 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 								 var O = payloadArg(0)  
 								if( O.equals("occ") 
 								 ){OUTFREE = 0  
-								println("parkManagerService [handlemsgOut] | OUTDOOR OCCUPATA")
+								println("parkManagerService [handlemsgOut] | OUTDOOR occupied")
 								}
 								if( O.equals("free") 
 								 ){OUTFREE = 1 
-								println("parkManagerService [handlemsgOut] | OUTDOOR LIBERA")
+								println("parkManagerService [handlemsgOut] | OUTDOOR free")
 								}
 						}
 					}

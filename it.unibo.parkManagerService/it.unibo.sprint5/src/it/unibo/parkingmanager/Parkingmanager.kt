@@ -41,15 +41,15 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 						if( checkMsgContent( Term.createTerm("temperature(T)"), Term.createTerm("temperature(T)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								  temp1= payloadArg(0).toInt()
-													stateTrolley = utility.HandleData().getState("trolley")
-													stateFan = utility.HandleData().getState("fan")
+												stateTrolley = utility.HandleData().getState("trolley")
+												stateFan = utility.HandleData().getState("fan")
 								println("parkingmanager [handleTemperature] | state trolley = $stateTrolley state fan = $stateFan ")
 								println("parkingmanager [handleTemperature] | temperature = $temp1 ")
 								if(  temp1 > 35 
-								 ){forward("warning", "warning(SVEGLIA)" ,"parkservicestatusgui" ) 
+								 ){forward("warning", "warning(TempOverMax)" ,"parkservicestatusgui" ) 
 								}
 								else
-								 {forward("warning", "warning(SPEGNI)" ,"parkservicestatusgui" ) 
+								 {forward("warning", "warning(TempUnderMax)" ,"parkservicestatusgui" ) 
 								 }
 						}
 						stateTimer = TimerActor("timer_handleTemperature", 
@@ -94,7 +94,7 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 								 ){println("parkingmanager [handleFan] | fan working ")
 								forward("fanstart", "fanstart(V)" ,"fan" ) 
 								}
-								if(  temp1 < 35  && stateFan.equals("fan(work)")   
+								if(  temp1 < 35  && stateFan.equals("fan(work)") 
 								 ){println("parkingmanager [handleFan] | fan stopped ")
 								forward("fanstop", "fanstop(off)" ,"fan" ) 
 								}
@@ -102,6 +102,7 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 					}
 					 transition(edgeName="t019",targetState="handleTemperature",cond=whenEvent("temperature"))
 					transition(edgeName="t020",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
+					transition(edgeName="t021",targetState="handleAlarm",cond=whenEvent("alarm"))
 				}	 
 				state("autoFan") { //this:State
 					action { //it:State
@@ -111,12 +112,12 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 						}
 						if(  temp1 < 35  && stateFan.equals("fan(work)")   
 						 ){println("parkingmanager [autoFan] | fan stopped ")
-						forward("fanstart", "fanstart(V)" ,"fan" ) 
+						forward("fanstop", "fanstop(V)" ,"fan" ) 
 						}
 					}
-					 transition(edgeName="t021",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t022",targetState="handleTrolley",cond=whenEvent("stateChangefan"))
-					transition(edgeName="t023",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t022",targetState="handleTemperature",cond=whenEvent("temperature"))
+					transition(edgeName="t023",targetState="handleTrolley",cond=whenEvent("stateChangefan"))
+					transition(edgeName="t024",targetState="handleAlarm",cond=whenEvent("alarm"))
 				}	 
 				state("handleAlarm") { //this:State
 					action { //it:State
@@ -125,11 +126,11 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 						stateTimer = TimerActor("timer_handleAlarm", 
 							scope, context!!, "local_tout_parkingmanager_handleAlarm", 1000.toLong() )
 					}
-					 transition(edgeName="t024",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleAlarm"))   
-					transition(edgeName="t025",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t026",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
-					transition(edgeName="t027",targetState="handleFan",cond=whenEvent("stateChangefan"))
-					transition(edgeName="t028",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t025",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleAlarm"))   
+					transition(edgeName="t026",targetState="handleTemperature",cond=whenEvent("temperature"))
+					transition(edgeName="t027",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
+					transition(edgeName="t028",targetState="handleFan",cond=whenEvent("stateChangefan"))
+					transition(edgeName="t029",targetState="handleAlarm",cond=whenEvent("alarm"))
 				}	 
 			}
 		}

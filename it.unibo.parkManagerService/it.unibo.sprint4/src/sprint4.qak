@@ -1,7 +1,7 @@
 System parkingarea
  
 Dispatch fanstart: fanstart(V)
-Dispatch fanstop : fanstop(V)
+Dispatch fanstop : fanstop(V) 
 
 Event temperature : temperature (T) 
 Context ctxparkingarea ip [host= "localhost" port=8021]

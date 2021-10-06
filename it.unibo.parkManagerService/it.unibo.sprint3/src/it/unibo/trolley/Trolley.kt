@@ -114,7 +114,7 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 						if( CurrentPlannedMove == "w"   
 						 ){}
 						println("trolley | doMove")
-						itunibo.planner.plannerUtil.updateMap( "trolley [doMove] | CurrentPlannedMove = $CurrentPlannedMove"  )
+						itunibo.planner.plannerUtil.updateMap( "$CurrentPlannedMove"  )
 						itunibo.planner.plannerUtil.showCurrentRobotState(  )
 						stateTimer = TimerActor("timer_doMove", 
 							scope, context!!, "local_tout_trolley_doMove", 100.toLong() )

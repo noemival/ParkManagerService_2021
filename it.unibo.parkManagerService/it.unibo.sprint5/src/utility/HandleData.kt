@@ -30,7 +30,7 @@ class HandleData{
 			con.createConnection()
 			println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") 
 			//Thread.sleep(3000)
-			val  coapSupport = CoapSupport("coap://localhost:8023", "ctxparkingarea/$actor")
+			val  coapSupport = CoapSupport("coap://localhost:8021", "ctxparkingarea/$actor")
 			result = coapSupport.readResource()
 			return result
 		}

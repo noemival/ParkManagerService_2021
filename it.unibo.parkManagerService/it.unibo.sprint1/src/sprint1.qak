@@ -1,4 +1,4 @@
-/* 
+ /* 
  * ================================================================================
  * basicrobot.qak
  * VERSION July 8, 2021
@@ -105,7 +105,7 @@ QActor basicrobot context ctxparkingarea{
 		onMsg( cmd : cmd(MOVE) ){ 
   			//activate the motors  
 			[# CurrentMove =  "${payloadArg(0)}" #] 
-			println("MOSSA CORRENTE $CurrentMove")
+			println("CurrentMove =  $CurrentMove")
 		 	if [# CurrentMove == "w" #] {
 				//delay 1000
 				run unibo.robot.robotSupport.move( "w" ) 
@@ -293,7 +293,7 @@ QActor trolley context ctxparkingarea{
   	 		forward basicrobot -m cmd : cmd(w)
   		} 
   		println("trolley | doMove")
-  		run itunibo.planner.plannerUtil.updateMap(  "trolley [doMove] | CurrentPlannedMove = $CurrentPlannedMove" )
+  		run itunibo.planner.plannerUtil.updateMap(  "$CurrentPlannedMove" )
   		run itunibo.planner.plannerUtil.showCurrentRobotState( )
  	}
  	

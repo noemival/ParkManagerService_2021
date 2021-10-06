@@ -72,10 +72,10 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 					action { //it:State
 						println("basicrobot  | waiting .................. ")
 					}
-					 transition(edgeName="t132",targetState="exec",cond=whenDispatch("cmd"))
-					transition(edgeName="t133",targetState="doStep",cond=whenRequest("step"))
-					transition(edgeName="t134",targetState="handleObstacle",cond=whenDispatch("obstacle"))
-					transition(edgeName="t135",targetState="endwork",cond=whenDispatch("end"))
+					 transition(edgeName="t133",targetState="exec",cond=whenDispatch("cmd"))
+					transition(edgeName="t134",targetState="doStep",cond=whenRequest("step"))
+					transition(edgeName="t135",targetState="handleObstacle",cond=whenDispatch("obstacle"))
+					transition(edgeName="t136",targetState="endwork",cond=whenDispatch("end"))
 				}	 
 				state("exec") { //this:State
 					action { //it:State
@@ -83,7 +83,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 						if( checkMsgContent( Term.createTerm("cmd(M)"), Term.createTerm("cmd(MOVE)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 CurrentMove =  "${payloadArg(0)}"  
-								println("MOSSA CORRENTE $CurrentMove")
+								println("CurrentMove = $CurrentMove")
 								if(  CurrentMove == "w"  
 								 ){unibo.robot.robotSupport.move( "w"  )
 								delay(400) 
@@ -128,8 +128,8 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 						stateTimer = TimerActor("timer_doStep", 
 							scope, context!!, "local_tout_basicrobot_doStep", StepTime )
 					}
-					 transition(edgeName="t036",targetState="stepDone",cond=whenTimeout("local_tout_basicrobot_doStep"))   
-					transition(edgeName="t037",targetState="stepFail",cond=whenDispatch("obstacle"))
+					 transition(edgeName="t037",targetState="stepDone",cond=whenTimeout("local_tout_basicrobot_doStep"))   
+					transition(edgeName="t038",targetState="stepFail",cond=whenDispatch("obstacle"))
 				}	 
 				state("stepDone") { //this:State
 					action { //it:State
