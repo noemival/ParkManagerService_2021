@@ -8,7 +8,7 @@ Dispatch trolleyEnd : end(V)
 Dispatch basicEnd       	: end(ARG)   
    
 Dispatch moveok	: move( MOVESHORT )
-Request step	: step( TIME )	
+Request step	: step( TIME )	 
 Reply   stepdone	: stepdone(V)  
 Reply   stepfail	: stepfail(DURATION, CAUSE)
   

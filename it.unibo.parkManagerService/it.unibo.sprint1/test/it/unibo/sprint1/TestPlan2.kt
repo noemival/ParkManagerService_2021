@@ -74,6 +74,7 @@ class TestPlan2{
 
   	}
 	@Test
+	/*Before launching the testing, comment the parkingmanagerservice qactor*/
 	fun testInterruptionMoveHome() {
 		
 		var result = ""

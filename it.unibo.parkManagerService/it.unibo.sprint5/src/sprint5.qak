@@ -13,9 +13,9 @@ Event alarm : alarm(W)
 Dispatch trolleycmd : trolleycmd(MOVETO)
 Dispatch cmd       	: cmd(M)     
 Dispatch trolleyEnd : end(V)   
-Dispatch position : pos(P)   
+Dispatch position : pos(P)    
 
-
+  
 Dispatch end : end(e)
 
      
@@ -46,7 +46,7 @@ Context ctxparkingarea ip [host="localhost" port=8021]
 
 CodedQActor datacleaner    context ctxparkingarea className "rx.dataCleaner"  //NOT used with the virtualrobot
 CodedQActor distancefilter context ctxparkingarea className "rx.distanceFilter"
-
+    
 QActor parkmanagerservice context ctxparkingarea{
 	State s0 initial{
 		
@@ -60,6 +60,7 @@ QActor parkmanagerservice context ctxparkingarea{
 	
 	
 }
+
 QActor outmanager context ctxparkingarea{
 	[#	var start =  0L
 		var differenza = 0L
@@ -89,7 +90,7 @@ QActor outmanager context ctxparkingarea{
 		forward parkingmanager -m outfree : outfree(free)
 		println("outmanager[free] | OUTDOORAREA FREE")
 	}
-}
+} 
 QActor trolley context ctxparkingarea{
 	[#	val mapname     = "parkingMap0"  		  
   		var Myself      = myself    
@@ -178,8 +179,8 @@ QActor trolley context ctxparkingarea{
 				println("trolley [working] | $MOVE ")
 				run itunibo.planner.plannerUtil.planForGoal("0","0")
 				[# terminate = 1#] 
-			}
-		}
+			}  
+		}   
 	} Goto execPlannedMoves 
 		
   	State execPlannedMoves{
@@ -243,8 +244,7 @@ QActor trolley context ctxparkingarea{
 	}					
 }
    
-	
-
+ 
 QActor thermometer context ctxparkingarea{
 		State s0 initial {println("thermometer | start ")
 	}  
@@ -260,7 +260,8 @@ QActor thermometer context ctxparkingarea{
 		delay 5000   
 		emit temperature : temperature (30)
 	}    
-}   
+}  
+
 QActor parkingmanager context ctxparkingarea {
 	[#var fanIsStarted = 0
 	  var robotIsActive = 1 
@@ -276,13 +277,12 @@ QActor parkingmanager context ctxparkingarea {
 	State waiting{
 		
 	}
-	Transition t0 	
-					whenEvent temperature-> handleTemperature
+	Transition t0 	whenEvent temperature-> handleTemperature
 					whenEvent alarm-> handleAlarm
 	
+					   
 					
-					
-	State handleTemperature{
+	State handleTemperature{     
 		onMsg(temperature : temperature(T)){
 			[#  temp1= payloadArg(0).toInt()
 				stateTrolley = utility.HandleData().getState("trolley")
@@ -293,7 +293,7 @@ QActor parkingmanager context ctxparkingarea {
 				if[# temp1 > 35#]{
 					forward parkservicestatusgui -m warning : warning (TempOverMax)
 				 }else{
-				   		forward parkservicestatusgui -m warning : warning (TempUnderMax)
+				   	forward parkservicestatusgui -m warning : warning (TempUnderMax)
 				   }
 				}
 		

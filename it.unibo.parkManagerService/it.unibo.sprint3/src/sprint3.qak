@@ -14,7 +14,7 @@ Dispatch trolleyEnd : end(V)
 Dispatch position : pos(P)   
 
 Request carenter : carenter(C)
-Reply receipt : receipt(I)
+Reply receipt : receipt(I)  
 
 
 Request notifyIn : notifyIn(N)  

@@ -13,7 +13,7 @@ System  /*  -trace */ parkingarea
 //mqttBroker "localhost" : 1883 eventTopic "unibo/basicrobot"   		
 
 Dispatch trolleycmd : trolleycmd(MOVE)
-Dispatch cmd       	: cmd(M)     
+Dispatch cmd       	: cmd(M)      
 
 
 Dispatch end       	: end(ARG)    

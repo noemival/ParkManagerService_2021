@@ -14,7 +14,7 @@ QActor fan context ctxparkingarea{
 	Goto stopped    
 	
 	State stopped {
-		println ("fan | stopped")
+		println ("fan | stopped") 
 		updateResource [#"fan(stop)"#] 
 		
 	}

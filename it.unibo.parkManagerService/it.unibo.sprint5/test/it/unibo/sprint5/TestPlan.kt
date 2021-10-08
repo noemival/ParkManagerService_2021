@@ -2,7 +2,6 @@ package it.unibo.sprint5
 
 import org.junit.Assert.*
 import org.junit.Test
-
 import java.net.UnknownHostException
 import org.junit.BeforeClass
 import cli.System.IO.IOException
@@ -24,7 +23,7 @@ import utility.HandleData
 
 
 class TestPlan {
-companion object{
+	companion object{
 		//var parkingmanagerObserver   : CoapObserver? = null
 		var trolleyObserver   : CoapObserver? = null
 		var systemStarted         = false
@@ -49,17 +48,9 @@ companion object{
 					delay(500)
 					myactor=QakContext.getActor("parkingmanager")
 				}
-					myactor2=QakContext.getActor("trolley")
- 				while(  myactor2 == null )		{
-					println("+++++++++ waiting for system startup ...")
-					delay(500)
-					myactor2=QakContext.getActor("trolley")
-				}
-					
-				
+ 	
 				delay(2000)	//Give time to move lr
 				channelSyncStart.send("starttesting")
-			
 			}		 
 		}//init
 		
@@ -85,74 +76,47 @@ companion object{
 			    println("+++++++++ checkSystemStarted resumed ")
 			}			
 		} 
-		/*if( parkingmanagerObserver == null)
-			 parkingmanagerObserver = CoapObserver("parkingmanager","ctxparkingarea","parkingmanager","8022")
-	*/
+		
 		if(trolleyObserver == null)
-			trolleyObserver = CoapObserver("trolleyObserve","ctxparkingarea","trolley","8023")
+			trolleyObserver = CoapObserver("trolley${counter++}","ctxparkingarea","trolley","8021")
 		
 }
-
-	//comment parkmanagerservice before running the code
-	@Test
-    fun trolleyStop() {
+	@Test 
+    fun trolleyStop() { 
     	runBlocking{
 			val channelForObserver= Channel<String>()
 			trolleyObserver!!.addObserver(channelForObserver,"trolley(stopped)")
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "trolleycmd", "trolleycmd(moveToIn)", "trolley"), myactor2!!)
-
-				delay(3000)
-		//val cmd2 = MsgUtil.buildEvent("tester", "temperature", "temperature(40)") 
 			
+			delay(5000)
 			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "temperature", "temperature(40)"), myactor!!)
-			delay(1000)
-			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "stateChangetrolley", "stateChangetrolley(stop)"), myactor!!)
-			//MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "trolleystop", "trolleystop(V)", "trolley"), myactor2!!)
-
+			
 			var result = channelForObserver.receive()
-			//result= HandleData.getState("trolley")
-			println("+++++++++result=$result")
+			
+			println("+++++++++result=$result") 
 			delay( 500 )  
  		    assertEquals( result, "trolley(stopped)")
 		}
+		
 	}
-		@Test
+	
+	@Test
     fun trolleyResume() {
     	runBlocking{
 			val channelForObserver= Channel<String>()
-			trolleyObserver!!.addObserver(channelForObserver,"trolley(working)")
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "trolleycmd", "trolleycmd(moveToIn)", "trolley"), myactor2!!)
-
-				delay(3000)
-		//val cmd2 = MsgUtil.buildEvent("tester", "temperature", "temperature(40)") 
-				MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "temperature", "temperature(40)"), myactor!!)
-			delay(1000)
-			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "stateChangetrolley", "stateChangetrolley(stop)"), myactor!!)
-			delay(3000)
+			trolleyObserver!!.addObserver(channelForObserver,"trolley(working)")	
+			delay(5000)
 			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "temperature", "temperature(30)"), myactor!!)
-			delay(1000)
-			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "stateChangetrolley", "stateChangetrolley(work)"), myactor!!)
-			//MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "trolleystop", "trolleystop(V)", "trolley"), myactor2!!)
-
+		
 			var result = channelForObserver.receive()
 			//result= HandleData.getState("trolley")
 			println("+++++++++result=$result")
-			delay( 500 )  
+			delay(3000 )  
  		    assertEquals( result, "trolley(working)")
 		}
+ 		
 	}
-
-	@After
-	fun removeObs(){
-		println("+++++++++ AFTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR  ${trolleyObserver!!.name}")
-		trolleyObserver!!.terminate()
-		trolleyObserver = null
-		runBlocking{
-			delay(1000)
-		}
- 	}
-	
-
 
 	
 }
+
+	
