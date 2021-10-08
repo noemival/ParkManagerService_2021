@@ -1,0 +1,945 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<style type="text/css">
+body
+{
+    margin-left:  30px;
+    margin-right: 30px;
+};
+
+P
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+};
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+	font-size: 93%;
+}
+
+a:hover {
+    background-color: #cccccc;
+}
+
+
+hr {
+    clear: both;
+    height: 1px;
+    color: #242424;
+    background-color: transparent;
+}
+
+h1, h2, h3 {
+    color: #242424;
+    clear: left;
+    font: 100% Tahoma, Helvetica, Arial, sans-serif;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+top {
+	width: 100%;
+}
+
+
+#i {
+    color: #ff1010;
+}
+tt{
+	font-family: "Arial";
+    font-size: 90%;
+	color: #006600;
+}
+em{
+	font-family: "Arial";
+    font-size: 80%;
+	font-weight: bold;
+	border-style:solid;
+	border-color: #abe876;
+    color: #1632cc;
+}
+bc{
+	font-family: "Arial";
+	font-size: 90%;
+	font-weight: bold;
+    color: #990000;
+	background-color: #fcf8c7;
+}
+ks{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #0000CD	;
+	font-size: 90%;
+}
+kc{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #008000	;
+	font-size: 90%;
+}
+pre{
+	font-family: "Consolas";
+	font-size: 85%;
+	background-color: #f5f5f5;
+	border: 1.5px solid silver;
+	padding: 5px;
+}
+m{
+	font-family: "Helvetica";
+	line-height: 100%;
+ 	font-size: 75%;
+}
+div.body{
+	 
+    font-size: 18px;
+}
+k{
+	font-family: "Arial";
+    color: #990000;
+	font-weight: bold;
+	font-size: 90%;
+}
+kn{
+	font-family: "Arial";
+    color: #0000CD	;
+	font-size: 90%;
+}
+h1 {
+    font-size: 150%;
+    background-color: #b2c0ff;
+	padding: 10px;
+}
+
+h2 {
+    background-color: #9ed8ff;
+    font-size: 130%;
+}
+
+h3 {
+	background-color: #e6ccff;
+    font-size: 100%;
+}
+h4 {
+    background-color: #ccffcc;
+    font-size: 100%;
+	width: 95%;
+	border-radius: 5px;
+	padding: 2px;
+}
+h5 {
+    background-color: #d5ffb0;
+    font-size: 100%;
+
+}
+h6 {
+    background-color: #d5fff0;
+    font-size: 100%;
+
+}
+div.req{
+	background-color: #d9ffb3;
+    font-size: 18px;
+	width: 700px;
+    border: 3px solid green;
+    padding: 15px;
+    margin: 10px;
+}
+div.remark{
+	background-color: #E3F2FD;
+    border: 1.5px solid #d5f2ed;
+    padding: 15px;
+    margin: 10px;
+	border-radius: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+ol, ul, li {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+img {
+	border: 1.5px solid #d5f2ed
+
+}
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+}
+
+div.wrapdesc{
+	width: 90%;
+	margin: auto;
+}
+
+div.imagedesc{
+	width: 85%;
+	margin: auto;
+}
+</style>
+    
+<head>
+   
+<title>Workplan</title></head>
+    
+<body>
+<div id="top">
+<h1>Workplan Automated Car-Parking<font size="5"></font> </h1>
+</div>  
+
+<h2>Requirements</h2>
+
+<div class="remark">
+The requirements given by the costumers  <a href="https://github.com/anatali/issLab2021/blob/main/it.unibo.issLabStart/userDocs/TFBO21ISS.pdf" target="web">Automated Car-Parking</a> considered in the following SPRINT are:</li>
+</div> 
+<h2>Requirement analysis</h2>
+	Our interaction with the customer has made it clear what he means for:
+<li><kn>DDR robot</kn>: a device able to move thanks to the commands received via the network. It could be a VirtualRobot, Mbot or Nanobot. The seguent link contain the software and the relative documentation offered by the costumer: <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.qak21.basicrobot/userDocs/basicrobot2021.html" target="web"> basicrobot2021.html</a>; </li>
+<li><kn>transport-trolley</kn>: a DDR robot capable of loading a car and transporting it within the parking-area;
+<li><kn>parking-area</kn>: an empty room showed in the map, where:
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<ul>
+						<li> "O" is the OUTDOOR-area;</li>
+						<li> "I" is the INDOOR-area ;</li>
+						<li> "r" is the home ;</li>
+						<li> "X" are the walls; </li> 
+						<li> "s" are the slots. </li> 
+					</ul>
+				</td>
+				<td style="width: 50%">
+
+					 <center><img src="./img/parkingArea.png" alt="mappa" width="70%" ></center> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<li><kn>room </kn>: a conventional room of a house;
+<li><kn>car </kn>: a conventional car;
+<li><kn>home</kn>: an area where the robot is at the beginning and where it goes when it hasn't any requests;</li>
+<li><kn>INDOOR-area</kn>: the area in front of the parking INDOOR where is the weightsensor and the trasport trolley loads the car;</li>
+<li><kn>OUTDOOR-area</kn>: the area in front of the parking OUTDOOR where is the OUTsonar and the trasport trolley releases the car;</li> 
+<li><kn>parking-slots</kn>: number of slots in the parking where the robot parks the car; </li>
+<li><kn>weightsensor</kn>: an simulate device capable of detecting the presence of a car and measuring its weight. It is in the INDOOR-area and sends the information taken via the network as event emitter;</li>
+<li><kn>outsonar</kn>: an simulate or (optionally) a real device capable of detecting the presence of a car. It is in the OUTDOOR-area and sends the information taken via the network as event emitter. In the case it is a real device the costumer gives us the seguent software: <a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.rasp2021/resources/rasp/sonar/SonarAlone.c" target="web"> SonarAlone.c</a>;</li>
+
+<li><kn>thermometer</kn>: an simulate device capable of detects the temperature in the parking-area. It sends the information taken via the network as event emitter;</li>
+<li><kn>fan</kn>: a device capable to lower the temperature of the parking. It could be in on/off state and it is possible switch the state with dispatch messages via the network;</li>
+<li><kn>SLOTNUM</kn>: unique identifier of a parking-slot;</li>
+<li><kn>TOKENID </kn>: unique string assigned to a client when his entrance request was accepted; </li>
+<li><kn> client</kn>: an entity who sends messages to the ParkerServiceManager via the network;
+<li><kn>ParkServiceGUI </kn>: an user interface that allows a client to comunicate with the parkManagerService; </li>
+<li><kn>CARENTER</kn>: a ParkServiceGui graphic element that allows an user to notify the intention to let the car in;
+<li><kn>ParkServiceStatusGUI</kn>: an user interface that allows a parking-manager to comunicate with parkManagerService using graphic representations and that shows the parking-area current state; </li>
+<li><kn>current state</kn>: TA temperature, state of the fan (on/off), state of the trasport trolley (idle, working or stopped);
+<li><kn>stop</kn>: when the robot isn't in a idle or working state;
+<li><kn>alarm</kn>: a message that has been sent by the ParkManagerService to the ParkServiceStatusGUI if the OUTDOOR-area has not been vacated within an interval of time DTFREE;</li>
+<li><kn> fixed obstacles </kn>: any fixed element in the parking-aerea which the robot could collide with (e.g. a wall); </li>
+<li><kn> request </kn>: a message which was sent by the client to the ParkerServiceManager in order to receive a service. The client will wait a reply when the service was complete.</li>
+</div>
+
+<h2>Problem analysis</h2>
+
+<div>
+These are the components analyzed
+<ol>
+<li><a href="#basicrobot">The BasicRobot</a></li>
+<li><a href="#transporttrolley">The TransportTrolley</a></li>
+<li><a href="#outsonar">The Outsonar</a></li>
+<li><a href="#weightsensor">The Weightsensor</a></li>
+<li><a href="#thermometer">The Thermometer</a></li>
+<li><a href="#fan">The Fan</a></li>
+<li><a href="#theparkmanaserservice">The ParkManagerservice</a></li>
+<ul>
+	<li><a href="#parkmanaserservice">The ParkManagerservice</a></li>
+<li><a href="#outmanager">The Outanager</a></li>
+<li><a href="#parkingmanager">The ParkingManager</a></li>
+</ul>
+<li><a href="#webgui">The WebGui</a></li>
+<ul>
+<li><a href="#parkservicegui">The ParkServiceGui</a></li>
+<li><a href="#parkservicestatusgui">The ParkServiceStatusGui</a></li>
+</ul>
+
+
+
+</ol>
+</div>
+<hr>
+	<div class="remark">
+		To destroy the abstraction gap is possible to use QACTOR which is a modelling language and defines a work model of the system based on actors behavior. 
+	</div>
+
+	<hr>
+This sprint will be the summary of th lasts sprint that they are focused on the following arguments. 
+
+<ul>
+<li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/userdocs/sprint1.html">Sprint1</a>: realize basic movements of the transport trolley.</li>
+<li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint2/userdocs/sprint2.html">Sprint2</a>: realize the interaction between the parkManagerService and client.</li>
+<li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint3/userdocs/sprint3.html">Sprint3</a>: realize interaction between the parkManagerService and the sensors.</li>
+<li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint4/userdocs/sprint4.html">Sprint4</a>: realize the operations of the fan, thermometer and parkingmanager.
+</li><li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint5/userdocs/sprint5.html">Sprint5</a>: realize the operations of the parkingManager.</li>
+
+<h3 id="basicrobot">The BasicRobot</h3>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						The basicrobot was given by the costumer: 	<a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.qak21.basicrobot/userDocs/basicrobot2021.html" target="web"> basicrobot2021.html</a>. It will use to commununicate between the DDR robot and the transport-trolley because it allows us to execute the robot movement commands in a 'technology-independent' way, with respect to the nature of the robot (virtual or real). <br>
+					
+					</td>
+					<td style="width: 50%">
+						<center><img src="./img/BasicRobotState.drawio.png" alt="mappa" width="70%" ></center> 
+					</td>
+				</tr>
+			</tbody>
+		</table> 
+						
+		<br>
+<h3 id="transporttrolley">The TransportTrolley</h3>
+<div class="remark">
+		
+		In our analysis the TransportTrolley should represent the business logic of the DDR Robot. The reason is that it should be able to generate a sequence of actions to reach the commands given by the ParkManagerService and exceute them sending the basic moves to the basicrobot. 
+		</div>
+
+		<br>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						The comunication with the the DDR robot will be managed by a QActor called "trolley" which will be developped starting from the "basicrobot". 
+						The trasport trolley should reach the goal place in a organizzed way: so the transport-trolley should planning (detection) the best sequence of actions and execute them (actuation: e.g. sending messages to the basic robot).<br>
+					
+					</td>
+					<td style="width: 50%">
+						<center><img src="./img/ttstate.png" alt="mappa" width="90%" ></center> 
+					</td>
+				</tr>
+			</tbody>
+		</table> 
+						
+		<br>
+					<h5 id="trolleycomunication">Components comunication</h5>
+
+
+			<k>TransportTrolley/Basicrobot </k>
+				
+		<table>
+			<tbody>
+				<tr>
+					<td style="width:50%" >
+						<br> The TransportTrolley will send the command to the basicrobot in a asynchronous way to reduce the quantity of messages and prevent the application from waiting for a response.
+					</td>
+					<td>
+						<pre>
+
+Dispatch cmd : cmd(MOVE)   
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor trolley context ctxparkingarea{ 
+	...
+	forward basicrobot -m cmd : cmd(w)  
+	...
+}
+					    </pre>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+
+
+<br>
+					</td></br>
+			
+				</tr>
+			</tbody>
+		</table style="width:98%">
+		<h3 id ="outsonar">The Outsonar</h3>
+			<table>
+					<tbody>
+						<tr>
+							<td>
+								In our analysis, this element is an autonmous active component that does not 'known' any other component. 		
+							Therefore the Outsonar is modelled as a mock QActor and it is an events emitter which are sent when the OUTDOORAREA is vacated.<br>
+								The following file could be use to realize a real sonar: <a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.rasp2021/resources/rasp/sonar/SonarAlone.c" target="web"> SonarAlone.c</a><br>
+							</td>
+							<td style="width: 55%">
+					
+					 <center><img src="./img/outsonarState.png" alt="outsonarState" width="70%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+	
+
+
+		<h5 id="parkmanagerservicecomunication">Components comunication</h5>
+<k>Outsonar </k>
+
+			<table style="width:98%">	
+				<tr>			
+					<td style="width:50%" >
+						
+						<br> The outsonar as an events emitter
+					</td>
+					<td>
+						<pre>
+Event outsonar : outsonar (O)
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor outsonar context ctxparkingarea{
+	...
+		emit outsonar : outsonar(O)
+	...
+
+}
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>		
+		<h3 id ="weightsensor">The Weightsensor</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+							In our analysis, this element is an autonmous active component that does not 'known' any other component. 		
+							Therefore the Weightsensor is modelled as a mock QActor and it is an events emitter which are sent when the INDOORAREA is vacated. It should be able to send the information about the weight too.
+							</td>
+							<td style="width: 55%">
+					
+					 <center><img src="./img/weightsensorState.png" alt="weightsensorState" width="100%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+
+			<h5 id="parkmanagerservicecomunication">Components comunication</h5>
+			<table style="width:98%">	
+				<tr>
+						<k>Weightsensor </k>
+						
+					<td style="width:50%" >
+						
+						<br> The weightsensor as an events emitter
+					</td>
+					<td>
+						<pre>
+Event weightsensor : weightsensor (W)
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor weightsensor context ctxparkingarea{
+	...
+		emit weightsensor : weightsensor ($WEIGHT)
+	...
+
+}
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+
+		<h3 id ="thermometer">The Thermometer</h3>
+			<table>
+					<tbody>
+						<tr>
+							<td>
+								In our analysis, this element is an autonmous active component that does not 'known' any other component. Therefore it is modelled as an emitter of events.
+								The thermometer will be modeled like QActors.</li> 
+							</td>
+							<td style="width: 55%">
+								<center><img src="./img/ThermoterState.drawio.png" alt="ThermoterState" width="40%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+			</table> 
+	
+
+
+			<h5 id="parkmanagerservicecomunication">Components comunication</h5>
+			<table style="width:100%">
+			<tbody>	
+				<tr>
+						<k>Thermometer</k>
+						
+					<td style="width:50%" >
+						
+						<br> The thermometer as an emitter of event.
+					</td>
+					<td>
+						<pre>
+Event temperature : temperature (T)
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor thermometer context ctxparkingarea{
+	...
+		emit temperature : temperature ($VALUE)
+	...
+
+}
+
+
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+
+		<br>
+		<h3 id ="fan">The Fan</h3>
+		<table>
+					<tbody>
+						<tr>
+							<td>
+
+								The Fan is modelled as a mock QActor and its aim is to reduce the temperature of the parking area when it is working. It will be activated by the ParkManagerService(automatic mode) or the parking-manager(human).
+					</td>
+							</td>
+							<td style="width: 55%">
+					
+								<center><img src="./img/FanState.drawio.png" alt="FanState" width="400" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+	
+
+
+		
+	<h3 id ="theparkmanagerservice">ParkManagerService</h3>
+	<div class = "remark">
+		The ParkManagerService is an application server that interacts via network with OUTSonar, weightsensor, trolley, thermometer and fan. It should build ParkServiceGUI build ParkServiceStatusGUI. The ParkManagerService could be modelled as a combination of more QActors (e.g. OutManager and ParkingManager).
+			
+	</div>
+		<h6 id ="parkmanagerservice">ParkManagerService</h6>
+
+		<table style="width:98%">
+		<tbody>	
+				<tr>
+					<td  >
+					 The ParkManagerService QActor:
+					<ul>
+						 <li>manage the requests from the clients, excecute them and elaborate the replies;</li>
+						 <li>manage the parking-area with information of the weightsensor and the outsonar. </li>
+					 </ul>
+							<td >
+					
+					 <center><img src="./img/pmsstate.png" alt="parkManagerServiceState" width="70%" ></center> 
+					</td>
+				</tr>
+		</tbody>
+		</table style="width:98%">
+	
+
+
+			<h5 id="parkmanagerservicecomunication">Components comunication</h5>
+<k>ParkManagerService/TransporTrolley </k>
+			<table>
+				<tbody>	
+					<tr>
+						<td style="width:50%" >
+						
+						<br> The ParkManagerService will send the command to the transport-trolley in a asynchronous way to reduce the quantity of messages and prevent the application from waiting for a response.
+						</td>
+
+						<td>						
+							<pre>
+
+Dispatch cmd : cmd(MOVE) 
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkmnagerservice context ctxparkingarea{ 
+	...
+	forward transporttrolley -m cmd : cmd(w)  	
+	...
+}
+					    </pre>
+					
+
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		
+		
+		<h6 id ="outmanager">OutManager</h6>
+		<table>
+		<tbody>
+						<tr>
+							<td>
+							The Outmanager was modelled as QActor and its aim is to send an alarm (event) when the OUTDOORAREA is still vacated over a DTFREE time. 
+							It is a part of ParkManagerService and it is specialized to manage the outsonar informations. 
+							The reason why it is necessary modelled this actor is the implementation of timer and, thus, guarantee the fulfillment of other actions by other components while the timer is going.  
+	
+							</td>
+							<td style="width: 55%">
+					
+					 <center><img src="./img/outmanagerState.png" alt="outmanagerState" width="70%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+		<h5 id="outmanagercomunication">Components comunication</h5>
+		<table style="width:98%">	
+				<tr>
+						<k>Outmanager/ParkManagerService </k>
+					
+					<td style="width:50%" >
+						
+						<br> The Outmanager will send dispatches to the
+						ParkManagerService to inform it if the OUTDOORAREA is vacated or not. When it is over the DTFREE the OutManager will send to the ParkingManager an alarm which is an event.
+					</td>
+					<td>
+						<pre>
+Dispatch outfree : outfree(free)
+Event alarm : alarm(V)
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor outmanager context ctxparkingarea{
+...
+	State work{
+	...
+		forward parkmanagerservice -m outfree : outfree (occ)
+
+		emit alarm : alarm(V)
+	...		
+	} 	
+	}
+	State free {
+		forward parkmanagerservice -m outfree : outfree (free)
+	}
+}
+	
+
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+	<h6 id ="parkingmanager">ParkingManager</h6
+		>
+	<table>
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+								<li>The ParkingManager  interacts via network with the the thermometer, fan, trolley and the ParkServiceStatusGui. 
+								It is a part of ParkManagerService and it is specialized to manage the parkingmanager human behavior. 
+								In our analysis the existence of the ParkingManager is related to the requirement to stop the transport-trolley which cannot be done by ParkManagerService;</li>
+								<li>The ParkingManager should recive the information of the transport-trolley and the fan so its is like an observer too. 
+								</li>
+							</ul>
+							</td>
+							<td style="width: 55%">
+								<center><img src="./img/pmstate.png" alt="ParkingManagerState" width="400" ></center> 
+							</td>
+						</tr>
+					
+					</tbody>
+			</table> 
+	<h5 id="parkingmanagercomunication">Components comunication</h5>		
+<table>			<tbody>	
+				<tr>
+						<k>ParkingManager/TransportTrolley</k>
+						
+					<td style="width:50%" >
+						 The ParkingManager will send the command to the transport-trolley in a asynchronous way to reduce the quantity of messages and prevent the application from waiting for a response.
+					</td>
+				<td style="width:50%" >
+
+						<pre>
+Dispatch trolleystop :  trolleystop(V)
+Dispatch trolleyresume :  trolleyresume(V)
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkingmanager context ctxparkingarea{ 
+	...
+	forward transporttrolley -m trolleystop : trolleystop(w)  	
+	...
+	forward transporttrolley -m trolleyresume : trolleyresume(w)  	
+
+}
+
+
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table><br>
+<table >
+			<tbody>	
+				<tr>
+						<k>ParkingManager/Fan</k>
+						
+					<td style="width:50%" >
+						<br> The ParkingManager will send the command to the fan in a asynchronous way to reduce the quantity of messages and prevent the application from waiting for a response.
+					</td>
+					<td>
+						<pre>
+Dispatch fanstart: fanstart(V)
+Dispatch fanstop : fanstop(V)
+						
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkmanagerservice context ctxparkingarea {
+	...
+		forward fan -m fanstart: fanstart(on) 
+	...
+		forward fan -m fanstop: fanstop(off)
+
+}
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+<br>
+			<k>ParkingManager</k>
+				<table style="width:100%">
+<td style="width:50%" >		
+					
+						<br> 
+The interaction follow is modelled with events because the receiving is uknown in the requirements and other components could be intrested of what is happening in future.
+					</td>
+					<td>
+						<pre>
+Event warning :  warning(V)
+Event alarm :  alarm(V)
+					
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkingmanager context ctxparkingarea {
+	...
+		emit warning : warning(V)
+		emit alarm : alarm(V)
+
+
+}
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+<br>
+
+	<h3 id ="webgui">The WebGui</h3>
+
+	<div class="remark">
+		The Gui interface allows the customer to communicate with our system. Because it is preferable that the grafic interfaces will be portable, that are indipendent from hardware components and from the operative system of the user device, the choise will be to realize the
+								Web-application in the following way:
+								<ul>
+									<li>they could be two HTML pages both with INPUT sections (e.g. CARENTER or stop/resume the trolley) and OUTPUT sections (e.g. TOKENID, temperature, current state).</li>
+								</ul>
+								The techology should be SpringBoot to reduce development time.
+								Right now we just confine its behavior to a mock-qactor. Its complete realization will be done in the project phase.
+	</div>
+
+	<h6 id ="parkservicegui">The ParkServiceGui</h6>
+			<table>
+					<tbody>
+						<tr>
+							<td>
+
+								The ParkServiceGui should use by the client to inform the application the intent to enter or take the car. It should also inform the client if he should wait to take the car, or if there aren't any slots in the parking-area, etc.
+								In this case we will simulate the behaviour of the client: it is an mock QActor.
+
+								
+							</td>
+							<td style="width: 55%">
+					
+					 <center><img src="./img/pssgstate.png" alt="ParkingServiceGui" width="100%" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+
+	
+
+
+			<h5 id="parkserviceguicomunication">Components comunication</h5>
+		<table >
+			<tbody>	
+				<tr>
+						<k>ParkingServiceGui/ParkManagerService </k>
+						
+					<td style="width:50%" >
+						
+						<br> The interaction follow the request/response model because when the client send a command the application must answer with helpful informations (e.g. SLOTNUM, TOKENID...)
+					</td>
+					<td>
+						<pre>
+
+Request carenter : carenter(C)
+Reply receipt : receipt(I)
+
+Request notifyIn : notifyIn(N)
+Reply informIn : informIn(S)
+
+Request pickup : pickup(TOKENID)
+Reply ok : ok(O)
+
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkingservicegui context ctxparkingarea{ 
+	...
+	request parkmanagerservice -m notifyIn : notifyIn(A) 
+	...
+	request parkmanagerservice -m carenter : carenter ($SLOTNUM)
+	...
+	request parkmanagerservice -m pickup : pickup($TOKENID)
+}
+QActor parkmanagerservice context ctxparkingarea{ 
+	...
+	replyTo notifyIn with informIn : informIn($SLOTNUM)
+	...
+	replyTo carenter with receipt : receipt($TOKENID)
+	...
+	replyTo pickup with ok : ok($OUTFREE)
+}
+
+					    </pre>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+	<h3 id ="parkservicestatusgui">The ParkServiceStatusGui</h3>
+		<table>
+					<tbody>
+						<tr>
+							<td>
+							
+								The ParkServiceStatusGUI should monitor the the system current state. It should ask to the application the information needed. The implementation could be done with a polling mechanism, that is a request/response interaction, but this is only one possible solution. Another one could be a dispatch interaction, or using an observer.
+								In this case we will simulate the behaviour of the parking-manager(human): it is an mock QActor.
+
+
+					</td>
+							</td>
+							<td style="width: 55%">
+					
+								<center><img src="./img/psgstate.png" alt="ParkServiceStatusGUIState" width="400" ></center> 
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+		<br>
+	
+
+
+			<h5 id="parkmanagerservicecomunication">Components comunication</h5>
+				<table >
+				<tbody>	
+					<tr>
+							<k>ParkServiceStatusGui</k>
+							
+						<td style="width:50%" >
+						<br> 
+The interaction follow is modelled with events because the ParkServiceStatusGui operations will processing like a botton which are like an observable in an distribuited system. 
+						</td>
+						<td>
+							<pre>
+Event stateChangetrolley :  stateChangetrolley (V)
+Event stateChangefan :  stateChangefan (V)
+						
+Context ctxparkingarea ip [host="localhost" port=8021]
+
+QActor parkservicestatusgui context ctxparkingarea {
+	...
+		emit stateChangetrolley : stateChangetrolley(stop)
+		emit stateChangefan : stateChangefan(work)
+	...
+		emit stateChangetrolley : stateChangetrolley(work)	
+		emit stateChangefan : stateChangefan(stop)
+
+}
+						    </pre>
+						</td>
+						</tr>
+					</tbody>
+				</table>
+	<h3>Logical Architecture</h3>
+
+				<table style="width:98%">	
+		<td style="width:50%" >
+				<center><img src="./img/architettura_logica.png" alt="architettura_logica_iniziale" width="60%" ></center> 
+		</td>
+	</table>
+	<div class="remark">
+The executable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/src/sprint_final.qak"target="web">sprint_final.qak</a></p>				
+</div>	
+
+<h2>Testplan</h2>
+		<ks>Testplan 1</ks>:  the testplan should check the correspondence of the movements between the transport-trolley and the basicrobot.
+		The test will be done by comparing two strings.
+		<li>path: are the commands to reach the goal;</li>
+		<li>result: are the real commands sending to the DDR robot from the basic robot.
+		At the end of the execution the two strings should be equals. </li>
+		<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan1.kt"target="web">TestPlan1.kt</a>.  <p>
+		<ks>Testplan 2</ks>: we should simulate and check if the parkservicegui receive the correct Slotnum.<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan2.kt" target="web">TestPlan2.kt</a>.  <p> 
+		<ks>Testplan 3</ks>: we should simulate and check if the parkservicestatusgui receive the alarm from the outmanager when the OUTDOORAREA is still vacated over a DTFREE time.<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan3.kt" target="web">TestPlan3.kt</a>.  <p> 
+		<ks>Testplan 4</ks>: we should simulate and check if the parkingManager turn on/off the fan if the temperature is higher/lowre than TMAX.<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan4.kt" target="web">TestPlan4.kt</a>.  <p> 
+		<ks>Testplan 5</ks>: we should simulate and check if the parkingManager stop the transport-trolley.
+		<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan5.kt" target="web">TestPlan5.kt</a>.  <p>
+
+
+
+<h2>Deployment</h2>
+	
+The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
+ 
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+	      	
+<br/><br/> 	
+</div>  
+
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By studentName email: antonio.iacobelli@studio.unibo.it  
+<img src="./img/antonioIacobelli.jpg" alt="mbot" width="15%" height="15%">
+</div> 
+<br>
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By studentName email: noemi.valentini5@studio.unibo.it  
+<img src="./img/noemiValentini.jpg" alt="mbot" width="15%" height="15%">
+</div> 
+</body>
+</html>
