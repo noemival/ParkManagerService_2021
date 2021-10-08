@@ -164,7 +164,7 @@ QActor parkingservicegui context ctxparkingarea{
 			}
 		}
 		
-	}Goto requestPickup  if [# RequestAccepted == 0#] else end
+	}Goto wait  if [# RequestAccepted == 0#] else end
 
 	State end{
 		
