@@ -200,11 +200,11 @@ div.imagedesc{
     
 <head>
    
-<title>Workplan</title></head>
+<title>Automated Car-Parking</title></head>
     
 <body>
 <div id="top">
-<h1>Workplan Automated Car-Parking<font size="5"></font> </h1>
+<h1>Automated Car-Parking<font size="5"></font> </h1>
 </div>  
 
 <h2>Requirements</h2>
@@ -302,6 +302,7 @@ This sprint will be the summary of th lasts sprint that they are focused on the 
 <li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint4/userdocs/sprint4.html">Sprint4</a>: realize the operations of the fan, thermometer and parkingmanager.
 </li><li><a href="https://htmlpreview.github.io/?https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint5/userdocs/sprint5.html">Sprint5</a>: realize the operations of the parkingManager.</li>
 
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <h3 id="basicrobot">The BasicRobot</h3>
 		<table>
 			<tbody>
@@ -372,7 +373,7 @@ QActor trolley context ctxparkingarea{
 		</table>
 
 
-<br>
+<br><br><br><br><br><br>
 					</td></br>
 			
 				</tr>
@@ -466,7 +467,7 @@ QActor weightsensor context ctxparkingarea{
 					</tr>
 				</tbody>
 			</table>
-
+<br><br>
 		<h3 id ="thermometer">The Thermometer</h3>
 			<table>
 					<tbody>
@@ -534,7 +535,7 @@ QActor thermometer context ctxparkingarea{
 	
 
 
-		
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<h3 id ="theparkmanagerservice">ParkManagerService</h3>
 	<div class = "remark">
 		The ParkManagerService is an application server that interacts via network with OUTSonar, weightsensor, trolley, thermometer and fan. It should build ParkServiceGUI build ParkServiceStatusGUI. The ParkManagerService could be modelled as a combination of more QActors (e.g. OutManager and ParkingManager).
@@ -590,9 +591,7 @@ QActor parkmnagerservice context ctxparkingarea{
 					
 				</tr>
 			</tbody>
-		</table>
-		<br>
-		
+		</table>	
 		
 		<h6 id ="outmanager">OutManager</h6>
 		<table>
@@ -669,6 +668,7 @@ QActor outmanager context ctxparkingarea{
 					
 					</tbody>
 			</table> 
+<br><br><br><br><br><br><br><br><br><br><br>			
 	<h5 id="parkingmanagercomunication">Components comunication</h5>		
 <table>			<tbody>	
 				<tr>
@@ -754,7 +754,7 @@ QActor parkingmanager context ctxparkingarea {
 				</tbody>
 			</table>
 <br>
-
+<br><br><br><br><br><br>
 	<h3 id ="webgui">The WebGui</h3>
 
 	<div class="remark">
@@ -786,9 +786,6 @@ QActor parkingmanager context ctxparkingarea {
 					</tbody>
 				</table> 
 
-	
-
-
 			<h5 id="parkserviceguicomunication">Components comunication</h5>
 		<table >
 			<tbody>	
@@ -801,16 +798,12 @@ QActor parkingmanager context ctxparkingarea {
 					</td>
 					<td>
 						<pre>
-
 Request carenter : carenter(C)
 Reply receipt : receipt(I)
-
 Request notifyIn : notifyIn(N)
 Reply informIn : informIn(S)
-
 Request pickup : pickup(TOKENID)
 Reply ok : ok(O)
-
 Context ctxparkingarea ip [host="localhost" port=8021]
 
 QActor parkingservicegui context ctxparkingarea{ 
@@ -828,9 +821,7 @@ QActor parkmanagerservice context ctxparkingarea{
 	replyTo carenter with receipt : receipt($TOKENID)
 	...
 	replyTo pickup with ok : ok($OUTFREE)
-}
-
-					    </pre>
+}</pre>
 					</td>
 					</tr>
 				</tbody>
@@ -889,6 +880,7 @@ QActor parkservicestatusgui context ctxparkingarea {
 						</tr>
 					</tbody>
 				</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>	<br>		
 	<h3>Logical Architecture</h3>
 
 				<table style="width:98%">	
@@ -903,9 +895,9 @@ The executable model is the following file: <a href="https://raw.githubuserconte
 <h2>Testplan</h2>
 		<ks>Testplan 1</ks>:  the testplan should check the correspondence of the movements between the transport-trolley and the basicrobot.
 		The test will be done by comparing two strings.
-		<li>path: are the commands to reach the goal;</li>
+		<ul><li>path: are the commands to reach the goal;</li>
 		<li>result: are the real commands sending to the DDR robot from the basic robot.
-		At the end of the execution the two strings should be equals. </li>
+		</ul>At the end of the execution the two strings should be equals. </li>
 		<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan1.kt"target="web">TestPlan1.kt</a>.  <p>
 		<ks>Testplan 2</ks>: we should simulate and check if the parkservicegui receive the correct Slotnum.<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan2.kt" target="web">TestPlan2.kt</a>.  <p> 
 		<ks>Testplan 3</ks>: we should simulate and check if the parkservicestatusgui receive the alarm from the outmanager when the OUTDOORAREA is still vacated over a DTFREE time.<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan3.kt" target="web">TestPlan3.kt</a>.  <p> 
@@ -914,7 +906,7 @@ The executable model is the following file: <a href="https://raw.githubuserconte
 		<br><br> The code is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.final_sprint/test/it/unibo/final_sprint/TestPlan5.kt" target="web">TestPlan5.kt</a>.  <p>
 
 
-
+<br><br><br><br>
 <h2>Deployment</h2>
 	
 The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
