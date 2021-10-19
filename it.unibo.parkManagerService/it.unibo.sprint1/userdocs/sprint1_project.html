@@ -288,14 +288,10 @@ that can be launched by using the docker-compose file
 <a href="../../it.unibo.issLabStart/Dockercompose/virtualRobotOnly2.0.yaml" target="code">virtualRobotOnly2.0.yaml</a></m>.
 The support is: <a href="../resources/robotVirtual/virtualrobotSupport2021.kt" target="code">virtualrobotSupport2021.kt</a>
 </li>
-
-
 <li> <bc>nano</bc>: <br/><m>the self-made robot described in 
 <a href="LabNanoRobot.html" target="robot">LabNanoRobot | The home-made basicrobot</a></m>
 The support is: <a href="../resources/robotNano/nanoSupport.kt" target="code">nanoSupport.kt</a>
 </li>
-
-
 <li> <bc>mbot</bc>: <br/><m>the  robot described in 
 <a href="Mbot3030.html" target="robot">Mbot3030 | The reference ddr robot</a> </m>
 The support is: <a href="../resources/robotMbot/mbotSupport.kt" target="code">mbotSupport.kt</a>
@@ -305,18 +301,14 @@ The support is: <a href="../resources/robotMbot/mbotSupport.kt" target="code">mb
 </tr>
 </tbody>
 </table>
-
 		<h6>The basicrobot</h6>
 <table>
-
 			<tbody>
 <tr>
-			
-
 </tr>
 				<tr>
 					<td>
-						 The basicrobot will use to commununicate between the DDR robot and the transport-trolley because it allows us to execute the robot movement commands in a 'technology-independent' way, with respect to the nature of the robot (virtual or real). <br>
+						The basicrobot will use to commununicate between the DDR robot and the transport-trolley because it allows us to execute the robot movement commands in a 'technology-independent' way, with respect to the nature of the robot (virtual or real). <br>
 
 						The configuration file <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/basicrobotConfig.json" target="web"> basicrobotConfig.json</a>, located in the repository <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1" target="web"> it.unibo.sprint1</a>, is used to respect the Virtualrobot nature by the basicrobot.
 
@@ -330,7 +322,6 @@ The support is: <a href="../resources/robotMbot/mbotSupport.kt" target="code">mb
 
 	<h4>The transport-trolley</h4>
 		<div class="remark">
-		
 		In our analysis the transport-trolley should represent the buisness logic of the DDR Robot. It will use the DDRrobot to execute its opertation that comes from the requirements of the application. In fact it should be able to generate a sequence of actions to reach the commands given by the ParkManagerService and exceute them sending the basic moves to the <kn>DDRrobot</kn> through the basic robot. 
 		It is a computational entity with a own autonomous flow of control so it will be modelled as QActor.
 		</div>
@@ -342,13 +333,12 @@ The support is: <a href="../resources/robotMbot/mbotSupport.kt" target="code">mb
 						The following file, given by the costumer, <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/main/it.unibo.planner20/userDocs/LabPlanner.html" target="web"> LabPlanner.html</a> is able to planning the actions of a robot working in logical space using AI algorithms supporting. <br>
 					</td>
 					<td style="width: 50%">
-						<center><img src="./img/TrolleyState.drawio.png" alt="mappa" width="90%" ></center> 
+						<center><img src="./img/TrolleyState.drawio.png" alt="mappa" width="70%" ></center> 
 					</td>
 				</tr>
 			</tbody>
 		</table> 
-						
-		<br>
+
 		<k>Transport-trolley/Planner </k>
 		<br>
 
@@ -400,28 +390,19 @@ The support is: <a href="../resources/robotMbot/mbotSupport.kt" target="code">mb
 					<td style="width:50%" >
 						<br> The Transport-trolley will send the command to the basicrobot in a asynchronous way to reduce the quantity of messeges and prevent the application from waiting for a response.
 					</td>
-					<td>
-						<pre>
-
+					<td><pre>
 Dispatch cmd : cmd(MOVE)   
-
 Context ctxparkingarea ip [host="localhost" port=8021]
-
 QActor transporttrolley context ctxparkingarea{ 
 	...
 	forward basicrobot -m cmd : cmd(w)  
 	...
-}
-					    </pre>
+} </pre>
 					</td>
 					
 				</tr>
 			</tbody>
 		</table>
-
-
-	
-					
 
 </div>
 
@@ -451,7 +432,7 @@ QActor transporttrolley context ctxparkingarea{
 	<h4>The ParkManagerService</h4>
 
 		The ParkManagerService, in this sprint, will be a part of the WebApplicationPms.  The ParkManagerService will be modelled as a QActor to simulate one part of requirements: sent to the transport trolley commands with the informations where it should move to.
-
+<br><br><br><br>
 	<h4>The transport-trolley</h4>
 	
 						<ks>MoveToHome </ks>
@@ -487,27 +468,18 @@ QActor transporttrolley context ctxparkingarea{
 							<pre>
 
 Dispatch cmd : cmd(MOVE) 
-
 Context ctxparkingarea ip [host="localhost" port=8021]
-
 QActor parkmnagerservice context ctxparkingarea{ 
 	...
 	forward transporttrolley -m cmd : cmd(w)  	
 	...
-}
-					    </pre>
-					
-
+} </pre>
 					</td>
 					
 				</tr>
 			</tbody>
 		</table>
 		<br>
-		
-		
-		
-<br>
 <div class="remark">
 The first excecutable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/src/sprint1.qak"target="web">sprint1.qak</a></p>						
 		
@@ -527,8 +499,8 @@ The first excecutable model is the following file: <a href="https://raw.githubus
 		<li><kn>result</kn>: are the real commands sendingo to the DDR robot from the basic robot.</li> 
 	</ul>
 	At the end of the execution the two strings should be equals.
-	<br><br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan1.kt"target="web">TestPlan1.kt</a></p>
-	<br><br>
+	
+	<br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan1.kt"target="web">TestPlan1.kt</a></p>
 <k>Testplan 2</k>: the testplan should check that the robot stopping the movements MoveToHome when it recives another requste (e.g. MoveToSlotIn). 
 <br> The test will be done by comparing two strings: 
 	<ul>
@@ -537,8 +509,9 @@ The first excecutable model is the following file: <a href="https://raw.githubus
 	</ul>
 	At the end of the execution the two strings should be differents.
 
-	<br><br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan2.kt"target="web">TestPlan2.kt</a></p>
-<br> To realize an authomatized test we will use JUNIT. <br>
+	<br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/test/it/unibo/sprint1/TestPlan2.kt"target="web">TestPlan2.kt</a></p>
+ To realize an authomatized test we will use JUNIT. 
+ <br><br><br> <br><br><br> <br><br><br> <br><br><br>
 <h2>Project</h2> 
 
 <h4>WebApplicationPms</h4>
@@ -550,28 +523,9 @@ The first excecutable model is the following file: <a href="https://raw.githubus
 <pre>http://localhost:8081</pre>
 							<br>We used the REST architecture because it allows each component to be identified as an individually addressable resource. Furthermore, using the exact same standard naming scheme as all other web resources allows you to seamlessly integrate Things and their properties into the web because their functions, data or sensors can be linked, shared, bookmarked and used as anything else on the web.
 							<br>In this sprint there is a first version of the Web Application, whose only purpose, at the moment, is to send commands to the transport-trolley. 
-							<br>The communication between our system and an external component was simulated thanks to an object called a tester:
-							<pre>
-fun doPostWithParams(){
-        
-		...
-        sendMessage("req(moveToIn)")
-		...
-}
- fun sendMessage(message : String){
-        val strUrl = "http://localhost:8081/movetrolley"
-        val client: HttpClient = HttpClientBuilder.create().build()
-        val request = HttpPost(strUrl)
+							<br>The communication between our system and an external component was simulated thanks to an object called a tester: <a href=" https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/Tester.kt"target="web">Tester.kt</a></p>
 
-        val params: MutableList<NameValuePair> = ArrayList()
-        params.add(BasicNameValuePair("move", message))
-        request.setEntity(UrlEncodedFormEntity(params))
-        var response: HttpResponse = client.execute(request)
-        ...
-		
- }					
- </pre>
- The WebApplication is in the following folder: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms"target="web">it.unibo.WebApplicationPms</a></p>
+ The WebApplication is in the following folder: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms"target="web">it.unibo.WebApplicationPms</a>
  </td>
 						<td>						
 							<center><img src="img/WebApplicationParkManagerService2.png" alt="mappa" width="70%" ></center> 
@@ -585,59 +539,29 @@ fun doPostWithParams(){
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							<br>
-							The ControllerPMS represents the WebApplication controller that defines the following set of Representational State Transfer application programming interface (API RESTful):
-<pre>
-POST /movetrolley  
-INPUT: 	String representing a move (moveToIn|moveToSlotIn|moveToSlotOut|moveToOut|moveToHome|end)
-OUTPUT: JSON object representing the result of the move
-</pre>
+							The ControllerPMS represents the WebApplication controller that defines the set of Representational State Transfer application programming interface (API RESTful).
 							<br>This API has the task of creating a standard communication so that external components can communicate with our application and without knowing its implementation aspects.
 							<br> The ControllerPms is the following file: <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/ControllerPms.kt"target="web">ControllerPms.kt</a></p>
-
-							<br><br>
 						</td>
-						<td style="width:50%" >						
-														<pre>
-@RestController
-class ControllerPms {
- ...
-   @kotlinx.coroutines.ObsoleteCoroutinesApi
-   @PostMapping( "/movetrolley" )
-   fun sendCommand(@RequestParam(name="move", 
-   required=false, defaultValue="h") moveName : String) : String {
-		
-	 connToRobot = connQakBase.create(ConnectionType.TCP)
-	 connToRobot.createConnection()
-	 val msg = MsgUtil.buildRequest("parkmanagerserviceProxy","req",
-	 moveName, qakdestination)
-	 answer = connToRobot.requestWithRensponse(msg)
-	 return  answer
- 
-  }
-
-
-}
-
-
-					    </pre>
-					
-
-						</td>
+						<td  style="width:50%">
+</pre>
+<pre>
+POST /movetrolley  
+INPUT: move of transporTrolley (movetToIn)
+OUTPUT: result of the move
+</pre>				</td>
 					
 				</tr>
 			</tbody>
 		</table>
+	
 <h6>The transport-trolley</h6>
 		<table>
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							<br>To sadisfy the single responsibility principle (SRP)
-							it was decided to create a support for the transporTrolley.
-
-							<br>The tasks of the <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/utility/TrolleyPlannerSupport.kt"target="web">TrolleyPlannerSupport.kt</a> are to plan the greatest path and update the map, thus the transporttrolley will have the only responsibility of sending the commands to the basicrobot.
-						<br><br>
+							To sadisfy the single responsibility principle (SRP) it was decided to create a support for the transporTrolley.
+							<br>The tasks of the <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/utility/TrolleyPlannerSupport.kt"target="web">TrolleyPlannerSupport.kt</a> are to plan the greatest path and update the map, thus the transporttrolley will have the only responsibility of sending the commands to the basicrobot.	
 						
 						</td>
 						<td>						
@@ -652,11 +576,11 @@ class ControllerPms {
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							<br> The basicrobot, as saied in analysis requirements phase, interacts with the real robot throught the object  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/resources/unibo/robot/robotSupport.kt"target="web">robotSupport.kt</a>
+							 The basicrobot, as saied in analysis requirements phase, interacts with the real robot throught the object  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/resources/unibo/robot/robotSupport.kt"target="web">robotSupport.kt</a>
 							<br>It is the adatper fo the devices described in the configuration file : <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/basicrobotConfig.json"target="web">basicrobotConfig.json</a>
 							<br>In this project it is used a virtual robot that is inside the vitual evirorment WEnv. 
 							<br>The messages will be sent to the websoket (port:8091).
-							<br>
+	
 						</td>
 						<td>						
 							<center><img src="img/basic_robot_project.png" alt="mappa" width="50%" ></center> 
@@ -665,14 +589,10 @@ class ControllerPms {
 				</tr>
 			</tbody>
 		</table>
-
-
-
-
 <h3>Logical Architecture</h3>
 <table>	
 		<td style="width:50%" >
-				<center><img src="img/architettura_logica3_project.png" alt="mappa" width="50%" ></center> 
+				<center><img src="img/architettura_logica3_project.png" alt="mappa" width="45%" ></center> 
 		</td>
 	</table>
 <h2>Testing</h2>
