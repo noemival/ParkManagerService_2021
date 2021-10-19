@@ -521,7 +521,7 @@ The first excecutable model is the following file: <a href="https://raw.githubus
 						<td style="width:50%" >
 							The WebApplicationPms will be a system of actors and other components that implements the required automation functions. It is a distributed service accessible via HTTP-REST:
 <pre>http://localhost:8081</pre>
-							<br>We used the REST architecture because it allows each component to be identified as an individually addressable resource. Furthermore, using the exact same standard naming scheme as all other web resources allows you to seamlessly integrate Things and their properties into the web because their functions, data or sensors can be linked, shared, bookmarked and used as anything else on the web.
+							<br>We used the REST architecture because it allows each component to be identified as an individually addressable resource. Furthermore, using the exact same standard naming scheme as all other web resources, allows you to seamlessly integrate "Things" and their properties into the web because their functions, data or sensors can be linked, shared, bookmarked and used as anything else on the web.
 							<br>In this sprint there is a first version of the Web Application, whose only purpose, at the moment, is to send commands to the transport-trolley. 
 							<br>The communication between our system and an external component was simulated thanks to an object called a tester: <a href=" https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/Tester.kt"target="web">Tester.kt</a></p>
 
@@ -560,7 +560,7 @@ OUTPUT: result of the move
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							To sadisfy the single responsibility principle (SRP) it was decided to create a support for the transporTrolley.
+							To sadisfy the single responsibility principle (SRP) it was decided to create a support for the transpor trolley.
 							<br>The tasks of the <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/utility/TrolleyPlannerSupport.kt"target="web">TrolleyPlannerSupport.kt</a> are to plan the greatest path and update the map, thus the transporttrolley will have the only responsibility of sending the commands to the basicrobot.	
 						
 						</td>
@@ -576,8 +576,8 @@ OUTPUT: result of the move
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							 The basicrobot, as saied in analysis requirements phase, interacts with the real robot throught the object  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/resources/unibo/robot/robotSupport.kt"target="web">robotSupport.kt</a>
-							<br>It is the adatper fo the devices described in the configuration file : <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/basicrobotConfig.json"target="web">basicrobotConfig.json</a>
+							 The basicrobot, as saied in analysis requirements phase, interacts with the real robot throught the object  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/resources/unibo/robot/robotSupport.kt"target="web">robotSupport.kt.</a>
+							<br>It is the adatper for the devices described in the configuration file : <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/basicrobotConfig.json"target="web">basicrobotConfig.json</a>
 							<br>In this project it is used a virtual robot that is inside the vitual evirorment WEnv. 
 							<br>The messages will be sent to the websoket (port:8091).
 	
@@ -596,7 +596,7 @@ OUTPUT: result of the move
 		</td>
 	</table>
 <div class="remark">
-The qactor excecutable model after project phase is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/src/sprint1_project.qak"target="web">sprint1_project.qak</a></p>	
+The QActor excecutable model after project phase is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/src/sprint1_project.qak"target="web">sprint1_project.qak</a></p>	
 </div>
 <h2>Testing</h2>
 After carrying out the design phase, the movements of the transporTrolley were tested again, involving the new components introduced in the tests.
