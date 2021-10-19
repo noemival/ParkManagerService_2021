@@ -571,6 +571,7 @@ fun doPostWithParams(){
 		
  }					
  </pre>
+ The WebApplication is in the following folder: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms"target="web">it.unibo.WebApplicationPms</a></p>
  </td>
 						<td>						
 							<center><img src="img/WebApplicationParkManagerService2.png" alt="mappa" width="70%" ></center> 
@@ -592,13 +593,14 @@ INPUT: 	String representing a move (moveToIn|moveToSlotIn|moveToSlotOut|moveToOu
 OUTPUT: JSON object representing the result of the move
 </pre>
 							<br>This API has the task of creating a standard communication so that external components can communicate with our application and without knowing its implementation aspects.
-							<br>
+							<br> The ControllerPms is the following file: <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/ControllerPms.kt"target="web">ControllerPms.kt</a></p>
+
 							<br><br>
 						</td>
 						<td style="width:50%" >						
 														<pre>
 @RestController
-class ControllerParkManagerService {
+class ControllerPms {
  ...
    @kotlinx.coroutines.ObsoleteCoroutinesApi
    @PostMapping( "/movetrolley" )
@@ -616,6 +618,8 @@ class ControllerParkManagerService {
 
 
 }
+
+
 					    </pre>
 					
 
@@ -632,7 +636,7 @@ class ControllerParkManagerService {
 							<br>To sadisfy the single responsibility principle (SRP)
 							it was decided to create a support for the transporTrolley.
 
-							<br>The tasks of the TrolleyPlannerSupport.kt (<ks>inserire link file: TrolleyPlannerSupport.kt</ks>) are to plan the greatest path and update the map, thus the transporttrolley will have the only responsibility of sending the commands to the basicrobot.
+							<br>The tasks of the <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/utility/TrolleyPlannerSupport.kt"target="web">TrolleyPlannerSupport.kt</a> are to plan the greatest path and update the map, thus the transporttrolley will have the only responsibility of sending the commands to the basicrobot.
 						<br><br>
 						
 						</td>
@@ -648,10 +652,10 @@ class ControllerParkManagerService {
 				<tbody>	
 					<tr>
 						<td style="width:50%" >
-							<br> The basicrobot interacts with the real robot throught the object <ks>inserire link robotSupport.kt</ks>.
-							<br>It is the adatper fo the devices described in the configuration file : basicrobotConfig.json. 
+							<br> The basicrobot, as saied in analysis requirements phase, interacts with the real robot throught the object  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/src/resources/unibo/robot/robotSupport.kt"target="web">robotSupport.kt</a>
+							<br>It is the adatper fo the devices described in the configuration file : <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/basicrobotConfig.json"target="web">basicrobotConfig.json</a>
 							<br>In this project it is used a virtual robot that is inside the vitual evirorment WEnv. 
-							<br>The messages will be sent to the websoket (port:8091) using the support library  IssWsHttpKotlinSupport, as saied in analysis requirements phase.
+							<br>The messages will be sent to the websoket (port:8091).
 							<br>
 						</td>
 						<td>						
@@ -671,6 +675,18 @@ class ControllerParkManagerService {
 				<center><img src="img/architettura_logica3_project.png" alt="mappa" width="50%" ></center> 
 		</td>
 	</table>
+<h2>Testing</h2>
+After carrying out the design phase, the movements of the transporTrolley were tested again, involving the new components introduced in the tests.
+
+<br>In particular, for each possible command (moveToIn / MoveToSlotIn / moveToSlotOut / MoveToOut / MoveToHome) the correspondence of the movements between the transport trolley and basicrobot was checked.
+<br> The tests will be done by comparing two strings: 
+	<ul>
+		<li><kn>path</kn>: are the commands to reach the goal;</li>
+		<li><kn>result</kn>: are the real commands sendingo to the DDR robot from the basic robot.</li> 
+	</ul>
+	At the end of the execution the two strings should be equals.
+	<br><br> The code is the following file:  <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint1/testing/it/unibo/sprint1/Testing.kt"target="web">Testing.kt</a></p>
+	
 <h2>Deployment</h2>
 	
 The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
