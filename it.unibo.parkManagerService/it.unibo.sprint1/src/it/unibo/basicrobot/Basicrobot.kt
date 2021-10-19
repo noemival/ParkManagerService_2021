@@ -19,7 +19,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 		
 		  var StepTime      = 0L 
 		  var StartTime     = 0L     
-		  var Duration      = 0L  
+		  var Duration      = 0L   
 		  var RobotType     = "" 
 		  var CurrentMove   = "moveUnknown"
 		return { //this:ActionBasciFsm

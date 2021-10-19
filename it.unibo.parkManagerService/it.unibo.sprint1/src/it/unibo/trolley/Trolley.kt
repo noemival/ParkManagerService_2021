@@ -23,15 +23,12 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 		  var terminate =  0
 		  var home = 0
 		  var counter = 0
+		  var trolleyCmd = ""
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
 						println("trolley | start ")
-						itunibo.planner.plannerUtil.initAI(  )
-						println("&&&  trolley loads the parking map from the given file ...")
-						itunibo.planner.plannerUtil.loadRoomMap( "$mapname"  )
-						itunibo.planner.plannerUtil.showMap(  )
-						itunibo.planner.plannerUtil.showCurrentRobotState(  )
+						TrolleyPlannerSupport.initPlanner("$mapname") 
 					}
 					 transition( edgeName="goto",targetState="idle", cond=doswitch() )
 				}	 
@@ -43,39 +40,18 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				}	 
 				state("working") { //this:State
 					action { //it:State
-						home = 0 
 						println("trolley | working")
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(moveToIn)"), 
+						home = 0 
+						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(V)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | moveToIn ")
-								itunibo.planner.plannerUtil.planForGoal( "6", "0"  )
-						}
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(moveToSlotIn)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | moveToSlotIn ")
-								itunibo.planner.plannerUtil.planForGoal( "4", "1"  )
-						}
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(moveToSlotOut)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | moveToSlotOut ")
-								itunibo.planner.plannerUtil.planForGoal( "4", "2"  )
-						}
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(moveToOut)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | moveToOut ")
-								itunibo.planner.plannerUtil.planForGoal( "6", "4"  )
-						}
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(moveToHome)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | moveToHome ")
-								itunibo.planner.plannerUtil.planForGoal( "0", "0"  )
-								 home =  1 
-						}
-						if( checkMsgContent( Term.createTerm("trolleycmd(MOVE)"), Term.createTerm("trolleycmd(end)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								println("trolley [working] | terminate ")
-								itunibo.planner.plannerUtil.planForGoal( "0", "0"  )
-								 terminate = 1 
+									trolleyCmd = "${payloadArg(0)}" 	 
+												TrolleyPlannerSupport.setGoal(trolleyCmd)
+												if(trolleyCmd == "moveToHome"){
+													home =  1
+												}
+												if(trolleyCmd == "end"){
+													terminate =  1
+												}
 						}
 					}
 					 transition( edgeName="goto",targetState="execPlannedMoves", cond=doswitch() )
@@ -83,8 +59,7 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				state("execPlannedMoves") { //this:State
 					action { //it:State
 						delay(400) 
-						  CurrentPlannedMove = itunibo.planner.plannerUtil.getNextPlannedMove()  
-						println("trolley [execPlannedMoves] | CurrentPlannedMove = $CurrentPlannedMove")
+						CurrentPlannedMove = TrolleyPlannerSupport.getNextMove()  
 					}
 					 transition( edgeName="goto",targetState="doMove", cond=doswitchGuarded({ CurrentPlannedMove.length>0   
 					}) )
@@ -93,18 +68,7 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				}	 
 				state("doMove") { //this:State
 					action { //it:State
-						if(  CurrentPlannedMove == "l" 
-						 ){forward("cmd", "cmd(l)" ,"basicrobot" ) 
-						}
-						if( CurrentPlannedMove == "r"   
-						 ){forward("cmd", "cmd(r)" ,"basicrobot" ) 
-						}
-						if( CurrentPlannedMove == "w"   
-						 ){forward("cmd", "cmd(w)" ,"basicrobot" ) 
-						}
-						println("trolley | doMove")
-						itunibo.planner.plannerUtil.updateMap( "$CurrentPlannedMove"  )
-						itunibo.planner.plannerUtil.showCurrentRobotState(  )
+						forward("cmd", "cmd($CurrentPlannedMove)" ,"basicrobot" ) 
 						stateTimer = TimerActor("timer_doMove", 
 							scope, context!!, "local_tout_trolley_doMove", 100.toLong() )
 					}
@@ -115,6 +79,15 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				state("finishPlannedMoves") { //this:State
 					action { //it:State
 						println("trolley | finishPlannedMoves")
+						if(home == 1 ){
+						 			var direction= TrolleyPlannerSupport.atHome()
+									if(direction == "leftDir"){
+										forward("cmd", "cmd(l)" ,"basicrobot" )
+									}else{
+										forward("cmd", "cmd(l)" ,"basicrobot" )
+										forward("cmd", "cmd(l)" ,"basicrobot" )
+									}
+								}  
 					}
 					 transition( edgeName="goto",targetState="endWork", cond=doswitchGuarded({ terminate == 1   
 					}) )
@@ -124,17 +97,14 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				state("endWork") { //this:State
 					action { //it:State
 						println("trolley |  endWork")
-						var direction= itunibo.planner.plannerUtil.getDirection()
+						var direction= TrolleyPlannerSupport.atHome()
 								
 								if(direction == "leftDir"){
 									forward("cmd", "cmd(l)" ,"basicrobot" )
-									itunibo.planner.plannerUtil.updateMap( "l"  )
-								}else{
+								}else{ 
 									forward("cmd", "cmd(l)" ,"basicrobot" )
-									itunibo.planner.plannerUtil.updateMap( "l"  ) 
 									forward("cmd", "cmd(l)" ,"basicrobot" )
-									itunibo.planner.plannerUtil.updateMap( "l"  ) 
-									}  
+								}  
 						forward("end", "end(V)" ,"basicrobot" ) 
 					}
 				}	 

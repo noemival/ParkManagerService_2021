@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
-encoding//test/it/unibo/sprint1/TestPlan1.kt=UTF-8
-encoding//test/it/unibo/sprint1/TestPlan2.kt=UTF-8
+encoding//Testplan/it/unibo/sprint1/TestPlan1.kt=UTF-8
+encoding//Testplan/it/unibo/sprint1/TestPlan2.kt=UTF-8
+encoding//src/utility/TrolleyPlannerSupport.kt=UTF-8
+encoding//testing/it/unibo/sprint1/Testing.kt=UTF-8

@@ -19,16 +19,30 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
-						forward("trolleycmd", "trolleycmd(moveToIn)" ,"trolley" ) 
-						forward("trolleycmd", "trolleycmd(moveToHome)" ,"trolley" ) 
-						delay(6200) 
-						forward("trolleycmd", "trolleycmd(moveToSlotIn)" ,"trolley" ) 
-						forward("trolleycmd", "trolleycmd(moveToHome)" ,"trolley" ) 
-						delay(5000) 
-						forward("trolleycmd", "trolleycmd(moveToSlotOut)" ,"trolley" ) 
-						forward("trolleycmd", "trolleycmd(moveToOut)" ,"trolley" ) 
-						forward("trolleycmd", "trolleycmd(end)" ,"trolley" ) 
+						println("parkmananagerservice | start")
 					}
+					 transition( edgeName="goto",targetState="waiting", cond=doswitch() )
+				}	 
+				state("waiting") { //this:State
+					action { //it:State
+						println("parkmananagerservice | waiting")
+					}
+					 transition(edgeName="t19",targetState="working",cond=whenRequest("req"))
+				}	 
+				state("working") { //this:State
+					action { //it:State
+						println("parkmananagerservice | working")
+						updateResourceRep("accepted" 
+						)
+						println("$name in ${currentState.stateName} | $currentMsg")
+						if( checkMsgContent( Term.createTerm("req(VAL)"), Term.createTerm("req(V)"), 
+						                        currentMsg.msgContent()) ) { //set msgArgList
+								 var REQ =  payloadArg(0) 
+								forward("trolleycmd", "trolleycmd($REQ)" ,"trolley" ) 
+						}
+						answer("req", "resp", "resp(ok)"   )  
+					}
+					 transition(edgeName="t110",targetState="working",cond=whenRequest("req"))
 				}	 
 			}
 		}
