@@ -12,6 +12,10 @@ import java.util.ArrayList
 
 object Tester {
     var i = 0
+    val strUrl = "http://localhost:8081/movetrolley"
+    val client: HttpClient = HttpClientBuilder.create().build()
+    val request = HttpPost(strUrl)
+
     fun doPostWithParams(){
         try {
 
@@ -31,9 +35,7 @@ object Tester {
         }
     }
     fun sendMessage(message : String){
-        val strUrl = "http://localhost:8081/movetrolley"
-        val client: HttpClient = HttpClientBuilder.create().build()
-        val request = HttpPost(strUrl)
+
 
         val params: MutableList<NameValuePair> = ArrayList()
         params.add(BasicNameValuePair("move", message))
