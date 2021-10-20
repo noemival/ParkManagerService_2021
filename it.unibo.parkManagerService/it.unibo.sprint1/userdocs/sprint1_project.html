@@ -322,8 +322,9 @@ The support is: <a href="https://raw.githubusercontent.com/anatali/issLab2021/ma
 
 	<h4>The transport-trolley</h4>
 		<div class="remark">
-		In our analysis the transport-trolley should represent the buisness logic of the DDR Robot. It will use the DDRrobot to execute its opertation that comes from the requirements of the application. In fact it should be able to generate a sequence of actions to reach the commands given by the ParkManagerService and exceute them sending the basic moves to the <kn>DDRrobot</kn> through the basic robot. 
+		 The transport-trolley will use the DDRrobot to execute its opertation that comes from the requirements of the application. In fact it should be able to generate a sequence of actions to reach the commands given by the ParkManagerService and exceute them sending the basic moves to the <kn>DDRrobot</kn> through the basic robot. 
 		It is a computational entity with a own autonomous flow of control so it will be modelled as QActor.
+		<br>The trasport trolley should reach the goal place in a organizzed way, as the costumer required, so it will represent the buisness logic of the DDR Robot.
 		</div>
 		<table>
 			<tbody>
@@ -388,7 +389,7 @@ The support is: <a href="https://raw.githubusercontent.com/anatali/issLab2021/ma
 			<tbody>
 				<tr>
 					<td style="width:50%" >
-						<br> The Transport-trolley will send the command to the basicrobot in a asynchronous way to reduce the quantity of messeges and prevent the application from waiting for a response.
+						<br> The Transport-trolley will send the command to the basicrobot using the asynchronous fire-forget pattern to reduce the quantity of messeges and prevent the application from waiting for a response.
 					</td>
 					<td><pre>
 Dispatch cmd : cmd(MOVE)   
@@ -484,12 +485,6 @@ QActor parkmnagerservice context ctxparkingarea{
 The first excecutable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint1/src/sprint1.qak"target="web">sprint1.qak</a></p>						
 		
 </div>
-<h3>SPRINT REVIEW</h3>
-	This first analysis was produced some aspects that will be considerend in the next SPRINT. <br>
-	The ParkManagerService should manage the reqeustes from the client and forward the command to the transport trolley. For example:
-		<li> the pair of commands <kn>moveToIn/moveToSlotIn</kn> or <kn>moveToSlotOut/moveToOut</kn> should be excecuted together by the transport-trolley after the properly checking by the ParkManagerService;</li>
-
-		<li> if a slotnum is free it should be verified by the ParkManagerService. The slotnum will be use by the transport-trolley to set the slot where it should go.
 
 <h2>Testplans</h2>
 	<k>Testplan 1</k>: the testplan should check the correspondence of the movements between the transport-trolley and the basicrobot. 
@@ -614,6 +609,21 @@ After carrying out the project phase, the movements of the transporTrolley were 
 To run the ParkManagerService system, the WebApplicationPms file and the tester must also be launched.	
 The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
  
+<h3>SPRINT REVIEW</h3>
+
+In this sprint the application is an autonomous system with the sequent assumptions:
+	<li>INDOOR and OUTDOOR areas always free;</li>
+	<li>temperature constant;<li>
+	<li>one client;</li>
+	<li>fan off;</li>
+	<li>all slots always free.</li>
+<br>
+This first analysis was produced some aspects that will be considerend in the next SPRINT. <br>
+The ParkManagerService should manage the reqeustes from the client and forward the command to the transport trolley. For example:
+	<li> the pair of commands <kn>moveToIn/moveToSlotIn</kn> or <kn>moveToSlotOut/moveToOut</kn> should be excecuted together by the transport-trolley after the properly checking by the ParkManagerService;</li>
+	<li> if a slotnum is free it should be verified by the ParkManagerService. The slotnum will be use by the transport-trolley to set the slot where it should go;</li>
+	<li> more clients.</li>
+
 <!-- USEFUL
 <table style="width:100%" border="1">
 <tr>
