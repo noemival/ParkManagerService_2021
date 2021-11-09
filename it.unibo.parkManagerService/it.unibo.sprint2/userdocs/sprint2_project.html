@@ -459,8 +459,8 @@ The executable model is the following file: <a href="https://raw.githubuserconte
 <pre>http://localhost:8081</pre> 
 
 
- The WebApplication is in the following folder: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint1/it.unibo.WebApplicationPms"target="web">it.unibo.WebApplicationPms</a>
- </td><kn> da modificare</kn>
+ The WebApplication is in the following folder: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint2/it.unibo.WebApplicationPms"target="web">it.unibo.WebApplicationPms</a>
+ </td>
 						<td>						
 							<center><img src="img/WebApplicationParkManagerService2.png" alt="mappa" width="70%" ></center> 
 						</td>
@@ -476,7 +476,7 @@ The executable model is the following file: <a href="https://raw.githubuserconte
 							The ControllerPMS represents the WebApplication controller that responsible for processing incoming requests, preparing a model, and returning the view to be rendered as a response.
 							<br>It defines an API with the purpose of creating a standard communication so that external components can communicate with our application and without knowing its implementation aspects.<br>
 							With the respect of clean architecture the ControllerPMS should implement the view managing of the Web application.
-							<br> The ControllerPms is the following file: <a href="https://github.com/noemival/ParkManagerService_2021/blob/main/it.unibo.parkManagerService/it.unibo.sprint2/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/ControllerPms.kt"target="web">ControllerPms.kt</a></p><kn> da modificare</kn>
+							<br> The ControllerPms is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint2/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/ControllerPms.kt"target="web">ControllerPms.kt</a></p>
 
 						</td>
 						<td  style="width:50%">
@@ -549,23 +549,27 @@ The QActor excecutable model after project phase is the following file: <a href=
 The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
 
 <h2>Testing</h2>
-In this phase, functional tests were carried out in order to verify that the application requirements, addressed in these sprints, have been met. In particular, the requirements were verified:
+
+This functional test want to verify the correct implementation of the requirements specified in this sprint. In particular, the requirements were verified:
 <ul>
 <li>NotifyIn: notify my interest in entering my auto in the parking-area</li>
-<li>CarEnter: press a CARENTER button on the ParkServiceGUI in order to have my machine transported to the slot on the trolley</li>
+<li>CarEnter: press a CARENTER button on the ParkServiceGUI thus the car cod be transported by the trolley to reach the correct slot </li>
 <li>Pickup: submit the request to pick up my car.</li>
 </ul>
-To verify that the system goes into the expected states (acceptIn, handleCarEnter, acceptOut) an observer has been created with the aim of capturing the state changes of the parkmanagerservice actor.
+To verify that the system goes into the expected states (acceptIn, handleCarEnter, acceptOut) an observer has been created with the aim of capturing the changing states  of the parkmanagerservice actor.
 Since the requirements are linked together, they will be tested following a specific order:
 <ol>
 <li>NotifyIn</li>
 <li>CarEnter</li>
 <li>Pickup.</li>
 </ol>
-<h3>SPRINT REVIEW</h3> <ks>da sistemare dopo l'incontro con il professore???????</ks>
-	The analysis was produced some aspects that will be considerend in the next SPRINT. <br>
-	The ParkManagerService should manage the requestes from the client and forward the command to the transport trolley. For example:<br><br>
-		<li> the management of the weightsensor and the outsonar will be usefull to the client competition management.</li>
+
+	<br><br> The code is the following file:  <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint2/testing/Testing.kt"target="web">Testing.kt</a></p>
+
+	
+<h3>SPRINT REVIEW</h3> 
+
+
 
 <!-- USEFUL
 <table style="width:100%" border="1">
