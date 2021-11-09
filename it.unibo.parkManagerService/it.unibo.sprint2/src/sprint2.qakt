@@ -8,7 +8,7 @@ Dispatch trolleyEnd : end(V)
 Dispatch basicEnd       	: end(ARG)   
    
 Dispatch moveok	: move( MOVESHORT )
-Request step	: step( TIME )	 
+Request step	: step( TIME )	  
 Reply   stepdone	: stepdone(V)  
 Reply   stepfail	: stepfail(DURATION, CAUSE)
   
@@ -369,7 +369,9 @@ QActor parkmanagerservice context ctxparkingarea {
 					whenRequest pickup -> acceptOut
 					whenRequest carenter -> handleCarenter	
 	State acceptIn{
+		
 		println("parkManagerService | acceptIn")
+		printCurrentMessage
 		onMsg(notifyIn: notifyIn(N)){
 			if	[# INFREE ==1 && stateTrolley ==1#]{
 					[# SLOTNUM = Slotnum.getSlotnum() #]
@@ -385,7 +387,9 @@ QActor parkmanagerservice context ctxparkingarea {
 				 	whenRequest pickup -> acceptOut
 					whenRequest notifyIn -> acceptIn
 	State handleCarenter{
+		
 		println("parkManagerService | caraenter")
+		printCurrentMessage
 		onMsg(carenter : carenter(S)){
 			[#  INFREE=0 
 				SLOTNUM= payloadArg(0).toInt()
@@ -420,6 +424,7 @@ QActor parkmanagerservice context ctxparkingarea {
 	
 	State acceptOut{
 		println("parkManagerService | acceptOut ")
+		printCurrentMessage
 		if[#OUTFREE == 1 && stateTrolley == 1#]{ 
 			onMsg(pickup : pickup(TOKENID)){ 
 				
@@ -509,6 +514,8 @@ QActor parkingservicegui context ctxparkingarea {
 		
 		}
 }
+
+
 /*Test with two client
 QActor parkingservicegui1 context ctxparkingarea {
 

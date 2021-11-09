@@ -40,6 +40,8 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				state("acceptIn") { //this:State
 					action { //it:State
 						println("parkManagerService | acceptIn")
+						updateResourceRep( "parkmanagerservice(acceptIn)"  
+						)
 						if( checkMsgContent( Term.createTerm("notifyIn(N)"), Term.createTerm("notifyIn(N)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								if(  INFREE ==1 && stateTrolley ==1 
@@ -58,6 +60,8 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				}	 
 				state("handleCarenter") { //this:State
 					action { //it:State
+						updateResourceRep( "parkmanagerservice(handleCarEnter)"  
+						)
 						println("parkManagerService | caraenter")
 						if( checkMsgContent( Term.createTerm("carenter(C)"), Term.createTerm("carenter(S)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
@@ -83,10 +87,14 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 								 }
 						}
 					}
-					 transition( edgeName="goto",targetState="working", cond=doswitch() )
+					 transition(edgeName="t015",targetState="handleCarenter",cond=whenRequest("carenter"))
+					transition(edgeName="t016",targetState="acceptOut",cond=whenRequest("pickup"))
+					transition(edgeName="t017",targetState="acceptIn",cond=whenRequest("notifyIn"))
 				}	 
 				state("acceptOut") { //this:State
 					action { //it:State
+						updateResourceRep( "parkmanagerservice(acceptOut)"  
+						)
 						println("parkManagerService | acceptOut ")
 						if( OUTFREE == 1 && stateTrolley == 1 
 						 ){if( checkMsgContent( Term.createTerm("pickup(TOKENID)"), Term.createTerm("pickup(TOKENID)"), 

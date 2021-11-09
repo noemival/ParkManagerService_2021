@@ -24,6 +24,8 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 		  var home = 0
 		  var counter = 0
 		  var trolleyCmd = ""
+		  var listCommand = arrayListOf<String>()
+		  
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
@@ -79,15 +81,21 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				state("finishPlannedMoves") { //this:State
 					action { //it:State
 						println("trolley | finishPlannedMoves")
-						if(home == 1 ){
-						 			var direction= TrolleyPlannerSupport.atHome()
-									if(direction == "leftDir"){
-										forward("cmd", "cmd(l)" ,"basicrobot" )
-									}else{
-										forward("cmd", "cmd(l)" ,"basicrobot" )
-										forward("cmd", "cmd(l)" ,"basicrobot" )
+						if(home == 1 || terminate == 1){
+						 		
+						 			listCommand =  TrolleyPlannerSupport.atHome()
+									for (command in listCommand) {   
+						   				forward("cmd", "cmd(${command})" ,"basicrobot" )
 									}
-								}  
+								}else{ 
+									listCommand =  TrolleyPlannerSupport.loadUnloadCar()
+									for (command in listCommand) {
+						   				forward("cmd", "cmd(${command})" ,"basicrobot" )
+									}
+										delay(1000)//we want to simulate load/unload the car
+								} 
+						updateResourceRep(TrolleyPlannerSupport.getPosition() 
+						)
 					}
 					 transition( edgeName="goto",targetState="endWork", cond=doswitchGuarded({ terminate == 1   
 					}) )
@@ -97,14 +105,6 @@ class Trolley ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, sc
 				state("endWork") { //this:State
 					action { //it:State
 						println("trolley |  endWork")
-						var direction= TrolleyPlannerSupport.atHome()
-								
-								if(direction == "leftDir"){
-									forward("cmd", "cmd(l)" ,"basicrobot" )
-								}else{ 
-									forward("cmd", "cmd(l)" ,"basicrobot" )
-									forward("cmd", "cmd(l)" ,"basicrobot" )
-								}  
 						forward("end", "end(V)" ,"basicrobot" ) 
 					}
 				}	 

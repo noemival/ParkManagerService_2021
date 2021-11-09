@@ -7,4 +7,3 @@ context(ctxparkingarea, "localhost",  "TCP", "8021").
   qactor( basicrobot, ctxparkingarea, "it.unibo.basicrobot.Basicrobot").
   qactor( trolley, ctxparkingarea, "it.unibo.trolley.Trolley").
   qactor( parkmanagerservice, ctxparkingarea, "it.unibo.parkmanagerservice.Parkmanagerservice").
-  qactor( parkingservicegui, ctxparkingarea, "it.unibo.parkingservicegui.Parkingservicegui").

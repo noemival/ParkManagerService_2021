@@ -75,7 +75,7 @@ class Basicrobot ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 					 transition(edgeName="t10",targetState="exec",cond=whenDispatch("cmd"))
 					transition(edgeName="t11",targetState="doStep",cond=whenRequest("step"))
 					transition(edgeName="t12",targetState="handleObstacle",cond=whenDispatch("obstacle"))
-					transition(edgeName="t13",targetState="endwork",cond=whenDispatch("basicEnd"))
+					transition(edgeName="t13",targetState="endwork",cond=whenDispatch("end"))
 				}	 
 				state("exec") { //this:State
 					action { //it:State

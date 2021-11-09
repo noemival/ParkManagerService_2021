@@ -8,17 +8,35 @@ object TrolleyPlannerSupport{
 	fun setGoal( goal : String ){
 		  
 		when(goal){
+		
 			"moveToIn" ->  {	itunibo.planner.plannerUtil.planForGoal("6","0")
 								moveToIn = true
 							}
-			"moveToSlotIn" -> {
+			"moveToSlot1" -> {
 								itunibo.planner.plannerUtil.planForGoal("4","1")
+								slotColumn = 4
+								}
+			"moveToSlot2" -> {
+								itunibo.planner.plannerUtil.planForGoal("1","1")
 								slotColumn = 1
 								}
-			"moveToSlotOut" -> {  
+			"moveToSlot3" -> {
 								itunibo.planner.plannerUtil.planForGoal("4","2")
 								slotColumn = 4
 								}
+			"moveToSlot4" -> {
+								itunibo.planner.plannerUtil.planForGoal("1","2")
+								slotColumn = 1
+							}
+			"moveToSlot5" -> {
+								itunibo.planner.plannerUtil.planForGoal("4","3")
+								slotColumn = 4
+								}
+			"moveToSlot6" -> {
+								itunibo.planner.plannerUtil.planForGoal("1","3")
+								slotColumn = 1
+								}
+	
 			"moveToOut"  -> {   itunibo.planner.plannerUtil.planForGoal("6","4")
 								moveToOut = true
 							}	
