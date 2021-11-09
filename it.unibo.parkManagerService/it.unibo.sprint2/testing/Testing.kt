@@ -106,6 +106,7 @@ class Testing {
 	         slotnum= answer
 			 checkState("parkmanagerservice(acceptIn)")
 		}catch(ex: Exception){
+			fail()
 			println(""+ex)
 		}
        
@@ -126,6 +127,7 @@ class Testing {
 	         tokenId= answer
 			 checkState("parkmanagerservice(handleCarEnter)")
 		}catch(ex: Exception){
+			fail()
 			println(""+ex)
 		}
        
@@ -147,6 +149,7 @@ class Testing {
 	         tokenId= answer
 			 checkState("parkmanagerservice(acceptOut)")
 		}catch(ex: Exception){
+			fail()
 			println(""+ex)
 		}
        
