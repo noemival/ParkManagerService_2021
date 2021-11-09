@@ -1,7 +1,7 @@
 package it.unibo.webApplicationPms
 
 
-import it.unibo.kactor.MsgUtil
+import it.unibo.kactor.*
 import it.unibo.webApplicationPms.connQak.*
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @kotlinx.coroutines.ObsoleteCoroutinesApi
 
-@Controller
+//@Controller
 class ControllerPms( private val emailServiceImp: EmailServiceImp
 ) {
     var parkManagerServiceObserver: CoapObserver? = null

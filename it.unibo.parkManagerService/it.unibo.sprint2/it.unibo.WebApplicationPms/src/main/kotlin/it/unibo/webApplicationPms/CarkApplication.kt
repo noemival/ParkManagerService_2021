@@ -1,7 +1,7 @@
 package it.unibo.webApplicationPms
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
 
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication()

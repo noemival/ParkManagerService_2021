@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 /* For launching test comment annotation @Controller in ControllerPms
 and decomment annotation @Controller in Controller in ControllerPmsTester */
 @kotlinx.coroutines.ObsoleteCoroutinesApi
-//@Controller
+@RestController
 class ControllerPmsTest (private val emailServiceImp: EmailServiceImp){
 
     lateinit var connToPms: connQakBase

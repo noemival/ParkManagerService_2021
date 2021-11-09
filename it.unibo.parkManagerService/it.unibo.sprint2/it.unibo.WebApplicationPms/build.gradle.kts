@@ -33,7 +33,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
    // implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	//implementation("org.springframework.boot:spring-boot-starter-security")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -94,19 +94,19 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "11"
 	}
 }
-application {
+/*application {
 	// Define the main class for the application.
-	mainClass.set("it.unibo.webApplicationPms.CarlApplication")
-}
+	mainClass.set("it.unibo.webApplicationPms.CarKApplication")
+}*/
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
 version = "1.0.1"
 
-tasks.jar {
+/*tasks.jar {
 	manifest {
 		attributes["Main-Class"] = "it.unibo.webApplicationPms.CarkApplication"
 		attributes(mapOf("Implementation-Title" to project.name,
 			"Implementation-Version" to project.version))
-	}
-}
+	}*/
+//}
