@@ -36,6 +36,8 @@ import org.apache.http.impl.nio.client.HttpAsyncClientBuilder
 import java.util.concurrent.Future
 import org.apache.http.client.utils.URIBuilder
 import org.apache.http.client.methods.HttpRequestBase
+
+//this testing file will use the ControllerPMSTester and it must comment @Controller annotation in the ControllerPms
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class Testing {
 	companion object{
