@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @kotlinx.coroutines.ObsoleteCoroutinesApi
 
-//@Controller
+@Controller
 class ControllerPms( private val emailServiceImp: EmailServiceImp
 ) {
     var parkManagerServiceObserver: CoapObserver? = null
