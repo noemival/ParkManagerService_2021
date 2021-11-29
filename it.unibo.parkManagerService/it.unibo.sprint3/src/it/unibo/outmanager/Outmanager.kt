@@ -18,44 +18,40 @@ class Outmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 	override fun getBody() : (ActorBasicFsm.() -> Unit){
 			var start =  0L
 				var difference = 0L
-			
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
 						println("outmanager | start")
 					}
-					 transition(edgeName="t018",targetState="start",cond=whenEvent("outsonar"))
+					 transition(edgeName="t01",targetState="start",cond=whenEvent("outsonar"))
 				}	 
 				state("start") { //this:State
 					action { //it:State
 						 start = System.currentTimeMillis() 
 						println("outmanager [start] | start Timer ) ")
+						forward("outfree", "outfree(occ)" ,"parkmanagerservice" ) 
 					}
 					 transition( edgeName="goto",targetState="work", cond=doswitch() )
 				}	 
 				state("work") { //this:State
 					action { //it:State
 						difference = System.currentTimeMillis() - start 
-						println("outmanager [work] |  difference = $difference")
-						if( difference >= 1000L 
+						if( difference >= 10000L 
 						 ){println("outmanager [work]  | alarm event, time passed = $difference")
 						emit("alarm", "alarm(a)" ) 
 						}
-						else
-						 {forward("outfree", "outfree(occ)" ,"parkmanagerservice" ) 
-						 println("outmanager [work]  | no alarm event ")
-						 }
 						stateTimer = TimerActor("timer_work", 
 							scope, context!!, "local_tout_outmanager_work", 300.toLong() )
 					}
-					 transition(edgeName="t019",targetState="work",cond=whenTimeout("local_tout_outmanager_work"))   
-					transition(edgeName="t020",targetState="free",cond=whenDispatch("takecar"))
+					 transition(edgeName="t02",targetState="work",cond=whenTimeout("local_tout_outmanager_work"))   
+					transition(edgeName="t03",targetState="free",cond=whenEvent("takecar"))
 				}	 
 				state("free") { //this:State
 					action { //it:State
 						forward("outfree", "outfree(free)" ,"parkmanagerservice" ) 
 						println("outmanager[free] | OUTDOORAREA FREE")
 					}
+					 transition(edgeName="t04",targetState="start",cond=whenEvent("outsonar"))
 				}	 
 			}
 		}

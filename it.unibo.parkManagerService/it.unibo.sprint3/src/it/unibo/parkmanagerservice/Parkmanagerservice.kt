@@ -34,13 +34,13 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 						println("parkmanagerservice  | working")
 						println("parkmanagerservice [working] | OUTFREE =  $OUTFREE")
 					}
-					 transition(edgeName="t04",targetState="acceptIn",cond=whenRequest("notifyIn"))
-					transition(edgeName="t05",targetState="acceptOut",cond=whenRequest("pickup"))
-					transition(edgeName="t06",targetState="carenter",cond=whenRequest("carenter"))
-					transition(edgeName="t07",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
-					transition(edgeName="t08",targetState="handlemsgOut",cond=whenDispatch("outfree"))
-					transition(edgeName="t09",targetState="theend",cond=whenDispatch("end"))
-					transition(edgeName="t010",targetState="handlealarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t06",targetState="acceptIn",cond=whenRequest("notifyIn"))
+					transition(edgeName="t07",targetState="acceptOut",cond=whenRequest("pickup"))
+					transition(edgeName="t08",targetState="carenter",cond=whenRequest("carenter"))
+					transition(edgeName="t09",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
+					transition(edgeName="t010",targetState="handlemsgOut",cond=whenDispatch("outfree"))
+					transition(edgeName="t011",targetState="theend",cond=whenDispatch("end"))
+					transition(edgeName="t012",targetState="handlealarm",cond=whenEvent("alarm"))
 				}	 
 				state("handlealarm") { //this:State
 					action { //it:State
@@ -52,6 +52,7 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				}	 
 				state("handlemsgIn") { //this:State
 					action { //it:State
+						println("$name in ${currentState.stateName} | $currentMsg")
 						if( checkMsgContent( Term.createTerm("weightsensor(W)"), Term.createTerm("weightsensor(W)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 var W = payloadArg(0).toInt()  
@@ -99,13 +100,13 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 								 }
 						}
 					}
-					 transition(edgeName="t011",targetState="carenter",cond=whenRequest("carenter"))
-					transition(edgeName="t012",targetState="acceptOut",cond=whenRequest("pickup"))
-					transition(edgeName="t013",targetState="acceptIn",cond=whenRequest("notifyIn"))
-					transition(edgeName="t014",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
-					transition(edgeName="t015",targetState="handlemsgOut",cond=whenDispatch("outfree"))
-					transition(edgeName="t016",targetState="theend",cond=whenDispatch("end"))
-					transition(edgeName="t017",targetState="handlealarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t013",targetState="carenter",cond=whenRequest("carenter"))
+					transition(edgeName="t014",targetState="acceptOut",cond=whenRequest("pickup"))
+					transition(edgeName="t015",targetState="acceptIn",cond=whenRequest("notifyIn"))
+					transition(edgeName="t016",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
+					transition(edgeName="t017",targetState="handlemsgOut",cond=whenDispatch("outfree"))
+					transition(edgeName="t018",targetState="theend",cond=whenDispatch("end"))
+					transition(edgeName="t019",targetState="handlealarm",cond=whenEvent("alarm"))
 				}	 
 				state("carenter") { //this:State
 					action { //it:State
@@ -113,7 +114,7 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 						if( checkMsgContent( Term.createTerm("carenter(C)"), Term.createTerm("carenter(S)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 SLOTNUM= payloadArg(0).toInt()  
-								if(  SLOTNUM!= 0 && INFREE == 1 
+								if(  SLOTNUM!= 0   
 								 ){forward("trolleycmd", "trolleycmd(moveToIn)" ,"trolley" ) 
 								 var MOVETOSLOT = "moveToSlot".plus(SLOTNUM)  
 								println("parkManagerService [carenter] | send to trolley $MOVETOSLOT")

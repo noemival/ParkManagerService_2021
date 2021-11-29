@@ -19,26 +19,24 @@ class Weightsensor ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( nam
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
+						discardMessages = true
 						println("weightsensor | start")
 					}
-					 transition( edgeName="goto",targetState="work", cond=doswitch() )
+					 transition(edgeName="t05",targetState="work",cond=whenDispatch("weight"))
 				}	 
 				state("work") { //this:State
 					action { //it:State
-						
-									var WEIGHT=0//eragisco con utente per simulare il valore W del peso
-									
-						println("weightsensor | working")
+						delay(1000) 
+						 var WEIGHT=100  
+						println("weightsensor | work")
 						if( checkMsgContent( Term.createTerm("weight(W)"), Term.createTerm("weight(W)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 WEIGHT = payloadArg(0).toInt()  
-								println("weightsensor [working] | weight car: $WEIGHT")
+								println("weightsensor [work] | weight car: $WEIGHT")
 								emit("weightsensor", "weightsensor($WEIGHT)" ) 
-								println("weightsensor [working] | emit event")
-								delay(3000) 
+								println("weightsensor [work] | emit event")
 						}
 					}
-					 transition(edgeName="t03",targetState="work",cond=whenDispatch("weight"))
 				}	 
 			}
 		}

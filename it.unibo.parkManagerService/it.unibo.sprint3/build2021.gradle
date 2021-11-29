@@ -103,7 +103,7 @@ sourceSets {
     test.java.srcDirs += 'test.kt'		//test.kt is specific
 }
 /*
-mainClassName = 'it.unibo.TODOKt'
+mainClassName = 'it.unibo.ctxparkingarea.MainCtxparkingareaKt'
 
 jar {
     println("executing jar")
@@ -111,5 +111,4 @@ jar {
     manifest {
         attributes 'Main-Class': "$mainClassName"
     }
-}
-*/
+}*/

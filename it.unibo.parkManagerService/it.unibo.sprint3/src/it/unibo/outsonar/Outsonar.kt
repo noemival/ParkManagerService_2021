@@ -19,23 +19,35 @@ class Outsonar ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, s
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
+						discardMessages = true
 						println("outsonar | start")
 					}
 					 transition( edgeName="goto",targetState="work", cond=doswitch() )
 				}	 
 				state("work") { //this:State
 					action { //it:State
+						println("outsonar | work")
 					}
-					 transition(edgeName="t00",targetState="handlemsg",cond=whenDispatch("outsonarocc"))
+					 transition(edgeName="t00",targetState="handlemsg",cond=whenDispatch("sonar"))
 				}	 
 				state("handlemsg") { //this:State
 					action { //it:State
-						emit("outsonar", "outsonar(O)" ) 
-						stateTimer = TimerActor("timer_handlemsg", 
-							scope, context!!, "local_tout_outsonar_handlemsg", 100.toLong() )
+						println("$name in ${currentState.stateName} | $currentMsg")
+									
+									var DIST=0
+						println("outsonar | handlemsg")
+						if( checkMsgContent( Term.createTerm("sonar(G)"), Term.createTerm("sonar(O)"), 
+						                        currentMsg.msgContent()) ) { //set msgArgList
+								 DIST = payloadArg(0).toInt()  
+								if( DIST<20  
+								 ){emit("outsonar", "outsonar(O)" ) 
+								}
+								else
+								 {emit("takecar", "takecar(P)" ) 
+								 }
+						}
 					}
-					 transition(edgeName="t01",targetState="handlemsg",cond=whenTimeout("local_tout_outsonar_handlemsg"))   
-					transition(edgeName="t02",targetState="work",cond=whenDispatch("takecar"))
+					 transition( edgeName="goto",targetState="work", cond=doswitch() )
 				}	 
 			}
 		}

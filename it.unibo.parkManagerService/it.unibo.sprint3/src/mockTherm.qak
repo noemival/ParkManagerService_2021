@@ -1,0 +1,35 @@
+System /* -trace */ mockterm  
+mqttBroker "broker.hivemq.com" : 1883 eventTopic "thermometer/data"		//broker.hivemq.com
+
+Event temp : temp(V)
+
+Context ctxthermometer ip [ host= "localhost"   port= 8023 ]
+
+QActor mockthermometer context  ctxthermometer{
+	[# 
+		var V=0
+		# 
+	]
+	
+	
+	State s0 initial{   
+		println("mocktehermometer | start") 
+	}
+	Goto work
+	 
+	State work{ 
+		[#  
+			
+			     
+		 V= Random.nextInt(0, 50)
+			 
+			#
+		]
+		emit temp : temp($V)
+		println("mockthermometer | temp : $V ") 
+		
+		
+	}
+	Transition t0 whenTime   7000   -> work
+	                
+}
