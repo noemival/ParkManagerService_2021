@@ -48,8 +48,8 @@ Event temperature: temperature(T)
  
 Context ctxparkingarea ip [host="localhost" port=8021]  
 
-//CodedQActor datacleaner    context ctxparkingarea className "rx.dataCleaner"  //NOT used with the virtualrobot
-//CodedQActor distancefilter context ctxparkingarea className "rx.distanceFilter"
+CodedQActor datacleaner    context ctxparkingarea className "rx.dataCleaner"  //NOT used with the virtualrobot
+CodedQActor distancefilter context ctxparkingarea className "rx.distanceFilter"
 
 QActor outsonar context ctxparkingarea{
 	
@@ -370,7 +370,7 @@ QActor trolley context ctxparkingarea{
 	Goto doMove if [# CurrentPlannedMove.length>0  #] else finishPlannedMoves 
 	
 	State doMove{ 		
-		//forward basicrobot -m cmd : cmd($CurrentPlannedMove)
+		forward basicrobot -m cmd : cmd($CurrentPlannedMove)
   	} 
   
 	Transition t1   whenTime 100 -> execPlannedMoves
@@ -400,10 +400,10 @@ QActor trolley context ctxparkingarea{
 	  
 	State endWork{
 		println("trolley |  endWork")
-	//	forward basicrobot -m end : end(V)         
+		forward basicrobot -m end : end(V)         
 	}					
 }
-/*
+
 QActor basicrobot context ctxparkingarea{
 	[#
 	  var StepTime      = 0L 
@@ -445,11 +445,11 @@ QActor basicrobot context ctxparkingarea{
 	 				//ACTIVATE THE DATA SOURCE realsonar
 	 				forward("sonarstart", "sonarstart(1)" ,"robotsonar" ) 				
 	 				//WE DO NOT SET THE PIPE, since we don't have sonar data  to clean
-	 				/* 
+	 				/*
 	 				robotsonar.
 	 				subscribeLocalActor("datacleaner").
 	 				subscribeLocalActor("distancefilter").
-	 				subscribeLocalActor("basicrobot")		
+	 				subscribeLocalActor("basicrobot")	*/	
 	 			}else{
 	 				println("basicrobot | WARNING: robotsonar NOT FOUND")
 	 			}
@@ -512,8 +512,8 @@ QActor basicrobot context ctxparkingarea{
 			//delay 300
 			
 		//println("COMPENSATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-		//*run unibo.robot.robotSupport.move( "s" ) 
-		/*delay 100 //loose the control ...
+		run unibo.robot.robotSupport.move( "s" ) 
+		delay 100 //loose the control ...
 		run unibo.robot.robotSupport.move( "h" ) 
 		
 			//delay 1000	//give time
@@ -581,7 +581,7 @@ QActor basicrobot context ctxparkingarea{
  		terminate 1
 	}      
  }
-*/
+
 QActor fan context ctxparkingarea{    
 	State s0 initial {  		
 						println("fan | start")
