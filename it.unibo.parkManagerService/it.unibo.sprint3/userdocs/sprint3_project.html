@@ -320,7 +320,7 @@ Our interaction with the customer has made it clear what he means for:
 
 	<h3>Components</h3>
 
-		<h4>Weightsensor</h4>
+		<h4 id="weightsensor">Weightsensor</h4>
 			
 			<table>
 					<tbody>
@@ -345,14 +345,14 @@ Our interaction with the customer has made it clear what he means for:
 <td style="width:50%" ><h3>Sonar as event emitter</h3>
 
 	For the real world, the  model of the <ks>sonar</ks> could be defined as a qak
-<a href="../../it.unibo.rasp2021/codedqak/sonarHCSR04Support2021.kt" target="code">sonarHCSR04Support2021.kt</a>
-that embeds <a href="../../it.unibo.rasp2021/resources/rasp/sonar/SonarAlone.c" target="code">SonarAlone.c</a> ,
+<a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.rasp2021/codedqak/sonarHCSR04Support2021.kt" target="code">sonarHCSR04Support2021.kt</a>
+that embeds <a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.rasp2021/resources/rasp/sonar/SonarAlone.c" target="code">SonarAlone.c</a> ,
 <br/> <br/> 
 <center><img src="./img/sonarSupport2021.PNG" alt="sonarSupport2021" width="50%" ></center>
 <br/> 
 This component is written in Kotlin and emits events. <br/><br/>
 As an extensionons of the qak basic class
-<a href="../../it.unibo.qakactor/src/main/kotlin/ActorBasic.kt" target="code">ActorBasic.kt</a>.
+<a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.qakactor/src/main/kotlin/ActorBasic.kt" target="code">ActorBasic.kt</a>.
 
 <div class="remark">
 When using a real sonar, several 'bad' things can happen, including the possibility to generate spurios values.
@@ -406,7 +406,7 @@ A simulator that emits the <ks>sonar:distance(D)</ks> event is defined in
 					</tbody>
 				</table> 
 
-				<h4>Fan</h4>
+				<h4 id="fan">Fan</h4>
 			<table>
 					<tbody>
 						<tr>
@@ -424,7 +424,7 @@ A simulator that emits the <ks>sonar:distance(D)</ks> event is defined in
 					</tbody>
 				</table> 
 				
-		<h4>Thermometer</h4>
+		<h4 id="thermometer">Thermometer</h4>
 			<br>
 			<table>
 					<tbody>
@@ -620,7 +620,7 @@ QActor parkmanagerservice context ctxparkingarea {
 
 <br>
 <div class="remark">
-The executable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/src/sprint3.qak"target="web">sprint3.qak</a>						
+The executable model is the following file: <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/src/sprint3.qakt"target="web">sprint3.qak</a>						
 </div>	
 
 <h3>SPRINT REVIEW</h3>
@@ -657,7 +657,7 @@ The executable model is the following file: <a href="https://raw.githubuserconte
 							<td>
 								<li>The ControllerSonar is a controller used to manage the information sending by the real sonar device to our application. </li>
 								<li>The sonardata source will be
- 								<a href="../../it.unibo.rasp2021/codedqak/sonarHCSR04Support2021.kt" target="code">sonarHCSR04Support2021.kt</a>, the ControllerSensor will recive the data and will forward the informations to our  <a href="#outsonar">outsonar</a> that represent 
+ 								<a href="https://raw.githubusercontent.com/anatali/issLab2021/main/it.unibo.rasp2021/codedqak/sonarHCSR04Support2021.kt" target="code">sonarHCSR04Support2021.kt</a>, the ControllerSensor will recive the data and will forward the informations to our  <a href="#outsonar">outsonar</a> that represent 
 								 our domain-core in the project phase and resource. </li>
 								 <li>The ControllerSonar receives the sonardata using MQTT because this protocol is able to realize the event based comunication thanks to the characteristic of decoupling sender and receiver. </li>
 <pre>
@@ -723,7 +723,7 @@ class ControllerWeighSensor {
 				<tbody>	
 						<tr>
 							<td>
-								<li>The ControllerThermometer is a controller used to manage the information sending by the <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint2/it.unibo.WebApplicationPms"target="web">mokther.qak</a> which simulate the variation of the temperature in the parkingarea. </li>
+								<li>The ControllerThermometer is a controller used to manage the information sending by the <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/src/mockTherm.qak"target="web">moktherm.qak</a> which simulate the variation of the temperature in the parkingarea. </li>
 								<li>The ControllerThermometer will recive the data and will forward the informations to our  <a href="#thermometer">thermometer</a> that represent our domain-core in the project phase and resource. </li>
 								 <li>The ControllerThermometer receives the thermometer-data using MQTT because this protocol is able to realize the event based comunication thanks to the characteristic of decoupling sender and receiver. </li>
 
@@ -803,8 +803,8 @@ class FanController {
 The project is located in the repository: <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService</a></p>
 Before activate the sensor launch:
 <ol>
-	<li>sprint3_project.qak <ks>insert directory!!!!</ks></li>
-	<li>CarkApplication situated in... <ks>insert directory!!!!</ks> </li>
+	<li><a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/src/sprint3_project.qak"target="web">sprint3_project.qak</a> situated in the directory <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint3"target="web">it.unibo.sprint3</a> </li>
+	<li>CarkApplication <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/CarkApplication.kt"target="web">CarkApplication.kt</a> situated in the directory <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms"target="web">it.unibo.webApplicationPms</a></li>
 </ol>
 
 <h3>OutSonar Configuration <em>UseMQTT</em></h3>
@@ -812,10 +812,10 @@ Before activate the sensor launch:
 
 <tr>
 <td style="width:50%">
-<center><img src="./img/sonarpipeDistribonRasp.png" alt="sonarpipeDistribonRasp" width="90%" ></center>
+<center><img src="./img/sonarpipeDistrib.png" alt="sonarpipeDistribonRasp" width="90%" ></center>
  
 
-Execute<ks> bash it.unibo.sonarRaspberry</ks> on RaspberryPi. The file is located in directory <ks>insert directory!!!!</ks> 
+Execute<ks> bash it.unibo.sonarRaspberry</ks> on RaspberryPi. The file is located in directory <ks>insert directory!!!! NON SO QUALE SIA <3 (69)</ks> 
  
 </td>
 <td>
@@ -840,9 +840,9 @@ msglogging.</m></pre>
 
 <tr>
 <td style="width:50%">
-<center><img src="./img/sonarpipeDistribonRasp.png" alt="sonarpipeDistribonRasp" width="90%" ></center>
+<center><img src="./img/sonarpipeDistrib.png" alt="sonarpipeDistribonRasp" width="90%" ></center>
  
-Launch mockTherm.qak <ks>insert directory!!!!</ks>  on Pc.
+Launch <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/it.unibo.sprint3/src/mockTherm.qak"target="web">moktherm.qak</a>  on Pc.
  
 </td>
 <td>
@@ -861,12 +861,12 @@ context(ctxthermometer, "localhost",  "TCP", "8023").
 </table>
 <h3>WeightSensorGui <em>UseMQTT</em></h3>
 <table style="width:100%" border="1">
-Launch WeightSensorGui <ks>insert directory!!!!</ks></li>  on Pc
+Launch the   <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021//main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/sensorMockGui/WeightSensorGui.kt"target="web">WeightSensorGui.kt</a> situated in the directory <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/sensorMockGui"target="web">it.unibo.sensorMockGui</a> on Pc
 </table>
 
 <h3>FanGui<em>ResourceAware</em></h3>
 <table style="width:100%" border="1">
-Launch FanGui <ks>insert directory!!!!</ks></li>  on Pc
+Launch the Launch the   <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021//main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/sensorMockGui/Fangui.kt" target="web">Fangui.kt </a> situated in the directory <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService/it.unibo.sprint3/it.unibo.WebApplicationPms/src/main/kotlin/it/unibo/webApplicationPms/sensorMockGui"target="web">it.unibo.sensorMockGui</a> on Pc
 </table>
 
 
