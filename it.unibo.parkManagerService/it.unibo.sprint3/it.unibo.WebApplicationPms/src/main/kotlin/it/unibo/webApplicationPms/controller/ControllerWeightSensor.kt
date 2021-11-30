@@ -20,7 +20,7 @@ class ControllerWeightSensor {
     @MqttSubscribe(topic = "weightsensor/data" , qos = AT_LEAST_ONCE)
     fun subscribe ( payload:String) {
         println( "weight = "+payload )
-        appConnection.sendForward("weightsensor","weight(${payload})", "weightsensor")
+        appConnection.sendForward("weight","weight(${payload})", "weightsensor")
         stateButtonCarEnter = "Enabled"
     }
     @ResponseBody
