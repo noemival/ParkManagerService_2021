@@ -1,6 +1,7 @@
 package it.unibo.webApplicationPms.controller
 
 
+import it.unibo.kactor.ApplMessage
 import it.unibo.kactor.MsgUtil
 import it.unibo.webApplicationPms.utility.Button
 import it.unibo.webApplicationPms.connQak.*
@@ -8,13 +9,14 @@ import it.unibo.webApplicationPms.email.EmailServiceImp
 import it.unibo.webApplicationPms.utility.Slotnum
 import it.unibo.webApplicationPms.utility.Tokenid
 import it.unibo.webApplicationPms.utility.User
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 
 /* For launching test comment annotation @Controller in ControllerPms
 and decomment annotation @Controller in Controller in ControllerPmsTester */
 @kotlinx.coroutines.ObsoleteCoroutinesApi
-//@Controller
+@Controller
 class ControllerPmsTest (private val emailServiceImp: EmailServiceImp){
 
     lateinit var connToPms: connQakBase
@@ -26,27 +28,40 @@ class ControllerPmsTest (private val emailServiceImp: EmailServiceImp){
     @RequestMapping("/carenter", method = arrayOf(RequestMethod.GET))
     fun carEnter(button: Button, slotnum: Slotnum): String {
         var slot = getSlotNum()
-        if (!slot.equals("0")) {
-            button.enterdisabled = true
-            slotnum.slotnum = slot.toInt()
-            println(slotnum.slotnum)
-        } else {
+
+        if (slot.equals("0")) {
             button.enterdisabled = false
+
+        } else {
+            if(slot.equals("9")){
+                return "error.html"
+            }else{
+                button.enterdisabled = true
+                slotnum.slotnum = slot.toInt()
+                println(slotnum.slotnum)
+            }
+
         }
         return slotnum.slotnum.toString()
     }
 
     @ResponseBody
     @RequestMapping("/tokenid", method = arrayOf(RequestMethod.POST))
-    fun getTokenId(@RequestParam slotnum : Int, email: User): String {
+    fun getTokenId(@RequestParam slotnum : Int): String {
         var ans = ""
         println(slotnum)
 
         var tokenid : Tokenid = Tokenid()
         if (slotnum != 0) {
             ans = appConnection.sendRequest("carenter","carenter($slotnum)","parkmanagerservice")
-            tokenid.tokenid = ans.substring(69, 83)
-            tokenArray.set(slotnum, tokenid.tokenid)
+            var token = ApplMessage(ans)
+
+            var input = token.msgContent()//ans.substring(69, 83)
+            tokenid.tokenid=  input.drop(8)
+            tokenid.tokenid=   tokenid.tokenid.replace(")","")
+
+            tokenArray.set(slotnum.toInt(), tokenid.tokenid)
+            //emailServiceImp.sendEmail(email.email, tokenid.tokenid)
         }
       //  emailServiceImp.sendEmail(email.email,tokenid.tokenid)
         println(tokenid.tokenid)

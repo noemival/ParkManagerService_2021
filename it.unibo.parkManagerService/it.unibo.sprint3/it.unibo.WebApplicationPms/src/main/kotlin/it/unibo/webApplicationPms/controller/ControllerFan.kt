@@ -13,12 +13,18 @@ import org.springframework.web.util.HtmlUtils
 class ControllerFan {
 
     var coap    = CoapSupport("coap://localhost:8021", "ctxparkingarea/fan")
+
     init{
           sysUtil.colorPrint(" | INIT", Color.GREEN)
-          coap.observeResource( FanCoapHandler(this) )
+            try {
+                coap.observeResource( FanCoapHandler(this) )
+            }catch(e:Exception){
+                sysUtil.colorPrint("FanCoapHandler | ERROR=coapConnection", Color.RED)
+            }
+
       }
 
-      @ResponseBody
+     @ResponseBody
       @PostMapping("/fandata")
       fun  handleSonarValue(@RequestParam(name="info", required=false, defaultValue="0")v : String){
           coap.updateResourceWithValue(v)

@@ -2,6 +2,8 @@ package it.unibo.webApplicationPms
 
 
 
+import it.unibo.kactor.ApplMessage
+import it.unibo.robotService.ApplMsgs
 import it.unibo.webApplicationPms.connQak.*
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -14,7 +16,7 @@ import it.unibo.webApplicationPms.utility.Tokenid
 import it.unibo.webApplicationPms.utility.User
 @kotlinx.coroutines.ObsoleteCoroutinesApi
 
-@Controller
+//@Controller
 class ControllerPms( private val emailServiceImp: EmailServiceImp) {
     var parkManagerServiceObserver: CoapObserver? = null
     lateinit var coapsupport: CoapSupport
@@ -33,13 +35,16 @@ class ControllerPms( private val emailServiceImp: EmailServiceImp) {
     @RequestMapping("/carenter", method = arrayOf(RequestMethod.GET))
     fun carEnter(button: Button, slotnum: Slotnum): String {
         var slot = getSlotNum()
-        if (!slot.equals("0")) {
+        println(slot)
+
+        if (!slot.equals("0") && !slot.equals("9")) {
             button.enterdisabled = true
             slotnum.slotnum = slot.toInt()
             println(slotnum.slotnum)
         } else {
             button.enterdisabled = false
         }
+
         return "carenter.html"
     }
     @RequestMapping("/notify",method = arrayOf(RequestMethod.GET))
@@ -53,14 +58,21 @@ class ControllerPms( private val emailServiceImp: EmailServiceImp) {
 
         var tokenid : Tokenid = Tokenid()
         if (slotnum.toInt() != 0) {
-            ans = appConnection.sendRequest("carenter","carenter($slotnum)","parkmanagerservice")
+            ans = appConnection.sendRequest("carenter", "carenter($slotnum)", "parkmanagerservice")
 
-            tokenid.tokenid = ans.substring(69, 83)
+            var token = ApplMessage(ans)
+
+            var input = token.msgContent()//ans.substring(69, 83)
+            tokenid.tokenid=  input.drop(8)
+            tokenid.tokenid=   tokenid.tokenid.replace(")","")
+
             tokenArray.set(slotnum.toInt(), tokenid.tokenid)
-            emailServiceImp.sendEmail(email.email,tokenid.tokenid)
-        }
-        else{
-            return "error.html"
+            if (tokenid.tokenid.equals("8") || tokenid.tokenid.equals("9")  ) {
+                return "error.html"
+        }else {
+                emailServiceImp.sendEmail(email.email, tokenid.tokenid)
+            }
+
         }
         return "thanks.html"
     }
@@ -102,6 +114,7 @@ class ControllerPms( private val emailServiceImp: EmailServiceImp) {
 
     fun getSlotNum(): String {
         answer= appConnection.sendRequest("notifyIn","notifyIn(A)","parkmanagerservice")
+       println(answer)
         var slotNum = answer.get(71)
         return slotNum.toString()
     }
