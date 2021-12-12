@@ -44,7 +44,6 @@ import it.unibo.final_sprint.CoapObserver
 class Testing3{	
 	companion object{
 		var parkmanagerservice   : CoapObserver? = null
-		//var weightsensorobserver   : CoapObserver? = null
 		var parkingmanagerobserver   : CoapObserver? = null
 
 		
@@ -53,16 +52,13 @@ class Testing3{
 		var systemStarted         = false
 		var channelSyncStart      = Channel<String>()
 		
-		//lateinit var mqttconn : connQakMqttTest
 		val client :  MqttClient =  MqttClient("tcp://localhost:1883", "testr")
 
-		//var testingObserver       : CoapObserverForTesting? = null
 		var myactor               : ActorBasic? = null
 		var counter               = 1
 		@JvmStatic
         @BeforeClass
-		//@Target([AnnotationTarget.FUNCTION]) annotation class BeforeClass
-		//@Throws(InterruptedException::class, UnknownHostException::class, IOException::class)
+		
 		fun init() {
 			GlobalScope.launch{
 				it.unibo.ctxparkingarea.main()
@@ -80,15 +76,11 @@ class Testing3{
 			}		 
 			
 			
-		}//init
-		
-	//	@JvmStatic
-	  //  @AfterClass
+		}
 		fun terminate() {
 			println("terminate the testing")
 		}
 	}
-		//@Test
 		fun checkNotifyIn() {
 		val strUrl = "http://localhost:8081/carentertest"
 		val client: HttpClient = HttpClientBuilder.create().build()
@@ -106,7 +98,6 @@ class Testing3{
        
        
 	}
-//	@Test //the robot can start in every cell
 	fun checkCarEnter() {
 		val strUrl = "http://localhost:8081/tokenidtest"
 		val client: HttpClient = HttpClientBuilder.create().build()
@@ -127,7 +118,6 @@ class Testing3{
        
        
 	}
-	//@Test
 	fun pickupRefused() {
 		runBlocking(){
 			delay(4000)
@@ -173,7 +163,6 @@ class Testing3{
 		var value = "msg(weight,event,tester,none,weight(41),16)"
 	
 		publish("weightsensor/data",value )
-		//checkState("weightsensor(1000)", weightsensorobserver)
 		 
 	}
 	fun connect(){
@@ -193,7 +182,11 @@ class Testing3{
 	
 	
 	@Test
+	/* 
+	*We want to check if the OUTDOORAREA is vacated the pickuprequest wouldn't be processed immediately
+	*/
 	fun test(){
+		
 		connect()
 		checkNotifyIn()
 		setWeightSensor()
