@@ -1,0 +1,69 @@
+System /* -trace */ thermometer 
+//mqttBroker "localhost" : 1883  eventTopic "thermometer/data"		//broker.hivemq.com
+
+//mqttBroker "localhost" : 1883  eventTopic "thermometer/data"		//broker.hivemq.com
+
+Event temp : temp(V)
+Dispatch temperature: temperature(T) 
+
+Context ctxthermometer ip [ host= "localhost"   port= 8015 ]
+Context ctxparkingarea ip [ host= "127.0.0.1" port=8021 ]
+
+ExternalQActor parkingmanager context ctxparkingarea
+
+	
+ QActor thermometer context ctxthermometer{
+ 	
+ 		[#var fan = 0 
+		
+	#] 
+		State s0 initial {
+			println("thermometer | starting ")
+	}Goto work  
+	State work{      
+    println("thermometer | work")
+    	
+	}Transition t0 whenEvent temp-> handleMsg
+
+State handleMsg{
+	onMsg(temp : temp(T)){
+    	[# var T= payloadArg(0)#]
+    	    println("thermometer | work $T") 
+    	    	
+    		forward parkingmanager -m  temperature : temperature ($T)
+			
+    	}
+	
+}Goto work
+}
+
+QActor mockthermometer context  ctxthermometer{
+	[# 
+		var V=0
+		# 
+		
+	]
+	   
+	
+	State s0 initial{  
+		println("mocktehermometer | start") 
+	}
+	Goto work
+		State work{  
+		[#
+			
+			
+		 V= kotlin.random.Random.nextInt(0, 50)
+			 
+			#
+		]
+		
+		emit temp : temp($V)
+	 
+		println("mockthermometer | temp : $V ") 
+		
+		
+	} 
+	Transition t0 whenTime   10000 -> work
+	                
+}

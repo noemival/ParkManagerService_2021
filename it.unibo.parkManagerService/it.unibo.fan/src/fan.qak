@@ -1,0 +1,58 @@
+System fan
+
+
+Dispatch fanstart: fanstart(V)
+Dispatch fanstop : fanstop(V) 
+Context ctxfan ip [host="localhost" port=8017]  
+
+QActor fan context ctxfan{
+	[#var gui : FanGui = FanGui()
+		var stateFan = "start"
+		#] 
+	State s0 initial {
+		discardMsg On
+		println("fan | start")
+		[#gui.initialiaze()
+		 utility.HandleData().initialize()
+		 
+		#]	    
+		   
+	}Goto handleState
+	 
+	State handleState{
+		[#stateFan = utility.HandleData().getState("fanmanager")
+	 	gui.setState(stateFan)#]
+	 		 
+	 	//updateResource[#"stateFa n()"#]
+	}
+	Transition t0 whenTime 2000 -> handleState
+	
+	 
+}
+//Nel momento in cui vado a fare car enter, il weightsensor...
+/*QActor prova context ctxfan{
+	[#var weightValue ="antonio"#]
+	
+	State s0 initial {
+		discardMsg On
+		println("prova | start")
+				
+	}Goto working 
+	 
+	 State working { 
+	 	delay 1000
+	 	println("prova : working")  
+	 	updateResource[#"fan on"#]
+	 	
+	 }
+	 Goto stopped
+	 State stopped{
+	 	println("prova : stopped")
+	 	updateResource[#"fan off"#]
+	 }
+	 Goto working
+	 
+}*/
+
+
+

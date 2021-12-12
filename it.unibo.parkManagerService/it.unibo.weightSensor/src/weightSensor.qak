@@ -1,0 +1,42 @@
+System  /*  -trace */ weightsensor 
+mqttBroker "localhost" : 1883 eventTopic "weightsensor/data"
+
+Event weight  :  weight(W)
+
+
+Context ctxweightsensor ip [host="localhost" port=8018]  
+
+
+QActor weightsensor context ctxweightsensor{
+	 
+	[#var gui : WeightSensorGui = WeightSensorGui()
+		var carNotDetected = true#] 
+	State s0 initial {
+		discardMsg On
+		println("weightsensor | start")
+		[#gui.initialiaze()#]
+		 
+		
+			     
+	}Goto working 
+	
+	 State working {
+	 	println("weihtSensor :  working") 
+	 	[#var Weight = gui.value #]
+	 	 
+	 	  println(Weight)
+	
+	 	[#if(Weight == 0 && carNotDetected == false){
+	 		carNotDetected = true
+	 		emit("weight", "weight($Weight)")
+	 	}else if(carNotDetected ==  true && Weight != 0){
+	 		carNotDetected =  false 
+	 		emit("weight", "weight($Weight)")
+	 	}#]
+	 
+	 	
+	 }Transition t0 whenTime 2000 ->working
+	
+}
+
+
