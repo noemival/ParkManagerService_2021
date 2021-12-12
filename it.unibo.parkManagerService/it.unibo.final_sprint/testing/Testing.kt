@@ -41,12 +41,10 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import it.unibo.final_sprint.CoapObserver
 
-//this testing file will use the ControllerPMSTester and it must comment @Controller annotation in the ControllerPms
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class Testing {
 	companion object{
 		var parkmanagerservice   : CoapObserver? = null
-		//var weightsensorobserver   : CoapObserver? = null
 		var parkingmanagerobserver   : CoapObserver? = null
 
 
@@ -58,13 +56,10 @@ class Testing {
 		//lateinit var mqttconn : connQakMqttTest
 		val client :  MqttClient =  MqttClient("tcp://localhost:1883", "testWeightsensor")
 
-		//var testingObserver       : CoapObserverForTesting? = null
 		var myactor               : ActorBasic? = null
 		var counter               = 1
 		@JvmStatic
-        @BeforeClass
-		//@Target([AnnotationTarget.FUNCTION]) annotation class BeforeClass
-		//@Throws(InterruptedException::class, UnknownHostException::class, IOException::class)
+     	  	@BeforeClass
 		fun init() {
 			GlobalScope.launch{
 				it.unibo.ctxparkingarea.main()
@@ -76,10 +71,7 @@ class Testing {
 			}
 			
 			
-		}//init
-		
-	//	@JvmStatic
-	  //  @AfterClass
+		}
 		fun terminate() {
 			println("terminate the testing")
 		}
@@ -111,17 +103,12 @@ class Testing {
 	}
 
   	}
-	//@Test
 	fun setWeightSensor(){
-				var value = "msg(weight,event,tester,none,weight(41),16)"
-
-
+		var value = "msg(weight,event,tester,none,weight(41),16)"
 		 runBlocking{
 		delay(5000)
-		 }
-
+			 }
 		publish("weightsensor/data",value )
-		//checkState("weightsensor(1000)", weightsensorobserver)
 		
 	}
 	
@@ -213,7 +200,6 @@ fun checkCarEnter() {
 			
 
 			var pms = checkState("parkmanagerservice(handleCarEnter)",parkmanagerservice)
-			//var statepm= checkState("{\"statetrolley\":\"trolley(working)\", \"statefan\":\"fan(stop)\", \"temp\":\"temp(0)\"}", parkingmanagerobserver)
 			var statepm2= 	checkState("{\"statetrolley\":\"trolley(idle)\", \"statefan\":\"fan(stop)\", \"temp\":\"temp(0)\"}", parkingmanagerobserver)
 
 			println(tokenId.get(0).toString())
@@ -264,36 +250,34 @@ fun checkCarEnter() {
 	
 	
 	@Test
-	
 	fun test(){
-		/*
- Il test vuole verificare il corretto funzionamento di quasi tutto il sistema
- prima di tutto impostiamo la connessione con i compoenti che ci interessano 
- */
-		connect()
-		
+		/* The test will check the right operation of the parking and pickup phase of the system
+		*  We will assume that the system is with 1 free slot, the temperature is costant, the fan is stopped and
+		* the INDOORAREA is free. 
+		* The request are sent with a intervall of two seconds. 
+		* After the simulation we will simulate the enter request of another client tha should be not processed
+		* because the INDOORAREA is still vacated and the slot aren't avaiable.
+		*/
+	
+		connect()//we will connect with mqtt broker 
 		checkNotifyIn()
 		 runBlocking{
-
-	
-			delay(3000)
+			delay(2000)
 		 }
-			setWeightSensor() // we want to check the update of the resources in out application using mqtt
-runBlocking{
-
-	
-			delay(3000)
+			setWeightSensor() // we should simulate the presence of the car
+		runBlocking{
+			delay(2000)
 		 }
 		checkCarEnter()
 		runBlocking{
-			delay(3000)
+			delay(2000)
 		 }
 	
 			checkpickup()
 runBlocking{
-			delay(3000)
+			delay(2000)
 		 }
-		checkNotifyIn2()
+		checkNotifyIn2() // the enter request of another client
 
 
 		
