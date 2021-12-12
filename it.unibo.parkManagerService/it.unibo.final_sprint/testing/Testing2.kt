@@ -123,6 +123,9 @@ class Testing2 {
 		}
     }
 		@Test
+		/*
+		* We want check the correct the correct information sending to the GUI when the OUTDOORAREA is still vacated over a DTFREE time. 
+		*/
 	fun test1(){
 
 		runBlocking(){
@@ -139,12 +142,18 @@ class Testing2 {
 		
 		}
 	@Test
+	/*
+		* We want check the correct operation of manage and monitor, so we should check if the GUI will received the right informatio of the parking area state 
+		* in the followiong simulated scene: when the temperature overcome/undercome tmax 
+		* and when the button is pressed by the manager
+		*/
 	fun test2(){
+		
+		
 		var answer=""
 		runBlocking(){
 			delay(2000)
 		}
-		//checkInf("trolley(idle)fan(stop)temp(0)")
 		conn("trolley(idle)fan(stop)temp(40)","test")
 		sendDisp("temperature","temperature(40)")
 		runBlocking(){
