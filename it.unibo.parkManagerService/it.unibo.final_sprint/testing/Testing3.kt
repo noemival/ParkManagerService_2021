@@ -41,7 +41,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import it.unibo.final_sprint.CoapObserver
 
-class Testing4{	
+class Testing3{	
 	companion object{
 		var parkmanagerservice   : CoapObserver? = null
 		//var weightsensorobserver   : CoapObserver? = null
