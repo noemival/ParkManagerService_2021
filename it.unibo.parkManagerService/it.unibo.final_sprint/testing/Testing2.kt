@@ -42,7 +42,6 @@ import java.util.Scanner
 import java.util.UUID
 import okio.Utf8
 
-//this testing file will use the ControllerPMSTester and it must comment @Controller annotation in the ControllerPms
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class Testing2 {
 	companion object{
@@ -50,8 +49,10 @@ class Testing2 {
 		var systemStarted         = false
 		var channelSyncStart      = Channel<String>()
 		
-		val client :  MqttClient =  MqttClient("tcp://broker.hivemq.com:1883", "testFan")
-		var myactor               : ActorBasic? = null
+		//val client :  MqttClient =  MqttClient("tcp://broker.hivemq.com:1883", "testFan")
+		var parkingmanager               : ActorBasic? = null
+		var outmanager               : ActorBasic? = null
+
 		var counter               = 1
 		//var testingObserver       : CoapObserverForTesting? = null
 		
@@ -64,15 +65,23 @@ class Testing2 {
 				it.unibo.ctxparkingarea.main() //keep the control
 			}
 			GlobalScope.launch{
-				myactor=QakContext.getActor("parkingmanager")
- 				while(  myactor == null )		{
+				parkingmanager=QakContext.getActor("parkingmanager")
+ 				while(  parkingmanager == null )		{
 					println("+++++++++ waiting for system startup ...")
 					delay(500)
-					myactor=QakContext.getActor("parkingmanager")
+					parkingmanager=QakContext.getActor("parkingmanager")
+				}
+					outmanager=QakContext.getActor("outmanager")
+ 				while(  outmanager == null )		{
+					println("+++++++++ waiting for system startup ...")
+					delay(500)
+					outmanager=QakContext.getActor("outmanager")
 				}				
 				delay(5000)	//Give time to move lr
 				channelSyncStart.send("starttesting")
-			}		 
+			}
+	
+
 		}
 	//	@JvmStatic
 	  //  @AfterClass
@@ -83,82 +92,88 @@ class Testing2 {
 	}	
 	
 	//@Test
-/*	fun checkTempOver(){
-
-
-		val strUrl = "http://localhost:8081/pm/test"
+	fun conn(state: String, url:String):String{
+			var answer = ""
+			runBlocking(){
+			delay(4000)
+			}
+		val strUrl = "http://localhost:8081/pm/$url"
 		val client: HttpClient = HttpClientBuilder.create().build()
 		val request = HttpGet(strUrl) 
 		try{
+		
+				//sendDisp("temperature","temperature(40)")
+
+	
 			var response: HttpResponse = client.execute(request)
-	        // var answer: String = IOUtils.toString(response.getEntity().getContent(), "UTf-8")
-	        // println("RESPONSE"  + "=$answer")
+	        answer= IOUtils.toString(response.getEntity().getContent(), "UTf-8")
+	        println("RESPONSE"  + "=$answer")
+			println(state)
 			
-			val request = HttpGet(strUrl) 
-		runBlocking(){
-		
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "temperature", "temperature(40)","parkingmanager"), myactor!!)
-
-			delay(8000)
-		
-			
-		}
-			 val request2 = HttpGet(strUrl)
-			 var response : HttpResponse = client.execute(request2)
-	         var answer = IOUtils.toString(response.getEntity().getContent(), "UTf-8")
-	         println("RESPONSE"  + "=$answer")
-	runBlocking(){
-		
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "temperature", "temperature(40)","parkingmanager"), myactor!!)
-
-			delay(8000)
-		
-			
-		}
-			 val request3 = HttpGet(strUrl)
-			 response = client.execute(request3)
-	          answer = IOUtils.toString(response.getEntity().getContent(), "UTf-8")
-	         println("RESPONSE"  + "=$answer")
-			assertEquals(answer,"trolley(stopped)fan(work)temp(40)")
 		}catch(ex: Exception){
 			fail()
 			println(""+ex)
 		}
+		return answer
 	}
-	*/
-	fun checkFanStop(clientSocket : Socket){
+	fun	sendDisp(msgId: String, content: String){
+			runBlocking(){
+			delay(2000)
+			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", msgId, content,"parkingmanager"), parkingmanager!!)
+		}
+    }
+		@Test
+	fun test1(){
 
-		var response = ""
-		var value = "msg(temp,event,mockthermometer,none,temp(20),20)"
 		runBlocking(){
-			delay(4000)
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "temperature", "temperature(30)","parkinmanager"), myactor!!)
-
-			delay(500)
+			delay(2000)
+			MsgUtil.sendMsg(MsgUtil.buildEvent("tester", "outsonar", "outsonar(V)"), outmanager!!)
+			delay(1000)
+		}
 			
-			val inFromServer = Scanner(clientSocket.getInputStream())
-			response = inFromServer.nextLine();
-			
-			println(response)   
-			println("Response= " +response)
-			
-			//assertEquals(response, "fan(off)")
-			 
+		assertEquals("alarm(occ)",conn("alarm(occ)","alarm"))
+		runBlocking(){
+			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "takecar", "takecar(V)","outmanager"), outmanager!!)
+			delay(1000)
 		}
 		
-    }
+		}
 	@Test
-	fun test(){
+	fun test2(){
+		var answer=""
 		runBlocking(){
-			delay(4000)
-			
-			MsgUtil.sendMsg(MsgUtil.buildDispatch("tester", "temperature", "temperature(40)","parkingmanager"), myactor!!)
-
 			delay(2000)
 		}
-
-	//checkTempOver()
-		 
+		//checkInf("trolley(idle)fan(stop)temp(0)")
+		conn("trolley(idle)fan(stop)temp(40)","test")
+		sendDisp("temperature","temperature(40)")
+		runBlocking(){
+			delay(2000)
 		}
+		assertEquals("trolley(idle)fan(stop)temp(40)",conn("trolley(idle)fan(stop)temp(40)","test") )
+		sendDisp("stateChange", "stateChange(over)")
+		
+		runBlocking(){
+			delay(2000)
+		}
+		sendDisp("temperature","temperature(40)")
+				assertEquals("trolley(stopped)fan(work)temp(40)",conn("trolley(stopped)fan(work)temp(40)","test") )
+		
+		sendDisp("temperature","temperature(30)")
+	assertEquals("trolley(stopped)fan(work)temp(30)",conn("trolley(stopped)fan(work)temp(30)","test"))
+		runBlocking(){
+			delay(2000)
+		}
+		sendDisp("stateChange", "stateChange(under)")
+		assertEquals("trolley(stopped)fan(work)temp(30)",conn("trolley(stopped)fan(work)temp(30)","test"))
+		sendDisp("temperature","temperature(30)")
+		runBlocking(){
+			delay(2000)
+		}
+		assertEquals("trolley(idle)fan(stop)temp(30)",conn("trolley(idle)fan(stop)temp(30)","test"))
+
+		
+		}
+
 }
 
