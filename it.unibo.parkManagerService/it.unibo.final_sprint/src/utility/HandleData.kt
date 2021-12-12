@@ -17,6 +17,7 @@ import it.unibo.kactor.sysUtil
 import connQak.connQakTcp
 import it.unibo.webBasicrobotqak.CoapSupport
 import connQak.connQakCoap
+import org.json.JSONObject
 
 
 class HandleData{
@@ -28,12 +29,14 @@ class HandleData{
 			var result = ""
 			val con = connQakCoap()
 			con.createConnection()
-			println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") 
-			//Thread.sleep(3000)
+			
 			val  coapSupport = CoapSupport("coap://localhost:8021", "ctxparkingarea/$actor")
 			result = coapSupport.readResource()
+		println(result)
+	
 			return result
 		}
+	
 	
 
 }

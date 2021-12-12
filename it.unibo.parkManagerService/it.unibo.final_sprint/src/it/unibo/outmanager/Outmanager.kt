@@ -18,42 +18,46 @@ class Outmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 	override fun getBody() : (ActorBasicFsm.() -> Unit){
 			var start =  0L
 				var difference = 0L
+				var send= 1
 			
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
 						println("outmanager | start")
 					}
-					 transition(edgeName="t024",targetState="start",cond=whenEvent("outsonar"))
+					 transition(edgeName="t018",targetState="start",cond=whenDispatch("outsonar"))
 				}	 
 				state("start") { //this:State
 					action { //it:State
 						 start = System.currentTimeMillis() 
 						println("outmanager [start] | start Timer ) ")
+						forward("outfree", "outfree(occ)" ,"parkmanagerservice" ) 
 					}
 					 transition( edgeName="goto",targetState="work", cond=doswitch() )
 				}	 
 				state("work") { //this:State
 					action { //it:State
 						difference = System.currentTimeMillis() - start 
-						println("outmanager [work] |  difference = $difference")
 						if( difference >= 1000L 
+						 ){if( send==1 
 						 ){println("outmanager [work]  | alarm event, time passed = $difference")
-						emit("alarm", "alarm(a)" ) 
+						updateResourceRep( "{\"alarm\":\"alarm(occ)\"}"  
+						)
+						send=0 
 						}
-						else
-						 {forward("outfree", "outfree(occ)" ,"parkmanagerservice" ) 
-						 println("outmanager [work]  | no alarm event ")
-						 }
+						}
 						stateTimer = TimerActor("timer_work", 
 							scope, context!!, "local_tout_outmanager_work", 300.toLong() )
 					}
-					 transition(edgeName="t025",targetState="work",cond=whenTimeout("local_tout_outmanager_work"))   
-					transition(edgeName="t026",targetState="free",cond=whenDispatch("takecar"))
+					 transition(edgeName="t019",targetState="work",cond=whenTimeout("local_tout_outmanager_work"))   
+					transition(edgeName="t020",targetState="free",cond=whenDispatch("takecar"))
 				}	 
 				state("free") { //this:State
 					action { //it:State
 						forward("outfree", "outfree(free)" ,"parkmanagerservice" ) 
+						send=1 
+						updateResourceRep( "{\"alarm\":\"alarm(free)\"}"  
+						)
 						println("outmanager [free] | OUTDOORAREA FREE")
 					}
 				}	 

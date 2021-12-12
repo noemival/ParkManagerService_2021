@@ -12,7 +12,7 @@ USAGE:
 plugins {
     id 'java'
     id 'eclipse'
-    //id 'application'
+    id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.4.32'
 }
 
@@ -24,7 +24,7 @@ repositories {
     mavenCentral()
     jcenter()
     flatDir {   dirs '../unibolibs'	 }
-}
+} 
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -102,8 +102,8 @@ sourceSets {
     //main.java.srcDirs += 'resources'
     test.java.srcDirs += 'test.kt'		//test.kt is specific
 }
-/*
-mainClassName = 'it.unibo.TODOKt'
+
+mainClassName = 'it.unibo.ctxparkingarea.MainCtxparkingareaKt'
 
 jar {
     println("executing jar")
@@ -112,4 +112,3 @@ jar {
         attributes 'Main-Class': "$mainClassName"
     }
 }
-*/

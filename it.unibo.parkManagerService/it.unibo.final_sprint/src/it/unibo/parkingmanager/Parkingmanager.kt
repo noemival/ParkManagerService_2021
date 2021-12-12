@@ -18,8 +18,8 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 	override fun getBody() : (ActorBasicFsm.() -> Unit){
 		var fanIsStarted = 0
 			  var robotIsActive = 1 
-			  var stateTrolley = ""
-			  var stateFan= ""
+			  var stateTrolley = "trolley(idle)"
+			  var stateFan= "fan(stop)"
 			  var start =  0L
 			  var differenza = 0L
 			  var temp1 = 0 
@@ -32,106 +32,83 @@ class Parkingmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( n
 				}	 
 				state("waiting") { //this:State
 					action { //it:State
+						delay(500) 
 						println("parkingmanager | waiting")
+						 stateTrolley = utility.HandleData().getState("trolley") 
+						println("$stateTrolley")
+						updateResourceRep("{\"statetrolley\":\"$stateTrolley\", \"statefan\":\"$stateFan\", \"temp\":\"temp($temp1)\"}" 
+						)
 					}
-					 transition(edgeName="t027",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t028",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t023",targetState="handleTemperature",cond=whenDispatch("temperature"))
 				}	 
 				state("handleTemperature") { //this:State
 					action { //it:State
 						if( checkMsgContent( Term.createTerm("temperature(T)"), Term.createTerm("temperature(T)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
+								delay(500) 
 								  temp1= payloadArg(0).toInt()
 												stateTrolley = utility.HandleData().getState("trolley")
-												stateFan = utility.HandleData().getState("fan")
+												stateFan = utility.HandleData().getState("fanmanager")
+								delay(400) 
+								updateResourceRep("{\"statetrolley\":\"$stateTrolley\", \"statefan\":\"$stateFan\", \"temp\":\"temp($temp1)\"}" 
+								)
 								println("parkingmanager [handleTemperature] | state trolley = $stateTrolley state fan = $stateFan ")
 								println("parkingmanager [handleTemperature] | temperature = $temp1 ")
-								if(  temp1 > 35 
-								 ){forward("warning", "warning(TempOverMax)" ,"parkservicestatusgui" ) 
-								}
-								else
-								 {forward("warning", "warning(TempUnderMax)" ,"parkservicestatusgui" ) 
-								 }
 						}
 						stateTimer = TimerActor("timer_handleTemperature", 
-							scope, context!!, "local_tout_parkingmanager_handleTemperature", 2000.toLong() )
+							scope, context!!, "local_tout_parkingmanager_handleTemperature", 4000.toLong() )
 					}
-					 transition(edgeName="t029",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleTemperature"))   
-					transition(edgeName="t030",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t031",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
-					transition(edgeName="t032",targetState="handleFan",cond=whenEvent("stateChangefan"))
-					transition(edgeName="t033",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t024",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleTemperature"))   
+					transition(edgeName="t025",targetState="handleTemperature",cond=whenDispatch("temperature"))
+					transition(edgeName="t026",targetState="handleTrolley",cond=whenDispatch("stateChange"))
 				}	 
 				state("handleTrolley") { //this:State
 					action { //it:State
 						println("parkingmanager | handleTemperature troll = $temp1 ")
-						if( checkMsgContent( Term.createTerm("stateChangetrolley(V)"), Term.createTerm("stateChangetrolley(V)"), 
+						println("$name in ${currentState.stateName} | $currentMsg")
+						if( checkMsgContent( Term.createTerm("stateChange(V)"), Term.createTerm("stateChange(V)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								var stateT= payloadArg(0) 
-								if(  temp1 > 35 && !stateTrolley.equals("trolley(stopped)") && stateT.equals("stop") 
-								 ){println("parkingmanager | trolley stopped ")
+								if(  temp1 > 35 && !stateTrolley.equals("trolley(stopped)") && stateT.equals("over")  && stateFan.equals("fan(stop)") 
+								 ){println("parkingmanager | trolley stopped update fan")
 								forward("trolleystop", "trolleystop(V)" ,"trolley" ) 
+								forward("fanstart", "fanstart(F)" ,"fanmanager" ) 
 								}
-								if(  temp1 < 35  &&  stateTrolley.equals("trolley(stopped)") && stateT.equals("work") 
-								 ){println("parkingmanager | trolley working ")
+								if(  temp1 < 35  && stateTrolley.equals("trolley(stopped)") && stateT.equals("under")  && stateFan.equals("fan(work)") 
+								 ){println("parkingmanager | trolley working update fan ")
 								forward("trolleyresume", "trolleyresume(V)" ,"trolley" ) 
+								forward("fanstop", "fanstop(F)" ,"fanmanager" ) 
 								}
+								 stateTrolley = utility.HandleData().getState("trolley")
+												stateFan = utility.HandleData().getState("fanmanager")
+								delay(400) 
+								updateResourceRep("{\"statetrolley\":\"$stateTrolley\", \"statefan\":\"$stateFan\", \"temp\":\"temp($temp1)\"}" 
+								)
 						}
 						stateTimer = TimerActor("timer_handleTrolley", 
-							scope, context!!, "local_tout_parkingmanager_handleTrolley", 2000.toLong() )
+							scope, context!!, "local_tout_parkingmanager_handleTrolley", 4000.toLong() )
 					}
-					 transition(edgeName="t034",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleTrolley"))   
-					transition(edgeName="t035",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t036",targetState="handleFan",cond=whenEvent("stateChangefan"))
-					transition(edgeName="t037",targetState="handleAlarm",cond=whenEvent("alarm"))
-				}	 
-				state("handleFan") { //this:State
-					action { //it:State
-						println("parkingmanager [handleFan] | temperature = $temp1 ")
-						if( checkMsgContent( Term.createTerm("stateChangefan(V)"), Term.createTerm("stateChangefan(V)"), 
-						                        currentMsg.msgContent()) ) { //set msgArgList
-								var stateF= payloadArg(0) 
-								if(  temp1 > 35  && stateFan.equals("fan(stop)") && stateFan.equals("stop") 
-								 ){println("parkingmanager [handleFan] | fan working ")
-								forward("fanstart", "fanstart(V)" ,"fan" ) 
-								}
-								if(  temp1 < 35  && stateFan.equals("fan(work)") && stateFan.equals("work")  
-								 ){println("parkingmanager [handleFan] | fan stopped ")
-								forward("fanstop", "fanstop(off)" ,"fan" ) 
-								}
-						}
-					}
-					 transition(edgeName="t038",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t039",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
-					transition(edgeName="t040",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t027",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleTrolley"))   
+					transition(edgeName="t028",targetState="handleTemperature",cond=whenDispatch("temperature"))
 				}	 
 				state("autoFan") { //this:State
 					action { //it:State
 						if(  temp1 > 35  && stateFan.equals("fan(stop)") 
 						 ){println("parkingmanager [autoFan] | fan working ")
-						forward("fanstart", "fanstart(V)" ,"fan" ) 
+						forward("fanstart", "fanstart(F)" ,"fanmanager" ) 
 						}
 						if(  temp1 < 35  && stateFan.equals("fan(work)")   
 						 ){println("parkingmanager [autoFan] | fan stopped ")
-						forward("fanstop", "fanstop(V)" ,"fan" ) 
+						forward("fanstop", "fanstop(F)" ,"fanmanager" ) 
 						}
+						 stateTrolley = utility.HandleData().getState("trolley")
+										stateFan = utility.HandleData().getState("fanmanager")
+						delay(400) 
+						updateResourceRep("{\"statetrolley\":\"$stateTrolley\", \"statefan\":\"$stateFan\", \"temp\":\"temp($temp1)\"}" 
+						)
 					}
-					 transition(edgeName="t041",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t042",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
-					transition(edgeName="t043",targetState="handleAlarm",cond=whenEvent("alarm"))
-				}	 
-				state("handleAlarm") { //this:State
-					action { //it:State
-						println("parkingmanager [handleAlarm] |  OVER DTFREE TIME")
-						emit("alarm", "alarm(V)" ) 
-						stateTimer = TimerActor("timer_handleAlarm", 
-							scope, context!!, "local_tout_parkingmanager_handleAlarm", 1000.toLong() )
-					}
-					 transition(edgeName="t044",targetState="autoFan",cond=whenTimeout("local_tout_parkingmanager_handleAlarm"))   
-					transition(edgeName="t045",targetState="handleTemperature",cond=whenEvent("temperature"))
-					transition(edgeName="t046",targetState="handleTrolley",cond=whenEvent("stateChangetrolley"))
-					transition(edgeName="t047",targetState="handleFan",cond=whenEvent("stateChangefan"))
-					transition(edgeName="t048",targetState="handleAlarm",cond=whenEvent("alarm"))
+					 transition(edgeName="t029",targetState="handleTemperature",cond=whenDispatch("temperature"))
+					transition(edgeName="t030",targetState="handleTrolley",cond=whenDispatch("stateChange"))
 				}	 
 			}
 		}

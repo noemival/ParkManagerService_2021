@@ -35,16 +35,16 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 						println("parkmanagerservice [working] | OUTDOOR = $OUTFREE")
 						stateTrolley = utility.HandleData().getState("trolley") 
 					}
-					 transition(edgeName="t012",targetState="acceptIn",cond=whenRequest("notifyIn"))
-					transition(edgeName="t013",targetState="acceptOut",cond=whenRequest("pickup"))
-					transition(edgeName="t014",targetState="carenter",cond=whenRequest("carenter"))
-					transition(edgeName="t015",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
-					transition(edgeName="t016",targetState="handlemsgOut",cond=whenDispatch("outfree"))
-					transition(edgeName="t017",targetState="theend",cond=whenDispatch("end"))
+					 transition(edgeName="t00",targetState="acceptIn",cond=whenRequest("notifyIn"))
+					transition(edgeName="t01",targetState="acceptOut",cond=whenRequest("pickup"))
+					transition(edgeName="t02",targetState="handleCarenter",cond=whenRequest("carenter"))
+					transition(edgeName="t03",targetState="handlemsgIn",cond=whenDispatch("weight"))
+					transition(edgeName="t04",targetState="handlemsgOut",cond=whenDispatch("outfree"))
+					transition(edgeName="t05",targetState="theend",cond=whenDispatch("end"))
 				}	 
 				state("handlemsgIn") { //this:State
 					action { //it:State
-						if( checkMsgContent( Term.createTerm("weightsensor(W)"), Term.createTerm("weightsensor(W)"), 
+						if( checkMsgContent( Term.createTerm("weight(W)"), Term.createTerm("weight(W)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 var W = payloadArg(0).toInt()  
 								if( W>0 
@@ -61,9 +61,11 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				}	 
 				state("handlemsgOut") { //this:State
 					action { //it:State
-						if( checkMsgContent( Term.createTerm("outfree(free)"), Term.createTerm("outfree(W)"), 
+						println("parkManagerService [handlemsgOut] ")
+						if( checkMsgContent( Term.createTerm("outfree(F)"), Term.createTerm("outfree(F)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 var O = payloadArg(0)  
+								println("adadadddaad"+O) 
 								if( O.equals("occ") 
 								 ){OUTFREE = 0  
 								println("parkManagerService [handlemsgOut] | OUTDOOR occupied")
@@ -78,35 +80,52 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				}	 
 				state("acceptIn") { //this:State
 					action { //it:State
+						updateResourceRep( "parkmanagerservice(acceptIn)"  
+						)
 						println("parkManagerService | acceptIn")
 						if( checkMsgContent( Term.createTerm("notifyIn(N)"), Term.createTerm("notifyIn(N)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
-								if(  INFREE ==1 &&  !stateTrolley.equals("trolley(stopped)") 
-								 ){ SLOTNUM = Slotnum.getSlotnum()  
-								answer("notifyIn", "informIn", "informIn($SLOTNUM)"   )  
-								Slotnum.uptadeSlotnum(SLOTNUM, false) 
+								 SLOTNUM = Slotnum.getSlotnum()  
+								if( SLOTNUM >0 
+								 ){if(  INFREE ==1 &&  !stateTrolley.equals("trolley(stopped)") 
+								 ){answer("notifyIn", "informIn", "informIn($SLOTNUM)"   )  
 								}
 								else
-								 {println("parkManagerService [acceptIn] | indoor-area occupied, the request could not be processed")
+								 {answer("notifyIn", "informIn", "informIn(9)"   )  
+								 println("parkManagerService [acceptIn] | indoor-area occupied, the request could not be processed")
+								 }
+								}
+								else
+								 {answer("notifyIn", "informIn", "informIn($SLOTNUM)"   )  
 								 }
 						}
 					}
-					 transition(edgeName="t018",targetState="carenter",cond=whenRequest("carenter"))
-					transition(edgeName="t019",targetState="acceptOut",cond=whenRequest("pickup"))
-					transition(edgeName="t020",targetState="acceptIn",cond=whenRequest("notifyIn"))
-					transition(edgeName="t021",targetState="handlemsgIn",cond=whenEvent("weightsensor"))
-					transition(edgeName="t022",targetState="handlemsgOut",cond=whenDispatch("outfree"))
-					transition(edgeName="t023",targetState="theend",cond=whenDispatch("end"))
+					 transition(edgeName="t06",targetState="handleCarenter",cond=whenRequest("carenter"))
+					transition(edgeName="t07",targetState="acceptOut",cond=whenRequest("pickup"))
+					transition(edgeName="t08",targetState="acceptIn",cond=whenRequest("notifyIn"))
+					transition(edgeName="t09",targetState="handlemsgIn",cond=whenDispatch("weight"))
+					transition(edgeName="t010",targetState="handlemsgOut",cond=whenDispatch("outfree"))
+					transition(edgeName="t011",targetState="theend",cond=whenDispatch("end"))
 				}	 
-				state("carenter") { //this:State
+				state("handleCarenter") { //this:State
 					action { //it:State
+						updateResourceRep( "parkmanagerservice(handleCarEnter)"  
+						)
 						println("parkManagerService | caraenter")
 						if( checkMsgContent( Term.createTerm("carenter(C)"), Term.createTerm("carenter(S)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
-								 SLOTNUM= payloadArg(0).toInt()  
-								if(  SLOTNUM!= 0 && INFREE == 1 
-								 ){forward("trolleycmd", "trolleycmd(moveToIn)" ,"trolley" ) 
-								 var MOVETOSLOT = "moveToSlot".plus(SLOTNUM)  
+								   
+									 			SLOTNUM= payloadArg(0).toInt()
+								if(  SLOTNUM!= 0  
+								 ){println("parkManagerService [carenter] | send to trolley moveToIn")
+								 var SLOTFREE = Slotnum.slotfree(SLOTNUM) 
+								println("parkManagerService [carenter] | $SLOTFREE")
+								if( Slotnum.slotfree(SLOTNUM) 
+								 ){Slotnum.uptadeSlotnum(SLOTNUM, false) 
+								forward("trolleycmd", "trolleycmd(moveToIn)" ,"trolley" ) 
+								delay(200) 
+								 
+													var MOVETOSLOT = "moveToSlot".plus(SLOTNUM)
 								println("parkManagerService [carenter] | send to trolley $MOVETOSLOT")
 								forward("trolleycmd", "trolleycmd($MOVETOSLOT)" ,"trolley" ) 
 								 TOKENID=  Slotnum.generateTOKENID(SLOTNUM)  
@@ -114,10 +133,19 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 								answer("carenter", "receipt", "receipt($TOKENID)"   )  
 								}
 								else
-								 {println("parkManagerService [carenter] | send to trolley moveToHome")
+								 {if( INFREE == 0 
+								  ){println("parkManagerService [carenter] |l'indoor area è occupata ")
+								 answer("carenter", "receipt", "receipt(8)"   )  
 								 forward("trolleycmd", "trolleycmd(moveToHome)" ,"trolley" ) 
-								 answer("carenter", "receipt", "receipt(no)"   )  
-								 Slotnum.uptadeSlotnum(SLOTNUM, true) 
+								 }
+								 else
+								  {answer("carenter", "receipt", "receipt(9)"   )  
+								  }
+								 }
+								}
+								else
+								 {answer("carenter", "receipt", "receipt(0)"   )  
+								 forward("trolleycmd", "trolleycmd(moveToHome)" ,"trolley" ) 
 								 }
 						}
 					}
@@ -125,28 +153,28 @@ class Parkmanagerservice ( name: String, scope: CoroutineScope  ) : ActorBasicFs
 				}	 
 				state("acceptOut") { //this:State
 					action { //it:State
-						stateTrolley = utility.HandleData().getState("trolley") 
+						updateResourceRep("parkmanagerservice(acceptOut)" 
+						)
 						println("parkManagerService | acceptOut ")
-						if( checkMsgContent( Term.createTerm("pickup(TOKENID)"), Term.createTerm("pickup(TOKENID)"), 
+						if( OUTFREE == 1 && !stateTrolley.equals("trolley(stopped)") 
+						 ){if( checkMsgContent( Term.createTerm("pickup(TOKENID)"), Term.createTerm("pickup(TOKENID)"), 
 						                        currentMsg.msgContent()) ) { //set msgArgList
-								if( OUTFREE == 1 &&   !stateTrolley.equals("trolley(stopped)") 
-								 ){TOKENID= payloadArg(0).toString()  
+								TOKENID= payloadArg(0).toString()  
 								println("parkManagerService [acceptOut] | receive TOKENID = $TOKENID")
 								 CARSLOTNUM = Slotnum.findSlot(TOKENID)  
-								println("parkManagerService [acceptOut] | receive CARSLOTNUM = $CARSLOTNUM")
-								answer("pickup", "ok", "ok(1)"   )  
-								println("parkManagerService [acceptOut] | receive OUTFREE = $OUTFREE")
-								 Slotnum.uptadeSlotnum(CARSLOTNUM, true)
-												var MOVETOSLOT = "moveToSlot".plus(CARSLOTNUM)  
+								println("parkManagerService [acceptOut]]: receive CARSLOTNUM = $CARSLOTNUM")
+								answer("pickup", "ok", "ok($OUTFREE)"   )  
+								
+													Slotnum.uptadeSlotnum(CARSLOTNUM, true)
+													var MOVETOSLOT = "moveToSlot".plus(CARSLOTNUM)
 								forward("trolleycmd", "trolleycmd($MOVETOSLOT)" ,"trolley" ) 
 								forward("trolleycmd", "trolleycmd(moveToOut)" ,"trolley" ) 
-								delay(600) 
-								}
-								else
-								 {answer("pickup", "ok", "ok(0)"   )  
-								 println("parkManagerService [acceptOut]: outdoor-area occupied, the request could not be processed")
-								 }
 						}
+						}
+						else
+						 {answer("pickup", "ok", "ok($OUTFREE)"   )  
+						 println("parkManagerService [acceptOut]: outdoor-area occupied, the request could not be processed")
+						 }
 					}
 					 transition( edgeName="goto",targetState="working", cond=doswitch() )
 				}	 

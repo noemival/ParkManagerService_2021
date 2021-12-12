@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Quality is our Tradition">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>CARK</title>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" href="../static/css/nicepage.css" media="screen">
+    <link rel="stylesheet" th:href="@{/css/Page-3.css}" href="../static/css/Page-3.css" media="screen">
+    <script class="u-script" type="text/javascript" th:src="@{/js/jquery-1.9.1.min.js}" defer=""></script>
+    <script class="u-script" type="text/javascript" th:src="@{/js/nicepage.js}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.29.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+
+        .warning {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .warning-content {
+          position: relative;
+          background-color: #fefefe;
+          margin: auto;
+          padding: 0;
+          border: 1px solid #888;
+          width: 50%;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+          -webkit-animation-name: animatetop;
+          -webkit-animation-duration: 0.4s;
+          animation-name: animatetop;
+          animation-duration: 0.4s
+        }
+        @-webkit-keyframes animatetop {
+          from {top:-300px; opacity:0}
+          to {top:0; opacity:1}
+        }
+        @keyframes animatetop {
+          from {top:-300px; opacity:0}
+          to {top:0; opacity:1}
+        }
+        .close {
+          color: white;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .warning-header {
+          padding: 2px 16px;
+          text-align: left;
+          background-color: #00178B;
+          color: white;
+          font-weight: bold;
+          font-size: 24px;
+        }
+        .warning-body {
+        padding: 2px 16px;
+        text-align: left;
+        color: black;
+        }
+
+    </style>
+
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "logo": "images/default-logo.png"
+    }</script>
+    <meta name="theme-color" content="#89d8e3">
+    <meta property="og:title" content="Page 3">
+    <meta property="og:type" content="website">
+</head>
+
+<body data-home-page="https://website919007.nicepage.io/Page-3.html?version=136ddfd8-709e-47e4-93ea-c77ebeb56bda" data-home-page-title="Cark" class="u-body u-overlap u-overlap-transparent">
+<div class="header">
+    <a href="/" class="logo">CompanyLogo</a>
+    <div class="header-right">
+        <a class="active" href="/">HOME</a>
+    </div>
+</div>
+
+
+    <section class="u-align-right u-clearfix u-palette-1-light-2 u-section-5" src="" id="sec-bf5a">
+      <div class="u-clearfix u-sheet u-sheet-1" >
+
+
+         <!--/*@thymesVar id="button" type="com.example.cark.Button"*/-->
+
+          <div th:if="${button.enterdisabled}">
+              <h1 class="u-text u-text-default u-title u-text-1">Last step</h1>
+              <p class="u-large-text u-text u-text-default u-text-variant u-text-2">We will send an email with the link to pick up you car </p>
+
+
+                 <div class="u-form-email u-form-group u-form-group-3">
+                     <label for="email" class="u-form-control-hidden u-label"></label>
+                     <input  type="email" placeholder="Write your email" id="email" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                     <p class="u-large-text u-text u-text-default u-text-variant u-text-2">When you are at the park press the button! </p>
+
+                 </div>
+                 <!--/*@thymesVar id="slotnum" type="com.example.cark.Slotnum"*/-->
+                 <button  id= "enterButton" class="u-btn u-button-style u-palette-2-base u-btn-1" onclick='getState()' name="slotnum" th:value="${slotnum.slotnum}">CARENTER</button>
+
+              <!-- </form>   onclick="getState()" -->
+
+         </div>
+          <div th:if="${!button.enterdisabled}">
+              <h1 class="u-text u-text-default u-title u-text-1">We are sorry</h1>
+              <p class="u-large-text u-text u-text-default u-text-variant u-text-2">The park is full </p>
+
+
+          </div>
+
+          <div id="warning" class="warning">
+              <!-- Modal content -->
+              <div class="warning-content">
+                  <div class="warning-header">
+                      <span class="close">&times;</span>
+                            Warning!!!
+                  </div>
+                  <div class="warning-body">
+                      Press the button CARENTER when you arrive at indoor area
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+    </section>
+<footer class="u-align-center u-clearfix u-footer u-palette-2-base u-footer" id="sec-9ec1"><div class="u-clearfix u-sheet u-sheet-1">
+    <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+</div></footer>
+<section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="html-templates" target="_blank">
+        <span>HTML Website Templates</span>
+    </a>
+    <p class="u-text">
+        <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+        <span>Offline Website Builder Software</span>
+    </a>.
+</section>
+
+<script>
+function getState(){
+    var answer = ""
+    var req = new XMLHttpRequest();
+    req.open('GET', 'http://localhost:8081/getStateButton', true)
+    req.responseType = 'text';
+    req.onload = function () {
+         var answer = req.responseText
+         console.log(answer)
+         console.log(req.responseText)
+         getState1(answer)
+    }
+    req.send()
+}
+function getState1(answer){
+    var slot = document.getElementById("enterButton").value
+    var modal = document.getElementById("warning");
+    var email = document.getElementById("email").value;
+    var span = document.getElementsByClassName("close")[0];
+    var ans = ""
+    if(answer == "Disabled"){
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+
+            }
+        }
+    }else{
+        var req = new XMLHttpRequest();
+        req.open('POST', 'http://localhost:8081/tokenid', true)
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        var params = 'slotnum='+slot+'&email='+email;
+        req.onload = function () {
+            ans = req.responseText
+            console.log(ans)
+            openView(ans)
+        }
+        req.send(params)
+    }
+}
+function openView(ans){
+      document.open();
+      document.write(ans);
+      document.close();
+
+
+
+}
+</script>
+</body>
+</html>
