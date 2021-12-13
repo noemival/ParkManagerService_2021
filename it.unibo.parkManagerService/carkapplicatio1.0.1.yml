@@ -1,0 +1,17 @@
+version: '3'
+services:
+  cark:
+    image: docker.io/noemival/carkapplication:1.0.1
+    ports:
+      - 8081:8081
+
+
+## -------------------------------------------------------------
+## TODO See https://docs.docker.com/compose/startup-order/
+## Compose does not wait until a container is “ready” (whatever that means for your particular application)
+## - only until it’s running. There’s a good reason for this.
+## The best solution is to perform this check in your application code,
+## -------------------------------------------------------------
+## docker-compose up -d
+## docker-compose down
+## docker-compose run --service-ports cark    starts cark
