@@ -1,5 +1,5 @@
 System  /*  -trace */ weightsensor 
-mqttBroker "localhost" : 1883 eventTopic "weightsensor/data"
+mqttBroker "broker.hivemq.com" : 1883 eventTopic "weightsensor/data"
 
 Event weight  :  weight(W)
 
