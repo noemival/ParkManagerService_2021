@@ -12,7 +12,7 @@
  * 
  * TO INTERACT from Rasp to PC without MQTT => 
  *            remove Windows firewall or allow port 8028
- * ----------------------------------------------------------------------
+ * ----------------------------- -----------------------------------------
  */
 
  	//"tcp://mqtt.eclipse.org:1883"
@@ -50,6 +50,7 @@ QActor sonar context ctxsonaronrasp {
 [# var simulate = true
    lateinit var firstActorInPipe : ActorBasic 
    var send = "false"
+   var send2 = "false"
 #]
   	State s0 initial {  	
   		//forward parkmanagerserviceproxy -m sonarstart : sonarstart(V)	 
@@ -97,12 +98,13 @@ QActor sonar context ctxsonaronrasp {
 		onMsg( sonar : distance(D) ){
 			[# DIST = payloadArg(0).toInt() #] 
 			println(DIST)		
-			if[#DIST<20 #]{ 
+			if[#DIST<20 && send == "false"#]{ 
 				forward outmanager -m outsonar : outsonar (O)
 				[#send = "true"#] //trasformarli in dispatch
 			}if[#DIST>=20 && send=="true" #]{ 
 				forward outmanager -m takecar : takecar(P)
-				[#send = "false"#]  //trasformarli in distpatch
+				[#send = "false"#]
+				 //trasformarli in distpatch
 			}
 		}
 		

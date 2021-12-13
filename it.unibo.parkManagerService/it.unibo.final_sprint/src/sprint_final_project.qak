@@ -338,7 +338,12 @@ QActor outmanager context ctxparkingarea{
 		
 		println ("outmanager | start")
 		
-	} Transition t0 whenMsg outsonar -> start
+	} Goto waiting
+	
+	State waiting{
+		println ("outmanager | waiting")
+	}
+	Transition t0 whenMsg outsonar -> start
 	
 	State start{
 		
@@ -373,6 +378,7 @@ QActor outmanager context ctxparkingarea{
 		
 		println("outmanager [free] | OUTDOORAREA FREE")
 	}
+	Goto waiting
 }
 
 QActor fanmanager context ctxparkingarea{    
@@ -407,6 +413,7 @@ QActor parkingmanager context ctxparkingarea {
 		println("parkingmanager | start") 
 	} 
 	Goto waiting
+	
 	State waiting{  
 		delay 500
 		

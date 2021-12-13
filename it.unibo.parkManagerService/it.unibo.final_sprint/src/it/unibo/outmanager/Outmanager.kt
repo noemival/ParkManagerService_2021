@@ -25,6 +25,12 @@ class Outmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 					action { //it:State
 						println("outmanager | start")
 					}
+					 transition( edgeName="goto",targetState="waiting", cond=doswitch() )
+				}	 
+				state("waiting") { //this:State
+					action { //it:State
+						println("outmanager | waiting")
+					}
 					 transition(edgeName="t018",targetState="start",cond=whenDispatch("outsonar"))
 				}	 
 				state("start") { //this:State
@@ -60,6 +66,7 @@ class Outmanager ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name,
 						)
 						println("outmanager [free] | OUTDOORAREA FREE")
 					}
+					 transition( edgeName="goto",targetState="waiting", cond=doswitch() )
 				}	 
 			}
 		}

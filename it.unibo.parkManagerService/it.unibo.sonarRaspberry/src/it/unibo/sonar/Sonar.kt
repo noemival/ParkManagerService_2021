@@ -19,6 +19,7 @@ class Sonar ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, scop
 		 var simulate = true
 		   lateinit var firstActorInPipe : ActorBasic 
 		   var send = "false"
+		   var send2 = "false"
 		return { //this:ActionBasciFsm
 				state("s0") { //this:State
 					action { //it:State
@@ -56,7 +57,7 @@ class Sonar ( name: String, scope: CoroutineScope  ) : ActorBasicFsm( name, scop
 						                        currentMsg.msgContent()) ) { //set msgArgList
 								 DIST = payloadArg(0).toInt()  
 								println(DIST)
-								if( DIST<20  
+								if( DIST<20 && send == "false" 
 								 ){forward("outsonar", "outsonar(O)" ,"outmanager" ) 
 								send = "true" 
 								}
