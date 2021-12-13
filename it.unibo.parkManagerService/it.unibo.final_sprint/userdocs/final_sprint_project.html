@@ -1764,7 +1764,7 @@ context(ctxfan, "localhost",  "TCP", "8017").
 </tr>
  </tbody>
 </table>
-<h3>WebApplication</h3>
+<h3>WebApplication <em>on "localhost"</em>< </h3>
 <table style="width:100%" border="1">
 
 <tr>
@@ -1789,6 +1789,25 @@ context(ctxparkingarea, "localhost",  "TCP", "8021").
   qactor( fanmanager, ctxparkingarea, "it.unibo.fanmanager.Fanmanager").
   qactor( parkingmanager, ctxparkingarea, "it.unibo.parkingmanager.Parkingmanager").
   qactor( basicrobot, ctxparkingarea, "it.unibo.basicrobot.Basicrobot").
+</m></pre>
+</td>
+</tr>
+ </tbody>
+</table>
+
+<h3>WebApplication <em>on Docker</em>< </h3>
+<table style="width:100%" border="1">
+
+<tr>
+<td style="width:50%">
+
+Download and run the file <a href="https://raw.githubusercontent.com/noemival/ParkManagerService_2021/main/it.unibo.parkManagerService/carkapplication1.0.1.yml" target="web">carkapplication1.0.1.yml </a> situated in the directory <a href="https://github.com/noemival/ParkManagerService_2021/tree/main/it.unibo.parkManagerService"target="web">it.unibo.parkManagerService</a> on Pc
+. <br>
+</td>
+<td>
+<pre>
+<m>
+docker-compose -f carkapplication1.0.1.yml up
 </m></pre>
 </td>
 </tr>
